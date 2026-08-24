@@ -688,52 +688,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // BANK ACCOUNT INPUT -> SELECT
     // =========================================================
 
-    function convertAccountInputToSelect() {
-
-        if (!accountNumber) {
-            return;
-        }
-
-        if (accountNumber.tagName === "SELECT") {
-            return;
-        }
-
-        const select =
-            document.createElement("select");
-
-        select.id = "accountNumber";
-
-        select.className =
-            accountNumber.className;
-
-        select.disabled = true;
-
-        select.innerHTML =
-            '<option value="">-- Select Account Number --</option>';
-
-        accountNumber.replaceWith(select);
-
-        accountNumber = select;
-
-        accountNumber.addEventListener(
-            "change",
-            function () {
-
-                if (
-                    bankError &&
-                    this.value !== ""
-                ) {
-
-                    bankError.textContent = "";
-
-                    bankError.style.display =
-                        "none";
-                }
-
-            }
-        );
-
-    }
+    
 
 
     // =========================================================
