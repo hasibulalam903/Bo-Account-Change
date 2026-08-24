@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const branchName = document.getElementById("branchName");
     const bankUpazila = document.getElementById("bankUpazila");
     const routingNumber = document.getElementById("routingNumber");
-    let accountNumber = document.getElementById("accountNumber");
+    const accountNumber = document.getElementById("accountNumber");
     const bankError = document.getElementById("bankError");
 
     const contactAddressBox =
@@ -231,7 +231,44 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
-   
+    // =========================================================
+    // ACCOUNT DATA
+    //
+    // Keyed the same way bankData is keyed: [bankKey][branchName]
+    // -> array of account numbers available under that
+    // bank + branch combination. loadAccountNumbers() reads
+    // this directly, so any account data source (API response,
+    // server-rendered JSON, etc.) just needs to be shaped this
+    // way before being assigned here.
+    // =========================================================
+
+    const accountData = {
+
+        ab_bank: {
+            "Gulshan Branch": ["0201234567890", "0201234567891"],
+            "Banani Branch": ["0202234567890"],
+            "Dhanmondi Branch": ["0203234567890", "0203234567891"]
+        },
+
+        jamuna_bank: {
+            "Gulshan Branch": ["1301234567890"],
+            "Banani Branch": ["1302234567890", "1302234567891"],
+            "Dhanmondi Branch": ["1303234567890"]
+        },
+
+        brac_bank: {
+            "Gulshan Branch": ["0601234567890", "0601234567891"],
+            "Banani Branch": ["0602234567890"],
+            "Dhanmondi Branch": ["0603234567890"]
+        },
+
+        bank_asia: {
+            "Gulshan Branch": ["0351234567890"],
+            "Banani Branch": ["0352234567890", "0352234567891"],
+            "Dhanmondi Branch": ["0353234567890"]
+        }
+
+    };
 
 
     // =========================================================
@@ -377,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Ghior": "1840",
                 "Harirampur": "1830",
                 "Saturia": "1850",
-                "Shibalaya": "1850",
+                "Shibalaya": "1811",
                 "Singair": "1820"
             }
 
@@ -597,13 +634,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         select.appendChild(option);
     }
-
-
-    // =========================================================
-    // BANK ACCOUNT INPUT -> SELECT
-    // =========================================================
-
-    
 
 
     // =========================================================
@@ -1084,7 +1114,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 const division =
-                    divisionSelect.value;
+                    divisionSelect ? divisionSelect.value : "";
 
                 const district =
                     this.value;
@@ -1094,7 +1124,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     !district
                 ) {
 
-                    upazilaSelect.disabled = true;
+                    if (upazilaSelect) {
+                        upazilaSelect.disabled = true;
+                    }
 
                     return;
                 }
@@ -1106,7 +1138,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!upazilas) {
 
-                    upazilaSelect.disabled = true;
+                    if (upazilaSelect) {
+                        upazilaSelect.disabled = true;
+                    }
 
                     return;
                 }
@@ -1132,7 +1166,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 );
 
-                upazilaSelect.disabled = false;
+                if (upazilaSelect) {
+                    upazilaSelect.disabled = false;
+                }
 
             }
         );
@@ -1151,10 +1187,10 @@ document.addEventListener("DOMContentLoaded", function () {
             function () {
 
                 const division =
-                    divisionSelect.value;
+                    divisionSelect ? divisionSelect.value : "";
 
                 const district =
-                    districtSelect.value;
+                    districtSelect ? districtSelect.value : "";
 
                 const upazila =
                     this.value;
@@ -1317,7 +1353,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Please select Bank Name."
             );
 
-            bankName.focus();
+            if (bankName) {
+                bankName.focus();
+            }
 
             return false;
         }
@@ -1332,7 +1370,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Please select Branch Name."
             );
 
-            branchName.focus();
+            if (branchName) {
+                branchName.focus();
+            }
 
             return false;
         }
@@ -1347,7 +1387,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Please select Account Number."
             );
 
-            accountNumber.focus();
+            if (accountNumber) {
+                accountNumber.focus();
+            }
 
             return false;
         }
@@ -1403,7 +1445,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Please select Country."
             );
 
-            countrySelect.focus();
+            if (countrySelect) {
+                countrySelect.focus();
+            }
 
             return false;
         }
@@ -1421,7 +1465,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Please select Division."
             );
 
-            divisionSelect.focus();
+            if (divisionSelect) {
+                divisionSelect.focus();
+            }
 
             return false;
         }
@@ -1439,7 +1485,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Please select District."
             );
 
-            districtSelect.focus();
+            if (districtSelect) {
+                districtSelect.focus();
+            }
 
             return false;
         }
@@ -1457,7 +1505,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Please select Upazila/Thana."
             );
 
-            upazilaSelect.focus();
+            if (upazilaSelect) {
+                upazilaSelect.focus();
+            }
 
             return false;
         }
@@ -1739,9 +1789,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             "block";
                     }
 
-                    // Convert account input to select
-
-                    convertAccountInputToSelect();
+                    // Bank / Branch / Account Number are all
+                    // populated on demand as the user works
+                    // through the cascading selects above
+                    // (bankName -> loadBranches ->
+                    // loadBranchInformation -> loadAccountNumbers),
+                    // so nothing needs to be pre-populated here.
 
                     return;
                 }
@@ -2203,18 +2256,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (newInfo) {
 
-                    if (
-                        newInfo.type === "file"
-                    ) {
-
-                        newInfo.value = "";
-
-                    }
-                    else {
-
-                        newInfo.value = "";
-
-                    }
+                    newInfo.value = "";
 
                 }
 
@@ -2278,14 +2320,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (postCodeInput) {
         postCodeInput.value = "";
     }
-
-
-    // =========================================================
-    // CONVERT ACCOUNT INPUT
-    // =========================================================
-
-    // Do not convert immediately.
-    // It will be converted when Bank Info is selected.
 
 
     console.log(
