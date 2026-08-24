@@ -2,17 +2,28 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>BO Information Change</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
 
 <body>
 
     <div class="page-container">
+
 
         <!-- =====================================
              PAGE TITLE
@@ -25,15 +36,20 @@
 
         <div class="form-box">
 
+
             <!-- =================================
                  NAME
             ================================== -->
 
             <div class="form-row">
 
-                <label for="name" class="form-label">
+                <label
+                    for="name"
+                    class="form-label"
+                >
                     Name
                 </label>
+
 
                 <input
                     type="text"
@@ -52,43 +68,58 @@
 
             <div class="form-row">
 
-                <label for="changeType" class="form-label">
+                <label
+                    for="changeType"
+                    class="form-label"
+                >
                     Change Type
                 </label>
 
-                <select id="changeType" class="form-control">
+
+                <select
+                    id="changeType"
+                    class="form-control"
+                >
 
                     <option value="">
                         -- Select the type of Info you need to Change --
                     </option>
 
+
                     <option value="mobile">
                         Mobile Number
                     </option>
+
 
                     <option value="email">
                         Email Address
                     </option>
 
+
                     <option value="bank_info">
                         Bank Info
                     </option>
+
 
                     <option value="bkash">
                         Bkash Number
                     </option>
 
+
                     <option value="contact_address">
                         Contact Address
                     </option>
+
 
                     <option value="nid">
                         Investor NID
                     </option>
 
+
                     <option value="photo">
                         Investor Photo
                     </option>
+
 
                     <option value="signature">
                         Investor Signature
@@ -105,9 +136,13 @@
 
             <div class="form-row">
 
-                <label for="existingInfo" class="form-label">
+                <label
+                    for="existingInfo"
+                    class="form-label"
+                >
                     Existing Info
                 </label>
+
 
                 <input
                     type="text"
@@ -129,9 +164,13 @@
                 id="normalNewInfoRow"
             >
 
-                <label for="newInfo" class="form-label">
+                <label
+                    for="newInfo"
+                    class="form-label"
+                >
                     New Info
                 </label>
+
 
                 <div class="new-info-container">
 
@@ -142,11 +181,11 @@
                         placeholder="Select Change Type"
                     >
 
+
                     <span
                         id="newInfoError"
                         class="error"
                     >
-                        Please enter new information.
                     </span>
 
                 </div>
@@ -175,6 +214,7 @@
                         Bank Name :
                     </div>
 
+
                     <div class="bank-field">
 
                         <select
@@ -186,17 +226,21 @@
                                 -- Select Bank Name --
                             </option>
 
+
                             <option value="ab_bank">
                                 AB Bank Limited
                             </option>
+
 
                             <option value="jamuna_bank">
                                 Jamuna Bank Limited
                             </option>
 
+
                             <option value="brac_bank">
                                 BRAC Bank Limited
                             </option>
+
 
                             <option value="bank_asia">
                                 Bank Asia Limited
@@ -219,6 +263,7 @@
                         Branch Name :
                     </div>
 
+
                     <div class="bank-field">
 
                         <select
@@ -239,7 +284,11 @@
 
 
                 <!-- =================================
-                     UPAZILA
+                     BANK UPAZILA
+
+                     IMPORTANT:
+                     This ID is bankUpazila
+                     It is NOT upazila.
                 ================================== -->
 
                 <div class="bank-row">
@@ -248,11 +297,12 @@
                         Upazila :
                     </div>
 
+
                     <div class="bank-field">
 
                         <input
                             type="text"
-                            id="upazila"
+                            id="bankUpazila"
                             class="bank-control readonly"
                             placeholder="Upazila"
                             readonly
@@ -273,6 +323,7 @@
                         Routing Number :
                     </div>
 
+
                     <div class="bank-field">
 
                         <input
@@ -292,30 +343,27 @@
                      ACCOUNT NUMBER
                 ================================== -->
 
-             <!-- =================================
-     ACCOUNT NUMBER
-================================== -->
+                <div class="bank-row">
 
-<div class="bank-row">
+                    <div class="bank-label">
+                        Account Number :
+                    </div>
 
-    <div class="bank-label">
-        Account Number :
-    </div>
 
-    <div class="bank-field">
+                    <div class="bank-field">
 
-        <input
-            type="text"
-            id="accountNumber"
-            class="bank-control"
-            placeholder="Enter Account Number"
-            maxlength="20"
-            inputmode="numeric"
-        >
+                        <input
+                            type="text"
+                            id="accountNumber"
+                            class="bank-control"
+                            placeholder="Enter Account Number"
+                            maxlength="20"
+                            inputmode="numeric"
+                        >
 
-    </div>
+                    </div>
 
-</div>
+                </div>
 
 
                 <!-- =================================
@@ -326,6 +374,121 @@
                     id="bankError"
                     class="error"
                 ></span>
+
+            </div>
+
+
+            <!-- =========================================
+                 CONTACT ADDRESS
+            ========================================== -->
+
+            <div
+                id="contactAddressBox"
+                class="contact-address-box"
+                style="display: none;"
+            >
+
+
+                <!-- CONTACT ADDRESS -->
+
+                <textarea
+                    id="newContactAddress"
+                    placeholder="Enter Contact Address Here"
+                ></textarea>
+
+
+                <!-- =================================
+                     COUNTRY + DIVISION
+                ================================== -->
+
+                <div class="address-row">
+
+                    <select id="country">
+
+                        <option value="">
+                            -Country-
+                        </option>
+
+
+                        <option value="BD">
+                            Bangladesh
+                        </option>
+
+                    </select>
+
+
+                    <select
+                        id="division"
+                        disabled
+                    >
+
+                        <option value="">
+                            -State/Division-
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =================================
+                     DISTRICT + UPAZILA
+                ================================== -->
+
+                <div class="address-row">
+
+                    <select
+                        id="district"
+                        disabled
+                    >
+
+                        <option value="">
+                            -City/District-
+                        </option>
+
+                    </select>
+
+
+                    <!-- =================================
+                         CONTACT ADDRESS UPAZILA
+
+                         IMPORTANT:
+                         This ID is upazila.
+
+                         Bank Upazila uses:
+                         bankUpazila
+
+                         Therefore there is NO ID conflict.
+                    ================================== -->
+
+                    <select
+                        id="upazila"
+                        disabled
+                    >
+
+                        <option value="">
+                            -Upazila/Thana-
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =================================
+                     POST CODE
+                ================================== -->
+
+                <div class="address-row">
+
+                    <input
+                        type="text"
+                        id="postCode"
+                        placeholder="Post Code"
+                        readonly
+                    >
+
+                </div>
 
             </div>
 
@@ -342,6 +505,7 @@
                 >
                     Remarks
                 </label>
+
 
                 <textarea
                     id="remarks"
@@ -365,6 +529,7 @@
                     Attachment
                 </label>
 
+
                 <input
                     type="file"
                     id="attachment"
@@ -382,6 +547,7 @@
 
                 <div class="button-spacer"></div>
 
+
                 <button
                     type="button"
                     id="submitButton"
@@ -392,6 +558,7 @@
 
             </div>
 
+
         </div>
 
 
@@ -400,6 +567,7 @@
         ====================================== -->
 
         <div class="bottom-line"></div>
+
 
     </div>
 

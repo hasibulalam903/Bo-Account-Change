@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    "use strict";
+
     // =========================================================
     // ELEMENTS
     // =========================================================
@@ -10,17 +12,42 @@ document.addEventListener("DOMContentLoaded", function () {
     const newInfoError = document.getElementById("newInfoError");
 
     const bankInfo = document.getElementById("bankInfo");
-
     const bankName = document.getElementById("bankName");
     const branchName = document.getElementById("branchName");
-    const upazila = document.getElementById("upazila");
+    const bankUpazila = document.getElementById("bankUpazila");
     const routingNumber = document.getElementById("routingNumber");
-    const accountNumber = document.getElementById("accountNumber");
+    let accountNumber = document.getElementById("accountNumber");
     const bankError = document.getElementById("bankError");
 
-    const remarks = document.getElementById("remarks");
-    const attachment = document.getElementById("attachment");
-    const submitButton = document.getElementById("submitButton");
+    const contactAddressBox =
+        document.getElementById("contactAddressBox");
+
+    const newContactAddress =
+        document.getElementById("newContactAddress");
+
+    const countrySelect =
+        document.getElementById("country");
+
+    const divisionSelect =
+        document.getElementById("division");
+
+    const districtSelect =
+        document.getElementById("district");
+
+    const upazilaSelect =
+        document.getElementById("upazila");
+
+    const postCodeInput =
+        document.getElementById("postCode");
+
+    const remarks =
+        document.getElementById("remarks");
+
+    const attachment =
+        document.getElementById("attachment");
+
+    const submitButton =
+        document.getElementById("submitButton");
 
 
     // =========================================================
@@ -46,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         photo: "Investor Photo",
 
         signature: "Investor Signature"
+
     };
 
 
@@ -75,15 +103,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         signature:
             "Select New Investor Signature"
+
     };
 
 
     // =========================================================
     // BANK DATA
-    //
-    // NOTE:
-    // These are sample/demo values.
-    // Replace them with your actual Bangladesh bank data/API.
     // =========================================================
 
     const bankData = {
@@ -208,9 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // =========================================================
     // ACCOUNT DATA
-    //
-    // Demo account numbers.
-    // Replace with database/API data later.
     // =========================================================
 
     const accountData = {
@@ -298,7 +320,424 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =========================================================
-    // INITIAL BANK STATE
+    // BANGLADESH ADDRESS DATA
+    // =========================================================
+
+    const bangladeshAddress = {
+
+        "Chattogram": {
+
+            "Chattogram": {
+                "Patiya": "4370",
+                "Rangunia": "4360",
+                "Raozan": "4340",
+                "Hathazari": "4330",
+                "Fatikchhari": "4350",
+                "Mirsharai": "4320",
+                "Sitakunda": "4310",
+                "Sandwip": "4300",
+                "Boalkhali": "4366",
+                "Anwara": "4376",
+                "Banshkhali": "4390",
+                "Lohagara": "4396",
+                "Satkania": "4386",
+                "Chandanaish": "4380"
+            },
+
+            "Cox's Bazar": {
+                "Cox's Bazar Sadar": "4700",
+                "Chakaria": "4740",
+                "Ramu": "4730",
+                "Teknaf": "4760",
+                "Ukhia": "4750",
+                "Maheshkhali": "4710",
+                "Kutubdia": "4720",
+                "Pekua": "4770"
+            },
+
+            "Comilla": {
+                "Comilla Sadar": "3500",
+                "Daudkandi": "3516",
+                "Burichang": "3520",
+                "Brahmanpara": "3526",
+                "Chandina": "3510",
+                "Chauddagram": "3550",
+                "Debidwar": "3530",
+                "Homna": "3546",
+                "Laksam": "3570",
+                "Muradnagar": "3540",
+                "Nangalkot": "3580"
+            },
+
+            "Noakhali": {
+                "Noakhali Sadar": "3800",
+                "Begumganj": "3820",
+                "Chatkhil": "3870",
+                "Companiganj": "3850",
+                "Hatiya": "3890",
+                "Senbagh": "3860",
+                "Sonaimuri": "3827",
+                "Subarnachar": "3819"
+            },
+
+            "Feni": {
+                "Feni Sadar": "3900",
+                "Chagalnaiya": "3910",
+                "Daganbhuiyan": "3920",
+                "Fulgazi": "3940",
+                "Parshuram": "3942",
+                "Sonagazi": "3930"
+            },
+
+            "Lakshmipur": {
+                "Lakshmipur Sadar": "3700",
+                "Raipur": "3710",
+                "Ramganj": "3720",
+                "Ramgati": "3730",
+                "Kamalnagar": "3731"
+            },
+
+            "Brahmanbaria": {
+                "Brahmanbaria Sadar": "3400",
+                "Ashuganj": "3402",
+                "Akhaura": "3450",
+                "Bancharampur": "3420",
+                "Kasba": "3460",
+                "Nabinagar": "3410",
+                "Nasirnagar": "3440",
+                "Sarail": "3430"
+            }
+
+        },
+
+
+        "Dhaka": {
+
+            "Dhaka": {
+                "Dhanmondi": "1209",
+                "Gulshan": "1212",
+                "Mirpur": "1216",
+                "Uttara": "1230",
+                "Mohammadpur": "1207",
+                "Savar": "1340",
+                "Keraniganj": "1310",
+                "Dohar": "1330",
+                "Nawabganj": "1320",
+                "Tejgaon": "1215"
+            },
+
+            "Gazipur": {
+                "Gazipur Sadar": "1700",
+                "Tongi": "1710",
+                "Kaliakair": "1750",
+                "Kaliganj": "1720",
+                "Kapasia": "1730",
+                "Sreepur": "1740"
+            },
+
+            "Narayanganj": {
+                "Narayanganj Sadar": "1400",
+                "Araihazar": "1450",
+                "Rupganj": "1460",
+                "Sonargaon": "1440"
+            },
+
+            "Tangail": {
+                "Tangail Sadar": "1900",
+                "Basail": "1920",
+                "Bhuapur": "1960",
+                "Dhanbari": "1997",
+                "Ghatail": "1980",
+                "Gopalpur": "1990",
+                "Kalihati": "1970",
+                "Madhupur": "1996",
+                "Mirzapur": "1940",
+                "Nagarpur": "1936",
+                "Sakhipur": "1950"
+            },
+
+            "Manikganj": {
+                "Manikganj Sadar": "1800",
+                "Daulatpur": "1860",
+                "Ghior": "1840",
+                "Harirampur": "1830",
+                "Saturia": "1850",
+                "Shibalaya": "1850",
+                "Singair": "1820"
+            }
+
+        },
+
+
+        "Barishal": {
+
+            "Barishal": {
+                "Barishal Sadar": "8200",
+                "Agailjhara": "8240",
+                "Babuganj": "8210",
+                "Bakerganj": "8280",
+                "Banaripara": "8530",
+                "Gaurnadi": "8230",
+                "Hizla": "8260",
+                "Mehendiganj": "8270",
+                "Muladi": "8250",
+                "Wazirpur": "8220"
+            },
+
+            "Bhola": {
+                "Bhola Sadar": "8300",
+                "Borhanuddin": "8320",
+                "Char Fasson": "8340",
+                "Daulatkhan": "8310",
+                "Lalmohan": "8330",
+                "Manpura": "8350",
+                "Tazumuddin": "8360"
+            },
+
+            "Pirojpur": {
+                "Pirojpur Sadar": "8500",
+                "Bhandaria": "8550",
+                "Kawkhali": "8510",
+                "Mathbaria": "8560",
+                "Nazirpur": "8540",
+                "Nesarabad": "8520",
+                "Zianagar": "8530"
+            }
+
+        },
+
+
+        "Khulna": {
+
+            "Khulna": {
+                "Khulna Sadar": "9000",
+                "Batiaghata": "9260",
+                "Dacope": "9270",
+                "Dighalia": "9220",
+                "Dumuria": "9250",
+                "Koyra": "9290",
+                "Paikgachha": "9280",
+                "Phultala": "9210",
+                "Rupsa": "9240",
+                "Terokhada": "9230"
+            },
+
+            "Bagerhat": {
+                "Bagerhat Sadar": "9300",
+                "Chitalmari": "9360",
+                "Fakirhat": "9370",
+                "Kachua": "9310",
+                "Mollahat": "9380",
+                "Mongla": "9350",
+                "Morrelganj": "9320",
+                "Rampal": "9340",
+                "Sarankhola": "9330"
+            }
+
+        },
+
+
+        "Rajshahi": {
+
+            "Rajshahi": {
+                "Bagha": "6280",
+                "Bagmara": "6250",
+                "Charghat": "6270",
+                "Durgapur": "6240",
+                "Godagari": "6290",
+                "Mohanpur": "6220",
+                "Paba": "6210",
+                "Puthia": "6260",
+                "Tanore": "6230"
+            },
+
+            "Bogura": {
+                "Bogura Sadar": "5800",
+                "Adamdighi": "5890",
+                "Dhunat": "5850",
+                "Dupchanchia": "5880",
+                "Gabtali": "5820",
+                "Kahaloo": "5870",
+                "Nandigram": "5860",
+                "Sariakandi": "5830",
+                "Shajahanpur": "5800",
+                "Sherpur": "5840",
+                "Shibganj": "5810"
+            }
+
+        },
+
+
+        "Rangpur": {
+
+            "Rangpur": {
+                "Rangpur Sadar": "5400",
+                "Badarganj": "5430",
+                "Gangachara": "5410",
+                "Kaunia": "5440",
+                "Mithapukur": "5460",
+                "Pirgachha": "5450",
+                "Pirganj": "5470",
+                "Taraganj": "5420"
+            },
+
+            "Dinajpur": {
+                "Dinajpur Sadar": "5200",
+                "Birampur": "5266",
+                "Birganj": "5220",
+                "Biral": "5210",
+                "Bochaganj": "5216",
+                "Chirirbandar": "5240",
+                "Fulbari": "5260",
+                "Ghoraghat": "5290",
+                "Hakimpur": "5270",
+                "Kaharole": "5220",
+                "Khansama": "5230",
+                "Nawabganj": "5280",
+                "Parbatipur": "5250"
+            }
+
+        },
+
+
+        "Sylhet": {
+
+            "Sylhet": {
+                "Sylhet Sadar": "3100",
+                "Balaganj": "3125",
+                "Beanibazar": "3170",
+                "Bishwanath": "3130",
+                "Companiganj": "3140",
+                "Fenchuganj": "3116",
+                "Golapganj": "3160",
+                "Gowainghat": "3150",
+                "Jaintiapur": "3156",
+                "Kanaighat": "3180",
+                "Osmani Nagar": "3120",
+                "Zakiganj": "3190"
+            },
+
+            "Moulvibazar": {
+                "Moulvibazar Sadar": "3200",
+                "Barlekha": "3250",
+                "Juri": "3251",
+                "Kamalganj": "3220",
+                "Kulaura": "3230",
+                "Rajnagar": "3240",
+                "Sreemangal": "3210"
+            }
+
+        },
+
+
+        "Mymensingh": {
+
+            "Mymensingh": {
+                "Mymensingh Sadar": "2200",
+                "Bhaluka": "2240",
+                "Dhobaura": "2416",
+                "Fulbaria": "2216",
+                "Gaffargaon": "2230",
+                "Gouripur": "2270",
+                "Haluaghat": "2260",
+                "Ishwarganj": "2280",
+                "Muktagachha": "2210",
+                "Nandail": "2290",
+                "Phulpur": "2250",
+                "Trishal": "2220"
+            },
+
+            "Jamalpur": {
+                "Jamalpur Sadar": "2000",
+                "Baksiganj": "2140",
+                "Dewanganj": "2030",
+                "Islampur": "2020",
+                "Madarganj": "2040",
+                "Melandaha": "2010",
+                "Sarishabari": "2050"
+            }
+
+        }
+
+    };
+
+
+    // =========================================================
+    // HELPER
+    // =========================================================
+
+    function clearSelect(select, placeholder) {
+
+        if (!select) {
+            return;
+        }
+
+        select.innerHTML = "";
+
+        const option =
+            document.createElement("option");
+
+        option.value = "";
+        option.textContent = placeholder;
+
+        select.appendChild(option);
+    }
+
+
+    // =========================================================
+    // BANK ACCOUNT INPUT -> SELECT
+    // =========================================================
+
+    function convertAccountInputToSelect() {
+
+        if (!accountNumber) {
+            return;
+        }
+
+        if (accountNumber.tagName === "SELECT") {
+            return;
+        }
+
+        const select =
+            document.createElement("select");
+
+        select.id = "accountNumber";
+
+        select.className =
+            accountNumber.className;
+
+        select.disabled = true;
+
+        select.innerHTML =
+            '<option value="">-- Select Account Number --</option>';
+
+        accountNumber.replaceWith(select);
+
+        accountNumber = select;
+
+        accountNumber.addEventListener(
+            "change",
+            function () {
+
+                if (
+                    bankError &&
+                    this.value !== ""
+                ) {
+
+                    bankError.textContent = "";
+
+                    bankError.style.display =
+                        "none";
+                }
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // RESET BANK
     // =========================================================
 
     function resetBankFields() {
@@ -309,31 +748,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (branchName) {
 
-            branchName.innerHTML =
-                '<option value="">--Select Branch Name--</option>';
+            clearSelect(
+                branchName,
+                "-- Select Branch Name --"
+            );
 
             branchName.disabled = true;
         }
 
-
-        if (upazila) {
-            upazila.value = "";
+        if (bankUpazila) {
+            bankUpazila.value = "";
         }
-
 
         if (routingNumber) {
             routingNumber.value = "";
         }
 
-
         if (accountNumber) {
 
-            accountNumber.innerHTML =
-                '<option value="">--Select Account Number--</option>';
+            clearSelect(
+                accountNumber,
+                "-- Select Account Number --"
+            );
 
             accountNumber.disabled = true;
         }
-
 
         if (bankError) {
 
@@ -346,7 +785,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =========================================================
-    // LOAD BRANCHES
+    // LOAD BANK BRANCHES
     // =========================================================
 
     function loadBranches(selectedBank) {
@@ -355,33 +794,29 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        clearSelect(
+            branchName,
+            "-- Select Branch Name --"
+        );
 
-        // Clear branch
-        branchName.innerHTML =
-            '<option value="">--Select Branch Name--</option>';
-
-
-        // Clear other fields
-        if (upazila) {
-            upazila.value = "";
+        if (bankUpazila) {
+            bankUpazila.value = "";
         }
-
 
         if (routingNumber) {
             routingNumber.value = "";
         }
 
-
         if (accountNumber) {
 
-            accountNumber.innerHTML =
-                '<option value="">--Select Account Number--</option>';
+            clearSelect(
+                accountNumber,
+                "-- Select Account Number --"
+            );
 
             accountNumber.disabled = true;
         }
 
-
-        // No bank
         if (!selectedBank) {
 
             branchName.disabled = true;
@@ -389,11 +824,8 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
-        // Find bank
         const selectedBankData =
             bankData[selectedBank];
-
 
         if (!selectedBankData) {
 
@@ -402,28 +834,23 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        selectedBankData.branches.forEach(
+            function (branch) {
 
-        // Add branches
-        selectedBankData.branches.forEach(function (branch) {
+                const option =
+                    document.createElement("option");
 
-            const option =
-                document.createElement("option");
+                option.value =
+                    branch.name;
 
+                option.textContent =
+                    branch.name;
 
-            option.value =
-                branch.name;
+                branchName.appendChild(option);
 
+            }
+        );
 
-            option.textContent =
-                branch.name;
-
-
-            branchName.appendChild(option);
-
-        });
-
-
-        // Enable branch dropdown
         branchName.disabled = false;
 
     }
@@ -438,78 +865,64 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedBank =
             bankName ? bankName.value : "";
 
-
         const selectedBranch =
             branchName ? branchName.value : "";
 
-
-        // Clear
-        if (upazila) {
-            upazila.value = "";
+        if (bankUpazila) {
+            bankUpazila.value = "";
         }
-
 
         if (routingNumber) {
             routingNumber.value = "";
         }
 
-
-        // Reset account
         if (accountNumber) {
 
-            accountNumber.innerHTML =
-                '<option value="">--Select Account Number--</option>';
+            clearSelect(
+                accountNumber,
+                "-- Select Account Number --"
+            );
 
             accountNumber.disabled = true;
         }
 
-
-        if (!selectedBank || !selectedBranch) {
+        if (
+            !selectedBank ||
+            !selectedBranch
+        ) {
             return;
         }
 
-
         const selectedBankData =
             bankData[selectedBank];
-
 
         if (!selectedBankData) {
             return;
         }
 
-
         const branch =
-            selectedBankData.branches.find(function (item) {
+            selectedBankData.branches.find(
+                function (item) {
 
-                return item.name === selectedBranch;
+                    return item.name === selectedBranch;
 
-            });
-
+                }
+            );
 
         if (!branch) {
             return;
         }
 
-
-        // Set Upazila
-        if (upazila) {
-
-            upazila.value =
+        if (bankUpazila) {
+            bankUpazila.value =
                 branch.upazila;
-
         }
 
-
-        // Set Routing Number
         if (routingNumber) {
-
             routingNumber.value =
                 branch.routing;
-
         }
 
-
-        // Load account numbers
         loadAccountNumbers(
             selectedBank,
             selectedBranch
@@ -531,50 +944,44 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
-        accountNumber.innerHTML =
-            '<option value="">--Select Account Number--</option>';
-
+        clearSelect(
+            accountNumber,
+            "-- Select Account Number --"
+        );
 
         accountNumber.disabled = true;
 
-
         const bankAccounts =
             accountData[selectedBank];
-
 
         if (!bankAccounts) {
             return;
         }
 
-
         const accounts =
             bankAccounts[selectedBranch];
 
-
-        if (!accounts || accounts.length === 0) {
+        if (
+            !accounts ||
+            accounts.length === 0
+        ) {
             return;
         }
 
+        accounts.forEach(
+            function (account) {
 
-        accounts.forEach(function (account) {
+                const option =
+                    document.createElement("option");
 
-            const option =
-                document.createElement("option");
+                option.value = account;
 
+                option.textContent = account;
 
-            option.value =
-                account;
+                accountNumber.appendChild(option);
 
-
-            option.textContent =
-                account;
-
-
-            accountNumber.appendChild(option);
-
-        });
-
+            }
+        );
 
         accountNumber.disabled = false;
 
@@ -591,13 +998,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "change",
             function () {
 
-                const selectedBank =
-                    this.value;
-
-
-                loadBranches(
-                    selectedBank
-                );
+                loadBranches(this.value);
 
             }
         );
@@ -624,27 +1025,720 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =========================================================
-    // ACCOUNT NUMBER CHANGE
+    // CONTACT ADDRESS
     // =========================================================
 
-    if (accountNumber) {
+    function loadAddressDivisions() {
 
-        accountNumber.addEventListener(
+        if (!divisionSelect) {
+            return;
+        }
+
+        clearSelect(
+            divisionSelect,
+            "-State/Division-"
+        );
+
+        Object.keys(
+            bangladeshAddress
+        ).forEach(
+            function (division) {
+
+                const option =
+                    document.createElement("option");
+
+                option.value = division;
+
+                option.textContent = division;
+
+                divisionSelect.appendChild(option);
+
+            }
+        );
+
+        divisionSelect.disabled = false;
+
+    }
+
+
+    // =========================================================
+    // COUNTRY CHANGE
+    // =========================================================
+
+    if (countrySelect) {
+
+        countrySelect.addEventListener(
             "change",
             function () {
 
-                if (
-                    bankError &&
-                    this.value !== ""
-                ) {
+                clearSelect(
+                    divisionSelect,
+                    "-State/Division-"
+                );
 
-                    bankError.textContent = "";
+                clearSelect(
+                    districtSelect,
+                    "-City/District-"
+                );
 
-                    bankError.style.display =
-                        "none";
+                clearSelect(
+                    upazilaSelect,
+                    "-Upazila/Thana-"
+                );
+
+                if (postCodeInput) {
+                    postCodeInput.value = "";
+                }
+
+                if (districtSelect) {
+                    districtSelect.disabled = true;
+                }
+
+                if (upazilaSelect) {
+                    upazilaSelect.disabled = true;
+                }
+
+                if (this.value === "BD") {
+
+                    loadAddressDivisions();
+
+                }
+                else {
+
+                    if (divisionSelect) {
+                        divisionSelect.disabled = true;
+                    }
+
                 }
 
             }
+        );
+
+    }
+
+
+    // =========================================================
+    // DIVISION CHANGE
+    // =========================================================
+
+    if (divisionSelect) {
+
+        divisionSelect.addEventListener(
+            "change",
+            function () {
+
+                clearSelect(
+                    districtSelect,
+                    "-City/District-"
+                );
+
+                clearSelect(
+                    upazilaSelect,
+                    "-Upazila/Thana-"
+                );
+
+                if (postCodeInput) {
+                    postCodeInput.value = "";
+                }
+
+                if (upazilaSelect) {
+                    upazilaSelect.disabled = true;
+                }
+
+                const division =
+                    this.value;
+
+                if (!division) {
+
+                    if (districtSelect) {
+                        districtSelect.disabled = true;
+                    }
+
+                    return;
+                }
+
+                const districts =
+                    bangladeshAddress[division];
+
+                if (!districts) {
+
+                    if (districtSelect) {
+                        districtSelect.disabled = true;
+                    }
+
+                    return;
+                }
+
+                Object.keys(
+                    districts
+                ).forEach(
+                    function (district) {
+
+                        const option =
+                            document.createElement("option");
+
+                        option.value = district;
+
+                        option.textContent = district;
+
+                        districtSelect.appendChild(option);
+
+                    }
+                );
+
+                districtSelect.disabled = false;
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // DISTRICT CHANGE
+    // =========================================================
+
+    if (districtSelect) {
+
+        districtSelect.addEventListener(
+            "change",
+            function () {
+
+                clearSelect(
+                    upazilaSelect,
+                    "-Upazila/Thana-"
+                );
+
+                if (postCodeInput) {
+                    postCodeInput.value = "";
+                }
+
+                const division =
+                    divisionSelect.value;
+
+                const district =
+                    this.value;
+
+                if (
+                    !division ||
+                    !district
+                ) {
+
+                    upazilaSelect.disabled = true;
+
+                    return;
+                }
+
+                const upazilas =
+                    bangladeshAddress
+                    [division]
+                    [district];
+
+                if (!upazilas) {
+
+                    upazilaSelect.disabled = true;
+
+                    return;
+                }
+
+                Object.keys(
+                    upazilas
+                ).forEach(
+                    function (upazila) {
+
+                        const option =
+                            document.createElement("option");
+
+                        option.value =
+                            upazila;
+
+                        option.textContent =
+                            upazila;
+
+                        upazilaSelect.appendChild(
+                            option
+                        );
+
+                    }
+                );
+
+                upazilaSelect.disabled = false;
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // UPAZILA CHANGE
+    // =========================================================
+
+    if (upazilaSelect) {
+
+        upazilaSelect.addEventListener(
+            "change",
+            function () {
+
+                const division =
+                    divisionSelect.value;
+
+                const district =
+                    districtSelect.value;
+
+                const upazila =
+                    this.value;
+
+                if (postCodeInput) {
+                    postCodeInput.value = "";
+                }
+
+                if (
+                    !division ||
+                    !district ||
+                    !upazila
+                ) {
+                    return;
+                }
+
+                const postcode =
+                    bangladeshAddress
+                    [division]
+                    [district]
+                    [upazila];
+
+                if (postCodeInput) {
+                    postCodeInput.value =
+                        postcode || "";
+                }
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // CONTACT ADDRESS RESET
+    // =========================================================
+
+    function resetContactAddress() {
+
+        if (newContactAddress) {
+            newContactAddress.value = "";
+        }
+
+        if (countrySelect) {
+            countrySelect.value = "";
+        }
+
+        clearSelect(
+            divisionSelect,
+            "-State/Division-"
+        );
+
+        clearSelect(
+            districtSelect,
+            "-City/District-"
+        );
+
+        clearSelect(
+            upazilaSelect,
+            "-Upazila/Thana-"
+        );
+
+        if (divisionSelect) {
+            divisionSelect.disabled = true;
+        }
+
+        if (districtSelect) {
+            districtSelect.disabled = true;
+        }
+
+        if (upazilaSelect) {
+            upazilaSelect.disabled = true;
+        }
+
+        if (postCodeInput) {
+            postCodeInput.value = "";
+        }
+
+    }
+
+
+    // =========================================================
+    // VALIDATE MOBILE
+    // =========================================================
+
+    function validateMobile(value) {
+
+        return /^01[3-9]\d{8}$/.test(
+            value
+        );
+
+    }
+
+
+    // =========================================================
+    // VALIDATE EMAIL
+    // =========================================================
+
+    function validateEmail(value) {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+            value
+        );
+
+    }
+
+
+    // =========================================================
+    // VALIDATE NID
+    // =========================================================
+
+    function validateNID(value) {
+
+        return /^(\d{10}|\d{13}|\d{17})$/.test(
+            value
+        );
+
+    }
+
+
+    // =========================================================
+    // SHOW NEW INFO ERROR
+    // =========================================================
+
+    function showNewInfoError(message) {
+
+        if (!newInfoError) {
+            return;
+        }
+
+        newInfoError.textContent =
+            message;
+
+        newInfoError.classList.add(
+            "show"
+        );
+
+        newInfoError.style.display =
+            "block";
+
+        if (newInfo) {
+            newInfo.focus();
+        }
+
+    }
+
+
+    // =========================================================
+    // VALIDATE BANK INFORMATION
+    // =========================================================
+
+    function validateBankInformation() {
+
+        if (
+            !bankName ||
+            bankName.value === ""
+        ) {
+
+            alert(
+                "Please select Bank Name."
+            );
+
+            bankName.focus();
+
+            return false;
+        }
+
+
+        if (
+            !branchName ||
+            branchName.value === ""
+        ) {
+
+            alert(
+                "Please select Branch Name."
+            );
+
+            branchName.focus();
+
+            return false;
+        }
+
+
+        if (
+            !accountNumber ||
+            accountNumber.value === ""
+        ) {
+
+            alert(
+                "Please select Account Number."
+            );
+
+            accountNumber.focus();
+
+            return false;
+        }
+
+
+        if (
+            !routingNumber ||
+            routingNumber.value.trim() === ""
+        ) {
+
+            alert(
+                "Routing Number is not available."
+            );
+
+            return false;
+        }
+
+
+        return true;
+
+    }
+
+
+    // =========================================================
+    // VALIDATE CONTACT ADDRESS
+    // =========================================================
+
+    function validateContactAddress() {
+
+        if (
+            !newContactAddress ||
+            newContactAddress.value.trim() === ""
+        ) {
+
+            alert(
+                "Please enter Contact Address."
+            );
+
+            if (newContactAddress) {
+                newContactAddress.focus();
+            }
+
+            return false;
+        }
+
+
+        if (
+            !countrySelect ||
+            countrySelect.value === ""
+        ) {
+
+            alert(
+                "Please select Country."
+            );
+
+            countrySelect.focus();
+
+            return false;
+        }
+
+
+        if (
+            countrySelect.value === "BD" &&
+            (
+                !divisionSelect ||
+                divisionSelect.value === ""
+            )
+        ) {
+
+            alert(
+                "Please select Division."
+            );
+
+            divisionSelect.focus();
+
+            return false;
+        }
+
+
+        if (
+            countrySelect.value === "BD" &&
+            (
+                !districtSelect ||
+                districtSelect.value === ""
+            )
+        ) {
+
+            alert(
+                "Please select District."
+            );
+
+            districtSelect.focus();
+
+            return false;
+        }
+
+
+        if (
+            countrySelect.value === "BD" &&
+            (
+                !upazilaSelect ||
+                upazilaSelect.value === ""
+            )
+        ) {
+
+            alert(
+                "Please select Upazila/Thana."
+            );
+
+            upazilaSelect.focus();
+
+            return false;
+        }
+
+
+        return true;
+
+    }
+
+
+    // =========================================================
+    // VALIDATE NORMAL INFORMATION
+    // =========================================================
+
+    function validateNormalInformation(
+        selectedType
+    ) {
+
+        if (!newInfo) {
+
+            alert(
+                "New information field not found."
+            );
+
+            return false;
+        }
+
+
+        // FILE
+        if (
+            selectedType === "photo" ||
+            selectedType === "signature"
+        ) {
+
+            if (
+                !newInfo.files ||
+                newInfo.files.length === 0
+            ) {
+
+                showNewInfoError(
+                    "Please select a file."
+                );
+
+                return false;
+            }
+
+            return true;
+        }
+
+
+        const value =
+            newInfo.value.trim();
+
+
+        if (value === "") {
+
+            showNewInfoError(
+                "Please enter new information."
+            );
+
+            return false;
+        }
+
+
+        if (
+            selectedType === "mobile" ||
+            selectedType === "bkash"
+        ) {
+
+            if (!validateMobile(value)) {
+
+                showNewInfoError(
+                    "Please enter a valid Bangladesh mobile number."
+                );
+
+                return false;
+            }
+
+        }
+
+
+        if (selectedType === "email") {
+
+            if (!validateEmail(value)) {
+
+                showNewInfoError(
+                    "Please enter a valid email address."
+                );
+
+                return false;
+            }
+
+        }
+
+
+        if (selectedType === "nid") {
+
+            if (!validateNID(value)) {
+
+                showNewInfoError(
+                    "NID must contain 10, 13 or 17 digits."
+                );
+
+                return false;
+            }
+
+        }
+
+
+        return true;
+
+    }
+
+
+    // =========================================================
+    // CHANGE TYPE NAME
+    // =========================================================
+
+    function getChangeTypeName(type) {
+
+        const names = {
+
+            mobile:
+                "Mobile Number",
+
+            email:
+                "Email Address",
+
+            bank_info:
+                "Bank Information",
+
+            bkash:
+                "Bkash Number",
+
+            contact_address:
+                "Contact Address",
+
+            nid:
+                "Investor NID",
+
+            photo:
+                "Investor Photo",
+
+            signature:
+                "Investor Signature"
+
+        };
+
+        return (
+            names[type] ||
+            "Information"
         );
 
     }
@@ -665,46 +1759,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 // Clear error
+
                 if (newInfoError) {
 
                     newInfoError.textContent =
-                        "Please enter new information.";
+                        "";
 
-                    newInfoError.classList.remove("show");
+                    newInfoError.classList.remove(
+                        "show"
+                    );
 
                     newInfoError.style.display =
                         "none";
                 }
 
 
-                // Clear new info
+                // Reset normal input
+
                 if (newInfo) {
 
                     newInfo.value = "";
 
                     newInfo.type = "text";
 
-                    newInfo.removeAttribute("accept");
+                    newInfo.removeAttribute(
+                        "accept"
+                    );
 
+                    newInfo.style.display =
+                        "block";
                 }
 
 
                 // Reset bank
+
                 resetBankFields();
 
 
-                // Hide bank information
-                if (bankInfo) {
+                // Reset contact address
 
+                resetContactAddress();
+
+
+                // Hide bank
+
+                if (bankInfo) {
                     bankInfo.style.display =
                         "none";
-
                 }
 
 
-                // =================================================
-                // NOTHING SELECTED
-                // =================================================
+                // Hide contact address
+
+                if (contactAddressBox) {
+                    contactAddressBox.style.display =
+                        "none";
+                }
+
+
+                // Nothing selected
 
                 if (selectedType === "") {
 
@@ -714,70 +1827,88 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         existingInfo.placeholder =
                             "Select Change Type";
-
                     }
-
 
                     if (newInfo) {
 
                         newInfo.placeholder =
                             "Select Change Type";
-
                     }
 
                     return;
                 }
 
 
-                // =================================================
-                // EXISTING INFORMATION
-                // =================================================
+                // Existing information
 
                 if (existingInfo) {
 
                     existingInfo.value =
-                        existingData[selectedType] || "";
+                        existingData[selectedType] ||
+                        "";
 
                 }
 
 
-                // =================================================
+                // =====================================================
                 // BANK INFORMATION
-                // =================================================
+                // =====================================================
 
-                if (selectedType === "bank_info") {
+                if (
+                    selectedType === "bank_info"
+                ) {
 
-                    // Hide normal new info
                     if (newInfo) {
-
                         newInfo.style.display =
                             "none";
-
                     }
 
-
-                    // Show bank info
                     if (bankInfo) {
 
                         bankInfo.style.display =
                             "block";
-
                     }
 
+                    // Convert account input to select
+
+                    convertAccountInputToSelect();
 
                     return;
                 }
 
 
-                // =================================================
+                // =====================================================
+                // CONTACT ADDRESS
+                // =====================================================
+
+                if (
+                    selectedType ===
+                    "contact_address"
+                ) {
+
+                    if (newInfo) {
+                        newInfo.style.display =
+                            "none";
+                    }
+
+                    if (contactAddressBox) {
+
+                        contactAddressBox.style.display =
+                            "block";
+                    }
+
+                    return;
+                }
+
+
+                // =====================================================
                 // NORMAL INFORMATION
-                // =================================================
+                // =====================================================
 
                 if (newInfo) {
 
                     newInfo.style.display =
                         "block";
-
 
                     newInfo.placeholder =
                         placeholderData[selectedType] ||
@@ -786,11 +1917,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // =================================================
                 // EMAIL
-                // =================================================
 
-                if (selectedType === "email") {
+                if (
+                    selectedType === "email"
+                ) {
 
                     newInfo.type =
                         "email";
@@ -798,9 +1929,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // =================================================
                 // MOBILE / BKASH
-                // =================================================
 
                 else if (
                     selectedType === "mobile" ||
@@ -816,9 +1945,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // =================================================
                 // PHOTO / SIGNATURE
-                // =================================================
 
                 else if (
                     selectedType === "photo" ||
@@ -834,9 +1961,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // =================================================
                 // OTHER
-                // =================================================
 
                 else {
 
@@ -873,7 +1998,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         newInfoError.style.display =
                             "none";
-
                     }
 
                 }
@@ -913,340 +2037,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =========================================================
-    // VALIDATE MOBILE
-    // =========================================================
-
-    function validateMobile(value) {
-
-        const pattern =
-            /^01[3-9]\d{8}$/;
-
-        return pattern.test(value);
-
-    }
-
-
-    // =========================================================
-    // VALIDATE EMAIL
-    // =========================================================
-
-    function validateEmail(value) {
-
-        const pattern =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        return pattern.test(value);
-
-    }
-
-
-    // =========================================================
-    // VALIDATE NID
-    // =========================================================
-
-    function validateNID(value) {
-
-        const pattern =
-            /^(\d{10}|\d{13}|\d{17})$/;
-
-        return pattern.test(value);
-
-    }
-
-
-    // =========================================================
-    // SHOW NEW INFO ERROR
-    // =========================================================
-
-    function showNewInfoError(message) {
-
-        if (!newInfoError) {
-            return;
-        }
-
-
-        newInfoError.textContent =
-            message;
-
-
-        newInfoError.classList.add(
-            "show"
-        );
-
-
-        newInfoError.style.display =
-            "block";
-
-
-        if (newInfo) {
-            newInfo.focus();
-        }
-
-    }
-
-
-    // =========================================================
-    // VALIDATE BANK INFORMATION
-    // =========================================================
-
-    function validateBankInformation() {
-
-        // Bank
-        if (
-            !bankName ||
-            bankName.value === ""
-        ) {
-
-            alert(
-                "Please select Bank Name."
-            );
-
-            if (bankName) {
-                bankName.focus();
-            }
-
-            return false;
-
-        }
-
-
-        // Branch
-        if (
-            !branchName ||
-            branchName.value === ""
-        ) {
-
-            alert(
-                "Please select Branch Name."
-            );
-
-            if (branchName) {
-                branchName.focus();
-            }
-
-            return false;
-
-        }
-
-
-        // Account
-        if (
-            !accountNumber ||
-            accountNumber.value === ""
-        ) {
-
-            alert(
-                "Please select Account Number."
-            );
-
-            if (accountNumber) {
-                accountNumber.focus();
-            }
-
-            return false;
-
-        }
-
-
-        // Routing
-        if (
-            !routingNumber ||
-            routingNumber.value.trim() === ""
-        ) {
-
-            alert(
-                "Routing Number is not available."
-            );
-
-            return false;
-
-        }
-
-
-        return true;
-
-    }
-
-
-    // =========================================================
-    // VALIDATE NORMAL INFORMATION
-    // =========================================================
-
-    function validateNormalInformation(
-        selectedType
-    ) {
-
-        if (!newInfo) {
-
-            alert(
-                "New information field not found."
-            );
-
-            return false;
-
-        }
-
-
-        // =====================================================
-        // FILE
-        // =====================================================
-
-        if (
-            selectedType === "photo" ||
-            selectedType === "signature"
-        ) {
-
-            if (
-                !newInfo.files ||
-                newInfo.files.length === 0
-            ) {
-
-                showNewInfoError(
-                    "Please select a file."
-                );
-
-                return false;
-
-            }
-
-
-            return true;
-
-        }
-
-
-        // =====================================================
-        // TEXT
-        // =====================================================
-
-        const value =
-            newInfo.value.trim();
-
-
-        if (value === "") {
-
-            showNewInfoError(
-                "Please enter new information."
-            );
-
-            return false;
-
-        }
-
-
-        // =====================================================
-        // MOBILE
-        // =====================================================
-
-        if (
-            selectedType === "mobile" ||
-            selectedType === "bkash"
-        ) {
-
-            if (!validateMobile(value)) {
-
-                showNewInfoError(
-                    "Please enter a valid Bangladesh mobile number."
-                );
-
-                return false;
-
-            }
-
-        }
-
-
-        // =====================================================
-        // EMAIL
-        // =====================================================
-
-        if (
-            selectedType === "email"
-        ) {
-
-            if (!validateEmail(value)) {
-
-                showNewInfoError(
-                    "Please enter a valid email address."
-                );
-
-                return false;
-
-            }
-
-        }
-
-
-        // =====================================================
-        // NID
-        // =====================================================
-
-        if (
-            selectedType === "nid"
-        ) {
-
-            if (!validateNID(value)) {
-
-                showNewInfoError(
-                    "NID must contain 10, 13 or 17 digits."
-                );
-
-                return false;
-
-            }
-
-        }
-
-
-        return true;
-
-    }
-
-
-    // =========================================================
-    // GET CHANGE TYPE NAME
-    // =========================================================
-
-    function getChangeTypeName(type) {
-
-        const names = {
-
-            mobile:
-                "Mobile Number",
-
-            email:
-                "Email Address",
-
-            bank_info:
-                "Bank Information",
-
-            bkash:
-                "Bkash Number",
-
-            contact_address:
-                "Contact Address",
-
-            nid:
-                "Investor NID",
-
-            photo:
-                "Investor Photo",
-
-            signature:
-                "Investor Signature"
-
-        };
-
-
-        return (
-            names[type] ||
-            "Information"
-        );
-
-    }
-
-
-    // =========================================================
     // SUBMIT
     // =========================================================
 
@@ -1257,7 +2047,9 @@ document.addEventListener("DOMContentLoaded", function () {
             function () {
 
                 const selectedType =
-                    changeType.value;
+                    changeType
+                        ? changeType.value
+                        : "";
 
 
                 // =================================================
@@ -1270,10 +2062,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         "Please select a Change Type."
                     );
 
-                    changeType.focus();
+                    if (changeType) {
+                        changeType.focus();
+                    }
 
                     return;
-
                 }
 
 
@@ -1288,9 +2081,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (
                         !validateBankInformation()
                     ) {
-
                         return;
-
                     }
 
 
@@ -1304,8 +2095,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         branchName.value;
 
 
-                    const selectedUpazila =
-                        upazila.value;
+                    const selectedBankUpazila =
+                        bankUpazila.value;
 
 
                     const selectedRouting =
@@ -1327,7 +2118,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         selectedBranch +
 
                         "\nUpazila: " +
-                        selectedUpazila +
+                        selectedBankUpazila +
 
                         "\nRouting Number: " +
                         selectedRouting +
@@ -1347,8 +2138,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
 
-                    // Update existing display
                     existingData.bank_info =
+
                         selectedBank +
                         " - " +
                         selectedBranch +
@@ -1368,6 +2159,92 @@ document.addEventListener("DOMContentLoaded", function () {
                         "Bank information changed successfully!"
                     );
 
+                    return;
+
+                }
+
+
+                // =================================================
+                // CONTACT ADDRESS
+                // =================================================
+
+                if (
+                    selectedType ===
+                    "contact_address"
+                ) {
+
+                    if (
+                        !validateContactAddress()
+                    ) {
+                        return;
+                    }
+
+
+                    const address =
+                        newContactAddress.value.trim();
+
+                    const country =
+                        countrySelect.value === "BD"
+                            ? "Bangladesh"
+                            : countrySelect.value;
+
+                    const division =
+                        divisionSelect.value;
+
+                    const district =
+                        districtSelect.value;
+
+                    const selectedUpazila =
+                        upazilaSelect.value;
+
+                    const postCode =
+                        postCodeInput.value;
+
+
+                    const fullAddress =
+
+                        address +
+                        ", " +
+                        selectedUpazila +
+                        ", " +
+                        district +
+                        ", " +
+                        division +
+                        ", " +
+                        country +
+                        " - " +
+                        postCode;
+
+
+                    const confirmation =
+                        confirm(
+
+                            "Please confirm your Contact Address:\n\n" +
+                            fullAddress
+
+                        );
+
+
+                    if (!confirmation) {
+                        return;
+                    }
+
+
+                    existingData.contact_address =
+                        fullAddress;
+
+
+                    if (existingInfo) {
+
+                        existingInfo.value =
+                            fullAddress;
+
+                    }
+
+
+                    alert(
+                        "Contact address changed successfully!"
+                    );
 
                     return;
 
@@ -1392,9 +2269,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let newValue = "";
 
 
-                // =================================================
                 // FILE
-                // =================================================
 
                 if (
                     selectedType === "photo" ||
@@ -1407,9 +2282,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // =================================================
                 // TEXT
-                // =================================================
 
                 else {
 
@@ -1427,11 +2300,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     confirm(
 
                         "Are you sure you want to change your " +
-
                         getChangeTypeName(
                             selectedType
                         ) +
-
                         "?"
 
                     );
@@ -1459,6 +2330,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 // Clear input
+
                 if (newInfo) {
 
                     if (
@@ -1468,7 +2340,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         newInfo.value = "";
 
                     }
-
                     else {
 
                         newInfo.value = "";
@@ -1479,6 +2350,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 // Clear error
+
                 if (newInfoError) {
 
                     newInfoError.classList.remove(
@@ -1490,10 +2362,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
-
-                // =================================================
-                // SUCCESS
-                // =================================================
 
                 alert(
                     "BO information changed successfully!"
@@ -1510,27 +2378,48 @@ document.addEventListener("DOMContentLoaded", function () {
     // =========================================================
 
     if (bankInfo) {
-
-        bankInfo.style.display =
-            "none";
-
+        bankInfo.style.display = "none";
     }
 
+    if (contactAddressBox) {
+        contactAddressBox.style.display = "none";
+    }
 
     if (branchName) {
+        branchName.disabled = true;
+    }
 
-        branchName.disabled =
-            true;
+    if (countrySelect) {
+        countrySelect.value = "";
+    }
 
+    if (divisionSelect) {
+        divisionSelect.disabled = true;
+    }
+
+    if (districtSelect) {
+        districtSelect.disabled = true;
+    }
+
+    if (upazilaSelect) {
+        upazilaSelect.disabled = true;
+    }
+
+    if (postCodeInput) {
+        postCodeInput.value = "";
     }
 
 
-    if (accountNumber) {
+    // =========================================================
+    // CONVERT ACCOUNT INPUT
+    // =========================================================
 
-        accountNumber.disabled =
-            true;
+    // Do not convert immediately.
+    // It will be converted when Bank Info is selected.
 
-    }
 
+    console.log(
+        "BO Information Change JavaScript loaded successfully."
+    );
 
 });
