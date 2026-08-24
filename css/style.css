@@ -33,16 +33,16 @@ body {
 ========================================================= */
 
 .page-container {
-    width: calc(100% - 40px);
+    width: calc(100% - 55px);
     max-width: 1300px;
 
     margin: 40px auto 25px;
 
     background: #ffffff;
 
-    padding: 30px 18px 35px;
+    padding: 30px 14px 35px;
 
-    border-radius: 4px;
+    border-radius: 3px;
 
     min-height: 570px;
 }
@@ -53,7 +53,7 @@ body {
 ========================================================= */
 
 .page-title {
-    text-align: center;
+    text-align: left;
 
     font-family: Georgia, "Times New Roman", serif;
 
@@ -64,7 +64,7 @@ body {
 
     color: #172b3d;
 
-    margin: 10px 0 28px;
+    margin: 10px 0 10px;
 
     text-transform: uppercase;
 }
@@ -94,15 +94,15 @@ body {
 
     display: grid;
 
-    grid-template-columns: 170px minmax(0, 1fr);
+    grid-template-columns: 250px 593px;
 
     align-items: center;
 
-    column-gap: 20px;
+    column-gap: 23px;
 
-    min-height: 55px;
+    min-height: 40px;
 
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 }
 
 
@@ -113,10 +113,10 @@ body {
 .form-label {
     display: block;
 
-    padding: 8px 0;
+    padding: 5px 0;
 
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 400;
 
     color: #222;
 
@@ -125,18 +125,19 @@ body {
 
 
 /* =========================================================
-   NORMAL INPUT
+   NORMAL INPUT / SELECT
 ========================================================= */
 
 .form-control {
     display: block;
 
-    width: 100%;
-    max-width: 700px;
+    width: 593px;
+    max-width: 100%;
 
-    min-height: 40px;
+    height: 32px;
+    min-height: 32px;
 
-    padding: 8px 10px;
+    padding: 5px 7px;
 
     border: 1px solid #cfcfcf;
 
@@ -146,7 +147,7 @@ body {
 
     color: #333;
 
-    font-size: 14px;
+    font-size: 13px;
 
     outline: none;
 
@@ -161,10 +162,10 @@ body {
 ========================================================= */
 
 .form-control:focus {
-    border-color: #777;
+    border-color: #888;
 
     box-shadow:
-        0 0 0 2px rgba(0, 0, 0, 0.08);
+        0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 
@@ -197,6 +198,8 @@ select.form-control {
 textarea.form-control {
     min-height: 90px;
 
+    height: 90px;
+
     resize: vertical;
 
     line-height: 1.5;
@@ -204,7 +207,7 @@ textarea.form-control {
 
 
 /* =========================================================
-   NEW INFO
+   NEW INFORMATION
 ========================================================= */
 
 .new-info-container {
@@ -212,7 +215,8 @@ textarea.form-control {
 }
 
 .new-info-container .form-control {
-    width: 100%;
+    width: 593px;
+    max-width: 100%;
 }
 
 
@@ -242,11 +246,13 @@ textarea.form-control {
 ========================================================= */
 
 .file-input {
-    width: 100%;
+    width: 593px;
+    max-width: 100%;
 
-    min-height: 40px;
+    min-height: 32px;
+    height: 32px;
 
-    padding: 8px 10px;
+    padding: 4px 7px;
 
     border: 1px solid #cfcfcf;
 
@@ -254,7 +260,7 @@ textarea.form-control {
 
     background: #ffffff;
 
-    font-size: 14px;
+    font-size: 13px;
 
     cursor: pointer;
 }
@@ -267,7 +273,7 @@ textarea.form-control {
 .bank-info {
     width: 100%;
 
-    max-width: 1100px;
+    max-width: 866px;
 
     margin: 5px 0 20px;
 
@@ -294,7 +300,7 @@ textarea.form-control {
 
     align-items: stretch;
 
-    min-height: 58px;
+    min-height: 52px;
 
     border-bottom: 1px solid #d7d7d7;
 }
@@ -311,13 +317,13 @@ textarea.form-control {
 .bank-label {
     width: 100%;
 
-    min-height: 58px;
+    min-height: 52px;
 
     display: flex;
 
     align-items: center;
 
-    padding: 10px 12px;
+    padding: 8px 12px;
 
     background: #fafafa;
 
@@ -326,6 +332,7 @@ textarea.form-control {
     color: #172b42;
 
     font-size: 13px;
+
     font-weight: 600;
 
     line-height: 1.4;
@@ -345,7 +352,7 @@ textarea.form-control {
 
     align-items: center;
 
-    padding: 9px 12px;
+    padding: 7px 12px;
 }
 
 
@@ -356,12 +363,12 @@ textarea.form-control {
 .bank-control {
     display: block;
 
-    width: 100%;
-    max-width: 700px;
+    width: 593px;
+    max-width: 100%;
 
-    height: 40px;
+    height: 32px;
 
-    padding: 7px 10px;
+    padding: 5px 8px;
 
     border: 1px solid #cfcfcf;
 
@@ -371,7 +378,7 @@ textarea.form-control {
 
     color: #333;
 
-    font-size: 14px;
+    font-size: 13px;
 
     outline: none;
 
@@ -384,10 +391,10 @@ textarea.form-control {
 ========================================================= */
 
 .bank-control:focus {
-    border-color: #777;
+    border-color: #888;
 
     box-shadow:
-        0 0 0 2px rgba(0, 0, 0, 0.08);
+        0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 
@@ -399,6 +406,19 @@ textarea.form-control {
     background: #d3d3d3 !important;
 
     color: #333;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   DISABLED BANK SELECT
+========================================================= */
+
+.bank-control:disabled {
+    background: #f3f3f3;
+
+    color: #999;
 
     cursor: not-allowed;
 }
@@ -424,15 +444,186 @@ textarea.form-control {
 
 
 /* =========================================================
+   CONTACT ADDRESS
+========================================================= */
+
+.contact-address-box {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d5d5d5;
+
+    padding: 8px 14px;
+
+    background: #ffffff;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   CONTACT ADDRESS TEXTAREA
+========================================================= */
+
+.contact-address-box textarea {
+    display: block;
+
+    width: 100%;
+
+    min-height: 70px;
+
+    height: 70px;
+
+    box-sizing: border-box;
+
+    padding: 9px 12px;
+
+    border: 1px solid #cfcfcf;
+
+    border-radius: 4px;
+
+    background: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    color: #333;
+
+    resize: vertical;
+
+    outline: none;
+}
+
+
+.contact-address-box textarea::placeholder {
+    color: #999;
+}
+
+
+.contact-address-box textarea:focus {
+    border-color: #999;
+}
+
+
+/* =========================================================
+   ADDRESS ROW
+========================================================= */
+
+.address-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 14px;
+
+    padding: 8px 0;
+
+    border-bottom: 1px solid #ddd;
+
+    box-sizing: border-box;
+}
+
+.address-row:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   ADDRESS SELECT + INPUT
+========================================================= */
+
+.address-row select,
+.address-row input {
+    width: 100%;
+
+    height: 36px;
+
+    box-sizing: border-box;
+
+    padding: 6px 10px;
+
+    border: 1px solid #cfcfcf;
+
+    border-radius: 4px;
+
+    background-color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    color: #333;
+
+    outline: none;
+}
+
+
+/* =========================================================
+   ADDRESS SELECT
+========================================================= */
+
+.address-row select {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ADDRESS DISABLED
+========================================================= */
+
+.address-row select:disabled {
+    background-color: #f3f3f3;
+
+    color: #999;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   ADDRESS READONLY INPUT
+========================================================= */
+
+.address-row input::placeholder {
+    color: #999;
+}
+
+.address-row input[readonly] {
+    background-color: #f8f8f8;
+
+    cursor: default;
+}
+
+
+/* =========================================================
+   ADDRESS FOCUS
+========================================================= */
+
+.address-row select:focus,
+.address-row input:focus {
+    outline: none;
+
+    border-color: #888;
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================================================
    BUTTON ROW
 ========================================================= */
 
 .button-row {
-    margin-top: 25px;
+    margin-top: 12px;
 
     margin-bottom: 0;
 
-    min-height: 50px;
+    min-height: 40px;
 }
 
 
@@ -450,22 +641,25 @@ textarea.form-control {
 ========================================================= */
 
 .submit-btn {
-    width: 130px;
+    width: 63px;
 
-    min-height: 42px;
+    height: 30px;
 
-    padding: 8px 15px;
+    min-height: 30px;
+
+    padding: 4px 10px;
 
     border: none;
 
-    border-radius: 4px;
+    border-radius: 3px;
 
     background: #51b957;
 
     color: #ffffff;
 
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+
+    font-weight: 400;
 
     cursor: pointer;
 
@@ -474,9 +668,11 @@ textarea.form-control {
         transform 0.1s ease;
 }
 
+
 .submit-btn:hover {
     background: #3fa645;
 }
+
 
 .submit-btn:active {
     transform: translateY(1px);
@@ -517,29 +713,54 @@ textarea.form-control {
     .page-title {
         font-size: 25px;
 
-        margin-bottom: 25px;
+        margin-bottom: 12px;
     }
 
 
     .form-row {
-        grid-template-columns: 150px minmax(0, 1fr);
+        grid-template-columns:
+            180px minmax(0, 593px);
 
         column-gap: 15px;
     }
 
 
     .form-control {
+        width: 100%;
+
+        max-width: 593px;
+    }
+
+
+    .new-info-container .form-control {
+        width: 100%;
+
+        max-width: 593px;
+    }
+
+
+    .file-input {
+        width: 100%;
+
+        max-width: 593px;
+    }
+
+
+    .bank-info {
         max-width: 100%;
     }
 
 
     .bank-row {
-        grid-template-columns: 160px minmax(0, 1fr);
+        grid-template-columns:
+            160px minmax(0, 1fr);
     }
 
 
     .bank-control {
-        max-width: 100%;
+        width: 100%;
+
+        max-width: 593px;
     }
 
 }
@@ -571,6 +792,8 @@ textarea.form-control {
 
 
     .page-title {
+        text-align: left;
+
         font-size: 22px;
 
         line-height: 1.3;
@@ -609,6 +832,7 @@ textarea.form-control {
         padding: 4px 0 7px;
 
         font-size: 14px;
+
         font-weight: 600;
     }
 
@@ -640,6 +864,8 @@ textarea.form-control {
 
     .file-input {
         width: 100%;
+
+        max-width: 100%;
 
         min-height: 44px;
 
@@ -689,6 +915,7 @@ textarea.form-control {
         border: none;
 
         font-size: 13px;
+
         font-weight: 600;
 
         color: #172b42;
@@ -722,13 +949,39 @@ textarea.form-control {
 
 
     /* =============================================
-       BANK ERROR
+       CONTACT ADDRESS
     ============================================= */
 
-    #bankError {
-        padding: 8px 10px;
+    .contact-address-box {
+        width: 100%;
 
-        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+
+    .contact-address-box textarea {
+        min-height: 90px;
+
+        height: 90px;
+
+        font-size: 14px;
+    }
+
+
+    .address-row {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+
+        padding: 8px 0;
+    }
+
+
+    .address-row select,
+    .address-row input {
+        height: 44px;
+
+        font-size: 14px;
     }
 
 
@@ -841,6 +1094,17 @@ textarea.form-control {
     }
 
 
+    .file-input {
+        height: auto;
+
+        min-height: 42px;
+
+        font-size: 13px;
+    }
+
+
+    /* BANK */
+
     .bank-row {
         padding: 9px;
     }
@@ -862,7 +1126,50 @@ textarea.form-control {
     }
 
 
+    /* CONTACT ADDRESS */
+
+    .contact-address-box {
+        width: 100%;
+
+        padding: 6px;
+    }
+
+
+    .contact-address-box textarea {
+        min-height: 100px;
+
+        height: 100px;
+
+        font-size: 14px;
+    }
+
+
+    .address-row {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        padding: 8px 0;
+    }
+
+
+    .address-row select,
+    .address-row input {
+        width: 100%;
+
+        height: 42px;
+
+        font-size: 14px;
+    }
+
+
+    /* SUBMIT */
+
     .submit-btn {
+        width: 100%;
+
         height: 42px;
 
         min-height: 42px;
@@ -920,232 +1227,20 @@ textarea.form-control {
     }
 
 
+    .address-row select,
+    .address-row input {
+        height: 40px;
+
+        font-size: 13px;
+    }
+
+
     .submit-btn {
         height: 40px;
 
         min-height: 40px;
-    }
 
-}
-/*Contact Address*/
-/* =========================================
-   CONTACT ADDRESS SECTION
-========================================= */
-
-.contact-address-box {
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #d5d5d5;
-    padding: 8px 14px;
-    background: #fff;
-}
-
-
-/* =========================================
-   TEXTAREA
-========================================= */
-
-.contact-address-box textarea {
-    display: block;
-    width: 100%;
-    min-height: 70px;
-    box-sizing: border-box;
-
-    padding: 9px 12px;
-
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-
-    background: #fff;
-
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #333;
-
-    resize: vertical;
-}
-
-.contact-address-box textarea::placeholder {
-    color: #999;
-}
-
-.contact-address-box textarea:focus {
-    outline: none;
-    border-color: #999;
-}
-
-
-/* =========================================
-   ADDRESS ROW
-========================================= */
-
-.address-row {
-    display: grid;
-
-    grid-template-columns: minmax(0, 1fr) 125px;
-
-    gap: 14px;
-
-    padding: 8px 0;
-
-    border-bottom: 1px solid #ddd;
-
-    box-sizing: border-box;
-}
-
-.address-row:last-child {
-    border-bottom: none;
-}
-
-
-/* =========================================
-   SELECT + INPUT
-========================================= */
-
-.address-row select,
-.address-row input {
-    width: 100%;
-    height: 36px;
-
-    box-sizing: border-box;
-
-    padding: 6px 10px;
-
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-
-    background-color: #fff;
-
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-
-    color: #333;
-}
-
-
-/* =========================================
-   SELECT ARROW
-========================================= */
-
-.address-row select {
-    cursor: pointer;
-}
-
-
-/* =========================================
-   DISABLED DROPDOWN
-========================================= */
-
-.address-row select:disabled {
-    background-color: #f3f3f3;
-    color: #999;
-    cursor: not-allowed;
-}
-
-
-/* =========================================
-   INPUT
-========================================= */
-
-.address-row input::placeholder {
-    color: #999;
-}
-
-.address-row input[readonly] {
-    background-color: #f8f8f8;
-    cursor: default;
-}
-
-
-/* =========================================
-   FOCUS
-========================================= */
-
-.address-row select:focus,
-.address-row input:focus {
-    outline: none;
-    border-color: #888;
-}
-
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media screen and (max-width: 768px) {
-
-    .contact-address-box {
-        padding: 8px 10px;
-    }
-
-    .address-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
-
-    .address-row select,
-    .address-row input {
-        height: 40px;
-    }
-
-    .contact-address-box textarea {
-        min-height: 90px;
-    }
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media screen and (max-width: 480px) {
-
-    .contact-address-box {
-        width: 100%;
-        padding: 6px;
-    }
-
-    .contact-address-box textarea {
-        min-height: 100px;
-        font-size: 14px;
-    }
-
-    .address-row {
-        display: flex;
-        flex-direction: column;
-
-        gap: 8px;
-
-        padding: 8px 0;
-    }
-
-    .address-row select,
-    .address-row input {
-        width: 100%;
-        height: 42px;
-
-        font-size: 14px;
-    }
-}
-
-
-/* =========================================
-   VERY SMALL MOBILE
-========================================= */
-
-@media screen and (max-width: 360px) {
-
-    .contact-address-box {
-        padding: 5px;
-    }
-
-    .contact-address-box textarea {
-        min-height: 90px;
-    }
-
-    .address-row select,
-    .address-row input {
-        height: 40px;
         font-size: 13px;
     }
+
 }
