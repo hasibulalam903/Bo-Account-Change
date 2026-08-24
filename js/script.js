@@ -1,502 +1,246 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const changeType = document.getElementById("changeType");
-    const existingInfo = document.getElementById("existingInfo");
-    const newInfo = document.getElementById("newInfo");
-    const newInfoError = document.getElementById("newInfoError");
-    const submitButton = document.getElementById("submitButton");
-
-
-    /*
-    ==========================================
-    EXISTING BO INFORMATION
-    ==========================================
-    */
-
-    const existingData = {
-
-        mobile: "017XXXXXXXX",
-
-        email: "hasibul@example.com",
-
-        bank_info: "ABC Bank Ltd. - A/C XXXXXXXX",
-
-        bkash: "018XXXXXXXX",
-
-        contact_address: "Rangunia, Chattogram, Bangladesh",
-
-        nid: "XXXXXXXXXXXXXXX",
-
-        photo: "Investor Photo",
-
-        signature: "Investor Signature"
-
-    };
-
-
-    /*
-    ==========================================
-    INPUT PLACEHOLDER
-    ==========================================
-    */
-
-    const placeholderData = {
-
-        mobile: "Enter New Mobile Number",
-
-        email: "Enter New Email Address",
-
-        bank_info: "Enter New Bank Information",
-
-        bkash: "Enter New Bkash Number",
-
-        contact_address: "Enter New Contact Address",
-
-        nid: "Enter New NID Number",
-
-        photo: "Select New Investor Photo",
-
-        signature: "Select New Investor Signature"
-
-    };
-
-
-    /*
-    ==========================================
-    WHEN CHANGE TYPE IS SELECTED
-    ==========================================
-    */
-
-    changeType.addEventListener("change", function () {
-
-        const selectedType = this.value;
-
-        // Clear previous new information
-        newInfo.value = "";
-
-        // Hide error
-        newInfoError.classList.remove("show");
-
-        /*
-        No selection
-        */
-
-        if (selectedType === "") {
-
-            existingInfo.value = "";
-            existingInfo.placeholder = "Select Change Type";
-
-            newInfo.placeholder = "Select Change Type";
-
-            newInfo.type = "text";
-
-            return;
-        }
-
-
-        /*
-        Show existing information
-        */
-
-        existingInfo.value = existingData[selectedType] || "";
-
-
-        /*
-        Change placeholder
-        */
-
-        newInfo.placeholder =
-            placeholderData[selectedType] || "Enter New Information";
-
-
-        /*
-        ==========================================
-        CHANGE INPUT TYPE
-        ==========================================
-        */
-
-        if (selectedType === "email") {
-
-            newInfo.type = "email";
-
-        }
-
-        else if (
-            selectedType === "mobile" ||
-            selectedType === "bkash"
-        ) {
-
-            newInfo.type = "tel";
-
-        }
-
-        else {
-
-            newInfo.type = "text";
-
-        }
-
-
-        /*
-        ==========================================
-        PHOTO / SIGNATURE
-        ==========================================
-        */
-
-        if (
-            selectedType === "photo" ||
-            selectedType === "signature"
-        ) {
-
-            newInfo.type = "file";
-
-            newInfo.accept = "image/*";
-
-        }
-
-        else {
-
-            newInfo.removeAttribute("accept");
-
-        }
-
-    });
-
-
-    /*
-    ==========================================
-    NEW INFO INPUT
-    ==========================================
-    */
-
-    newInfo.addEventListener("input", function () {
-
-        if (newInfo.value.trim() !== "") {
-
-            newInfoError.classList.remove("show");
-
-        }
-
-    });
-
-
-    /*
-    ==========================================
-    VALIDATION
-    ==========================================
-    */
-
-    function validateForm() {
-
-        const selectedType = changeType.value;
-
-        /*
-        Change Type validation
-        */
-
-        if (selectedType === "") {
-
-            alert("Please select a Change Type.");
-
-            changeType.focus();
-
-            return false;
-        }
-
-
-        /*
-        File validation
-        */
-
-        if (
-            selectedType === "photo" ||
-            selectedType === "signature"
-        ) {
-
-            if (newInfo.files.length === 0) {
-
-                newInfoError.textContent =
-                    "Please select a file.";
-
-                newInfoError.classList.add("show");
-
-                newInfo.focus();
-
-                return false;
-            }
-
-            return true;
-        }
-
-
-        /*
-        Text validation
-        */
-
-        const value = newInfo.value.trim();
-
-        if (value === "") {
-
-            newInfoError.textContent =
-                "Please enter new information.";
-
-            newInfoError.classList.add("show");
-
-            newInfo.focus();
-
-            return false;
-        }
-
-
-        /*
-        Mobile validation
-        */
-
-        if (
-            selectedType === "mobile" ||
-            selectedType === "bkash"
-        ) {
-
-            const mobilePattern = /^01[3-9]\d{8}$/;
-
-            if (!mobilePattern.test(value)) {
-
-                newInfoError.textContent =
-                    "Please enter a valid Bangladesh mobile number.";
-
-                newInfoError.classList.add("show");
-
-                newInfo.focus();
-
-                return false;
-            }
-
-        }
-
-
-        /*
-        Email validation
-        */
-
-        if (selectedType === "email") {
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailPattern.test(value)) {
-
-                newInfoError.textContent =
-                    "Please enter a valid email address.";
-
-                newInfoError.classList.add("show");
-
-                newInfo.focus();
-
-                return false;
-            }
-
-        }
-
-
-        /*
-        NID validation
-        */
-
-        if (selectedType === "nid") {
-
-            const nidPattern = /^\d{10}$|^\d{13}$|^\d{17}$/;
-
-            if (!nidPattern.test(value)) {
-
-                newInfoError.textContent =
-                    "NID must contain 10, 13 or 17 digits.";
-
-                newInfoError.classList.add("show");
-
-                newInfo.focus();
-
-                return false;
-            }
-
-        }
-
-
-        return true;
-    }
-
-
-    /*
-    ==========================================
-    SUBMIT
-    ==========================================
-    */
-
-    submitButton.addEventListener("click", function () {
-
-        if (!validateForm()) {
-            return;
-        }
-
-
-        const selectedType = changeType.value;
-
-        let newValue;
-
-
-        /*
-        File
-        */
-
-        if (
-            selectedType === "photo" ||
-            selectedType === "signature"
-        ) {
-
-            newValue = newInfo.files[0].name;
-
-        }
-
-        else {
-
-            newValue = newInfo.value.trim();
-
-        }
-
-
-        /*
-        Confirmation
-        */
-
-        const confirmation = confirm(
-            "Are you sure you want to change your " +
-            getChangeTypeName(selectedType) +
-            "?"
-        );
-
-
-        if (!confirmation) {
-            return;
-        }
-
-
-        /*
-        Frontend only:
-        Update existing information
-        */
-
-        existingData[selectedType] = newValue;
-
-
-        existingInfo.value = newValue;
-
-        newInfo.value = "";
-
-        newInfoError.classList.remove("show");
-
-
-        alert(
-            "BO information changed successfully!"
-        );
-
-    });
-
-
-    /*
-    ==========================================
-    GET CHANGE TYPE NAME
-    ==========================================
-    */
-
-    function getChangeTypeName(type) {
-
-        const names = {
-
-            mobile: "Mobile Number",
-
-            email: "Email Address",
-
-            bank_info: "Bank Info",
-
-            bkash: "Bkash Number",
-
-            contact_address: "Contact Address",
-
-            nid: "Investor NID",
-
-            photo: "Investor Photo",
-
-            signature: "Investor Signature"
-
-        };
-
-        return names[type] || "Information";
-
-    }
-
-});
-document.addEventListener("DOMContentLoaded", function () {
+    // =====================================================
+    // ELEMENTS
+    // =====================================================
 
     const changeType = document.getElementById("changeType");
     const existingInfo = document.getElementById("existingInfo");
-    const newInfo = document.getElementById("newInfo");
-    const newInfoError = document.getElementById("newInfoError");
-    const submitButton = document.getElementById("submitButton");
+
+    const normalNewInfoRow =
+        document.getElementById("normalNewInfoRow");
+
+    const newInfo =
+        document.getElementById("newInfo");
+
+    const newInfoError =
+        document.getElementById("newInfoError");
+
+    const bankInfo =
+        document.getElementById("bankInfo");
+
+    const bankName =
+        document.getElementById("bankName");
+
+    const branchName =
+        document.getElementById("branchName");
+
+    const upazila =
+        document.getElementById("upazila");
+
+    const routingNumber =
+        document.getElementById("routingNumber");
+
+    const accountNumber =
+        document.getElementById("accountNumber");
+
+    const bankError =
+        document.getElementById("bankError");
+
+    const submitButton =
+        document.getElementById("submitButton");
 
 
-    // ==========================================
-    // EXISTING BO INFORMATION
-    // ==========================================
+    // =====================================================
+    // EXISTING INFORMATION
+    // =====================================================
 
     const existingData = {
+
         mobile: "01623480030",
+
         email: "hasibul@example.com",
-        bank_info: "ABC Bank Ltd. - A/C XXXXXXXX",
+
+        bank_info:
+            "EASTERN BANK LTD. - A/C XXXXXXXX",
+
         bkash: "01812345678",
-        contact_address: "Rangunia, Chattogram, Bangladesh",
+
+        contact_address:
+            "Rangunia, Chattogram, Bangladesh",
+
         nid: "12345678901234567",
-        photo: "Investor Photo",
-        signature: "Investor Signature"
+
+        photo:
+            "Investor Photo",
+
+        signature:
+            "Investor Signature"
     };
 
 
-    // ==========================================
-    // NEW INFO PLACEHOLDER
-    // ==========================================
+    // =====================================================
+    // PLACEHOLDERS
+    // =====================================================
 
     const placeholderData = {
-        mobile: "Enter Mobile Number",
-        email: "Enter Email Address",
-        bank_info: "Enter Bank Information",
-        bkash: "Enter Bkash Number",
-        contact_address: "Enter Contact Address",
-        nid: "Enter NID Number",
-        photo: "Enter Photo Information",
-        signature: "Enter Signature Information"
+
+        mobile:
+            "Enter New Mobile Number",
+
+        email:
+            "Enter New Email Address",
+
+        bkash:
+            "Enter New Bkash Number",
+
+        contact_address:
+            "Enter New Contact Address",
+
+        nid:
+            "Enter New NID Number",
+
+        photo:
+            "Select New Investor Photo",
+
+        signature:
+            "Select New Investor Signature"
     };
 
 
-    // ==========================================
+    // =====================================================
+    // BANK DATA
+    // =====================================================
+
+    const bankData = {
+
+        eastern: [
+
+            {
+                name: "Principal Branch",
+                upazila: "Motijheel",
+                routing: "095155807"
+            },
+
+            {
+                name: "Gulshan Branch",
+                upazila: "Gulshan",
+                routing: "095155808"
+            },
+
+            {
+                name: "Agrabad Branch",
+                upazila: "Kotwali",
+                routing: "095155809"
+            }
+
+        ],
+
+
+        dbbl: [
+
+            {
+                name: "Motijheel Branch",
+                upazila: "Motijheel",
+                routing: "090270001"
+            },
+
+            {
+                name: "Gulshan Branch",
+                upazila: "Gulshan",
+                routing: "090270002"
+            }
+
+        ],
+
+
+        brac: [
+
+            {
+                name: "Gulshan Branch",
+                upazila: "Gulshan",
+                routing: "060260001"
+            },
+
+            {
+                name: "Dhanmondi Branch",
+                upazila: "Dhanmondi",
+                routing: "060260002"
+            }
+
+        ],
+
+
+        city: [
+
+            {
+                name: "Gulshan Branch",
+                upazila: "Gulshan",
+                routing: "225260001"
+            },
+
+            {
+                name: "Motijheel Branch",
+                upazila: "Motijheel",
+                routing: "225260002"
+            }
+
+        ],
+
+
+        prime: [
+
+            {
+                name: "Banani Branch",
+                upazila: "Banani",
+                routing: "170260001"
+            },
+
+            {
+                name: "Motijheel Branch",
+                upazila: "Motijheel",
+                routing: "170260002"
+            }
+
+        ]
+
+    };
+
+
+    // =====================================================
+    // INITIAL STATE
+    // =====================================================
+
+    bankInfo.style.display = "none";
+
+    branchName.disabled = true;
+
+
+    // =====================================================
     // CHANGE TYPE
-    // ==========================================
+    // =====================================================
 
     changeType.addEventListener("change", function () {
 
         const selectedType = this.value;
 
 
-        // Clear previous values
+        // ---------------------------------------------
+        // RESET
+        // ---------------------------------------------
+
+        existingInfo.value = "";
+
         newInfo.value = "";
 
         newInfoError.classList.remove("show");
 
+        bankError.textContent = "";
 
-        // ======================================
+        bankInfo.style.display = "none";
+
+        normalNewInfoRow.style.display = "flex";
+
+        newInfo.type = "text";
+
+        newInfo.removeAttribute("accept");
+
+
+        // ---------------------------------------------
         // NOTHING SELECTED
-        // ======================================
+        // ---------------------------------------------
 
         if (selectedType === "") {
-
-            existingInfo.value = "";
 
             existingInfo.placeholder =
                 "Select Change Type";
@@ -504,57 +248,323 @@ document.addEventListener("DOMContentLoaded", function () {
             newInfo.placeholder =
                 "Select Change Type";
 
-            newInfo.type = "text";
+            return;
+        }
+
+
+        // ---------------------------------------------
+        // EXISTING INFORMATION
+        // ---------------------------------------------
+
+        existingInfo.value =
+            existingData[selectedType] || "";
+
+
+        // =================================================
+        // MOBILE NUMBER
+        // =================================================
+
+        if (selectedType === "mobile") {
+
+            newInfo.type = "tel";
+
+            newInfo.placeholder =
+                placeholderData.mobile;
 
             return;
         }
 
 
-        // ======================================
-        // EXISTING INFORMATION
-        // ======================================
-
-        existingInfo.value =
-            existingData[selectedType];
-
-
-        // ======================================
-        // NEW INFORMATION PLACEHOLDER
-        // ======================================
-
-        newInfo.placeholder =
-            placeholderData[selectedType];
-
-
-        // ======================================
-        // INPUT TYPE
-        // ======================================
+        // =================================================
+        // EMAIL
+        // =================================================
 
         if (selectedType === "email") {
 
             newInfo.type = "email";
 
+            newInfo.placeholder =
+                placeholderData.email;
+
+            return;
         }
-        else if (
-            selectedType === "mobile" ||
-            selectedType === "bkash"
-        ) {
+
+
+        // =================================================
+        // BANK INFORMATION
+        // =================================================
+
+        if (selectedType === "bank_info") {
+
+            // Hide normal New Info
+            normalNewInfoRow.style.display = "none";
+
+            // Show Bank Info
+            bankInfo.style.display = "block";
+
+            // Reset bank fields
+            resetBankFields();
+
+            return;
+        }
+
+
+        // =================================================
+        // BKASH
+        // =================================================
+
+        if (selectedType === "bkash") {
 
             newInfo.type = "tel";
 
+            newInfo.placeholder =
+                placeholderData.bkash;
+
+            return;
         }
-        else {
+
+
+        // =================================================
+        // CONTACT ADDRESS
+        // =================================================
+
+        if (selectedType === "contact_address") {
 
             newInfo.type = "text";
+
+            newInfo.placeholder =
+                placeholderData.contact_address;
+
+            return;
+        }
+
+
+        // =================================================
+        // NID
+        // =================================================
+
+        if (selectedType === "nid") {
+
+            newInfo.type = "text";
+
+            newInfo.placeholder =
+                placeholderData.nid;
+
+            return;
+        }
+
+
+        // =================================================
+        // PHOTO
+        // =================================================
+
+        if (selectedType === "photo") {
+
+            newInfo.type = "file";
+
+            newInfo.accept = "image/*";
+
+            return;
+        }
+
+
+        // =================================================
+        // SIGNATURE
+        // =================================================
+
+        if (selectedType === "signature") {
+
+            newInfo.type = "file";
+
+            newInfo.accept = "image/*";
+
+            return;
+        }
+
+    });
+
+
+    // =====================================================
+    // RESET BANK FIELDS
+    // =====================================================
+
+    function resetBankFields() {
+
+        bankName.value = "";
+
+        branchName.innerHTML = `
+            <option value="">
+                --Select Branch Name--
+            </option>
+        `;
+
+        branchName.disabled = true;
+
+        upazila.value = "";
+
+        routingNumber.value = "";
+
+        accountNumber.value = "";
+
+        bankError.textContent = "";
+    }
+
+
+    // =====================================================
+    // BANK NAME CHANGE
+    // =====================================================
+
+    bankName.addEventListener("change", function () {
+
+        const selectedBank = this.value;
+
+
+        // Reset branch
+        branchName.innerHTML = `
+            <option value="">
+                --Select Branch Name--
+            </option>
+        `;
+
+        branchName.disabled = true;
+
+
+        // Reset details
+        upazila.value = "";
+
+        routingNumber.value = "";
+
+
+        if (selectedBank === "") {
+
+            return;
+        }
+
+
+        const branches =
+            bankData[selectedBank];
+
+
+        if (!branches) {
+
+            return;
+        }
+
+
+        // Add branches
+        branches.forEach(function (branch) {
+
+            const option =
+                document.createElement("option");
+
+            option.value =
+                branch.routing;
+
+            option.textContent =
+                branch.name;
+
+            branchName.appendChild(option);
+
+        });
+
+
+        // Enable branch
+        branchName.disabled = false;
+
+    });
+
+
+    // =====================================================
+    // BRANCH NAME CHANGE
+    // =====================================================
+
+    branchName.addEventListener("change", function () {
+
+        const selectedBank =
+            bankName.value;
+
+        const selectedRouting =
+            this.value;
+
+
+        upazila.value = "";
+
+        routingNumber.value = "";
+
+
+        if (
+            selectedBank === "" ||
+            selectedRouting === ""
+        ) {
+
+            return;
+        }
+
+
+        const branches =
+            bankData[selectedBank];
+
+
+        if (!branches) {
+
+            return;
+        }
+
+
+        const selectedBranch =
+            branches.find(function (branch) {
+
+                return (
+                    branch.routing ===
+                    selectedRouting
+                );
+
+            });
+
+
+        if (!selectedBranch) {
+
+            return;
+        }
+
+
+        // Upazila
+        upazila.value =
+            selectedBranch.upazila;
+
+
+        // Routing Number
+        routingNumber.value =
+            selectedBranch.routing;
+
+    });
+
+
+    // =====================================================
+    // ACCOUNT NUMBER
+    // =====================================================
+
+    accountNumber.addEventListener("input", function () {
+
+        // Only numbers
+        this.value =
+            this.value.replace(/\D/g, "");
+
+
+        // Maximum 13 digits
+        if (this.value.length > 13) {
+
+            this.value =
+                this.value.substring(0, 13);
 
         }
 
     });
 
 
-    // ==========================================
-    // REMOVE ERROR WHEN USER TYPES
-    // ==========================================
+    // =====================================================
+    // NORMAL INPUT ERROR
+    // =====================================================
 
     newInfo.addEventListener("input", function () {
 
@@ -567,19 +577,174 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // ==========================================
+    // =====================================================
+    // VALIDATE MOBILE
+    // =====================================================
+
+    function validateMobile(value) {
+
+        const mobilePattern =
+            /^01[3-9]\d{8}$/;
+
+        if (!mobilePattern.test(value)) {
+
+            newInfoError.textContent =
+                "Please enter a valid Bangladesh mobile number.";
+
+            newInfoError.classList.add("show");
+
+            newInfo.focus();
+
+            return false;
+        }
+
+        return true;
+    }
+
+
+    // =====================================================
+    // VALIDATE EMAIL
+    // =====================================================
+
+    function validateEmail(value) {
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(value)) {
+
+            newInfoError.textContent =
+                "Please enter a valid email address.";
+
+            newInfoError.classList.add("show");
+
+            newInfo.focus();
+
+            return false;
+        }
+
+        return true;
+    }
+
+
+    // =====================================================
+    // VALIDATE NID
+    // =====================================================
+
+    function validateNID(value) {
+
+        const nidPattern =
+            /^(\d{10}|\d{13}|\d{17})$/;
+
+        if (!nidPattern.test(value)) {
+
+            newInfoError.textContent =
+                "NID must contain 10, 13 or 17 digits.";
+
+            newInfoError.classList.add("show");
+
+            newInfo.focus();
+
+            return false;
+        }
+
+        return true;
+    }
+
+
+    // =====================================================
+    // VALIDATE BANK
+    // =====================================================
+
+    function validateBank() {
+
+        bankError.textContent = "";
+
+
+        // Bank
+        if (bankName.value === "") {
+
+            bankError.textContent =
+                "Please select Bank Name.";
+
+            bankName.focus();
+
+            return false;
+        }
+
+
+        // Branch
+        if (branchName.value === "") {
+
+            bankError.textContent =
+                "Please select Branch Name.";
+
+            branchName.focus();
+
+            return false;
+        }
+
+
+        // Account
+        const accountValue =
+            accountNumber.value.trim();
+
+
+        if (accountValue === "") {
+
+            bankError.textContent =
+                "Please enter Account Number.";
+
+            accountNumber.focus();
+
+            return false;
+        }
+
+
+        if (!/^\d{13}$/.test(accountValue)) {
+
+            bankError.textContent =
+                "Account Number must contain exactly 13 digits.";
+
+            accountNumber.focus();
+
+            return false;
+        }
+
+
+        // Routing
+        if (routingNumber.value.trim() === "") {
+
+            bankError.textContent =
+                "Routing Number is required.";
+
+            return false;
+        }
+
+
+        return true;
+    }
+
+
+    // =====================================================
     // SUBMIT
-    // ==========================================
+    // =====================================================
 
     submitButton.addEventListener("click", function () {
 
-        const selectedType = changeType.value;
+        const selectedType =
+            changeType.value;
 
 
-        // Change Type validation
+        // =================================================
+        // CHANGE TYPE REQUIRED
+        // =================================================
+
         if (selectedType === "") {
 
-            alert("Please select a Change Type.");
+            alert(
+                "Please select a Change Type."
+            );
 
             changeType.focus();
 
@@ -587,66 +752,217 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        // New Info validation
-        const value = newInfo.value.trim();
+        // =================================================
+        // BANK INFO
+        // =================================================
 
-        if (value === "") {
+        if (selectedType === "bank_info") {
 
-            newInfoError.textContent =
-                "Please enter new information.";
+            if (!validateBank()) {
 
-            newInfoError.classList.add("show");
+                return;
+            }
 
-            newInfo.focus();
+
+            const bankText =
+                bankName.options[
+                    bankName.selectedIndex
+                ].text;
+
+
+            const branchText =
+                branchName.options[
+                    branchName.selectedIndex
+                ].text;
+
+
+            const summary =
+                "Bank Name: " +
+                bankText +
+                " | Branch Name: " +
+                branchText +
+                " | Upazila: " +
+                upazila.value +
+                " | Routing Number: " +
+                routingNumber.value +
+                " | Account Number: " +
+                accountNumber.value;
+
+
+            const confirmation =
+                confirm(
+                    "Are you sure you want to change your Bank Information?"
+                );
+
+
+            if (!confirmation) {
+
+                return;
+            }
+
+
+            existingData.bank_info =
+                summary;
+
+
+            existingInfo.value =
+                summary;
+
+
+            alert(
+                "Bank information changed successfully!"
+            );
+
 
             return;
         }
 
 
-        // Mobile validation
+        // =================================================
+        // NORMAL INFORMATION
+        // =================================================
+
+        let value = "";
+
+
+        // File
+        if (
+            selectedType === "photo" ||
+            selectedType === "signature"
+        ) {
+
+            if (
+                newInfo.files.length === 0
+            ) {
+
+                newInfoError.textContent =
+                    "Please select a file.";
+
+                newInfoError.classList.add(
+                    "show"
+                );
+
+                newInfo.focus();
+
+                return;
+            }
+
+
+            value =
+                newInfo.files[0].name;
+
+        }
+
+        // Text
+        else {
+
+            value =
+                newInfo.value.trim();
+
+
+            if (value === "") {
+
+                newInfoError.textContent =
+                    "Please enter new information.";
+
+                newInfoError.classList.add(
+                    "show"
+                );
+
+                newInfo.focus();
+
+                return;
+            }
+
+        }
+
+
+        // =================================================
+        // MOBILE VALIDATION
+        // =================================================
+
         if (
             selectedType === "mobile" ||
             selectedType === "bkash"
         ) {
 
-            const mobilePattern =
-                /^01[3-9]\d{8}$/;
-
-
-            if (!mobilePattern.test(value)) {
-
-                newInfoError.textContent =
-                    "Please enter a valid Bangladesh mobile number.";
-
-                newInfoError.classList.add("show");
-
-                newInfo.focus();
+            if (!validateMobile(value)) {
 
                 return;
             }
+
         }
 
 
-        // Email validation
+        // =================================================
+        // EMAIL VALIDATION
+        // =================================================
+
         if (selectedType === "email") {
 
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-            if (!emailPattern.test(value)) {
-
-                newInfoError.textContent =
-                    "Please enter a valid email address.";
-
-                newInfoError.classList.add("show");
-
-                newInfo.focus();
+            if (!validateEmail(value)) {
 
                 return;
             }
+
         }
 
+
+        // =================================================
+        // NID VALIDATION
+        // =================================================
+
+        if (selectedType === "nid") {
+
+            if (!validateNID(value)) {
+
+                return;
+            }
+
+        }
+
+
+        // =================================================
+        // CONFIRM
+        // =================================================
+
+        const confirmation =
+            confirm(
+                "Are you sure you want to change your " +
+                getChangeTypeName(selectedType) +
+                "?"
+            );
+
+
+        if (!confirmation) {
+
+            return;
+        }
+
+
+        // =================================================
+        // UPDATE EXISTING DATA
+        // =================================================
+
+        existingData[selectedType] =
+            value;
+
+
+        existingInfo.value =
+            value;
+
+
+        // Clear
+        newInfo.value = "";
+
+        newInfoError.classList.remove(
+            "show"
+        );
+
+
+        // =================================================
+        // SUCCESS
+        // =================================================
 
         alert(
             "BO information changed successfully!"
@@ -654,1255 +970,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-});
-/*Bank Information Change Form Validation Script*/
-document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================================
-       ELEMENTS
-    ========================================= */
+    // =====================================================
+    // GET CHANGE TYPE NAME
+    // =====================================================
 
-    const changeType =
-        document.getElementById("changeType");
+    function getChangeTypeName(type) {
 
-    const existingInfo =
-        document.getElementById("existingInfo");
+        const names = {
 
-    const newInfoContainer =
-        document.getElementById("newInfoContainer");
+            mobile:
+                "Mobile Number",
 
-    const attachment =
-        document.getElementById("attachment");
+            email:
+                "Email Address",
 
-    const fileInfo =
-        document.getElementById("fileInfo");
+            bank_info:
+                "Bank Info",
 
-    const submitButton =
-        document.getElementById("submitButton");
+            bkash:
+                "Bkash Number",
 
+            contact_address:
+                "Contact Address",
 
-    /* =========================================
-       EXISTING BO INFORMATION
-    ========================================= */
+            nid:
+                "Investor NID",
 
-    const existingData = {
+            photo:
+                "Investor Photo",
 
-        mobile:
-            "01623480030",
-
-        email:
-            "hasibul@example.com",
-
-        bank_info:
-            "Bank Name: EASTERN BANK LTD., A/C No: 8068220001094, Routing No: 095155807",
-
-        bkash:
-            "01812345678",
-
-        contact_address:
-            "Rangunia, Chattogram, Bangladesh",
-
-        nid:
-            "12345678901234567",
-
-        photo:
-            "Investor Photo",
-
-        signature:
-            "Investor Signature"
-
-    };
-
-
-    /* =========================================
-       PLACEHOLDERS
-    ========================================= */
-
-    const placeholderData = {
-
-        mobile:
-            "Enter Mobile Number",
-
-        email:
-            "Enter Email Address",
-
-        bkash:
-            "Enter Bkash Number",
-
-        contact_address:
-            "Enter Contact Address",
-
-        nid:
-            "Enter NID Number"
-
-    };
-
-
-    /* =========================================
-       CHANGE TYPE
-    ========================================= */
-
-    changeType.addEventListener(
-        "change",
-        function () {
-
-            const selectedType =
-                this.value;
-
-
-            /* Clear */
-
-            newInfoContainer.innerHTML = "";
-
-            existingInfo.value = "";
-
-
-            /* =================================
-               NO SELECTION
-            ================================= */
-
-            if (selectedType === "") {
-
-                existingInfo.placeholder =
-                    "Select Change Type";
-
-                createTextInput(
-                    "Select Change Type"
-                );
-
-                return;
-            }
-
-
-            /* =================================
-               EXISTING INFORMATION
-            ================================= */
-
-            existingInfo.value =
-                existingData[selectedType] || "";
-
-
-            /* =================================
-               MOBILE
-            ================================= */
-
-            if (selectedType === "mobile") {
-
-                createTextInput(
-                    "Enter Mobile Number",
-                    "tel"
-                );
-
-                return;
-            }
-
-
-            /* =================================
-               EMAIL
-            ================================= */
-
-            if (selectedType === "email") {
-
-                createTextInput(
-                    "Enter Email Address",
-                    "email"
-                );
-
-                return;
-            }
-
-
-            /* =================================
-               BANK INFO
-            ================================= */
-
-            if (selectedType === "bank_info") {
-
-                createBankInformation();
-
-                return;
-            }
-
-
-            /* =================================
-               BKASH
-            ================================= */
-
-            if (selectedType === "bkash") {
-
-                createTextInput(
-                    "Enter Bkash Number",
-                    "tel"
-                );
-
-                return;
-            }
-
-
-            /* =================================
-               CONTACT ADDRESS
-            ================================= */
-
-            if (
-                selectedType ===
-                "contact_address"
-            ) {
-
-                createTextInput(
-                    "Enter New Contact Address",
-                    "text"
-                );
-
-                return;
-            }
-
-
-            /* =================================
-               NID
-            ================================= */
-
-            if (selectedType === "nid") {
-
-                createTextInput(
-                    "Enter New NID Number",
-                    "text"
-                );
-
-                return;
-            }
-
-
-            /* =================================
-               PHOTO
-            ================================= */
-
-            if (selectedType === "photo") {
-
-                createFileInput(
-                    "image/*"
-                );
-
-                return;
-            }
-
-
-            /* =================================
-               SIGNATURE
-            ================================= */
-
-            if (selectedType === "signature") {
-
-                createFileInput(
-                    "image/*"
-                );
-
-                return;
-            }
-
-        }
-    );
-
-
-    /* =========================================
-       CREATE NORMAL INPUT
-    ========================================= */
-
-    function createTextInput(
-        placeholder,
-        type = "text"
-    ) {
-
-        const input =
-            document.createElement("input");
-
-
-        input.type = type;
-
-        input.id = "newInfo";
-
-        input.className =
-            "form-control";
-
-        input.placeholder =
-            placeholder;
-
-
-        newInfoContainer.appendChild(
-            input
-        );
-
-
-        const error =
-            document.createElement("span");
-
-
-        error.id =
-            "newInfoError";
-
-        error.className =
-            "error";
-
-        error.textContent =
-            "Please enter new information.";
-
-
-        newInfoContainer.appendChild(
-            error
-        );
-
-
-        input.addEventListener(
-            "input",
-            function () {
-
-                error.style.display =
-                    "none";
-
-            }
-        );
-
-    }
-
-
-    /* =========================================
-       CREATE FILE INPUT
-    ========================================= */
-
-    function createFileInput(
-        accept
-    ) {
-
-        const input =
-            document.createElement("input");
-
-
-        input.type = "file";
-
-        input.id = "newInfo";
-
-        input.className =
-            "form-control";
-
-        input.accept =
-            accept;
-
-
-        newInfoContainer.appendChild(
-            input
-        );
-
-
-        const error =
-            document.createElement("span");
-
-
-        error.id =
-            "newInfoError";
-
-        error.className =
-            "error";
-
-        error.textContent =
-            "Please select a file.";
-
-
-        newInfoContainer.appendChild(
-            error
-        );
-
-    }
-
-
-    /* =========================================
-       CREATE BANK INFORMATION
-    ========================================= */
-
-    function createBankInformation() {
-
-        const bankBox =
-            document.createElement("div");
-
-
-        bankBox.className =
-            "bank-info-box";
-
-
-        /* =====================================
-           BANK NAME ROW
-        ===================================== */
-
-        const bankRow =
-            document.createElement("div");
-
-
-        bankRow.className =
-            "bank-row";
-
-
-        const bankLabel =
-            document.createElement("div");
-
-
-        bankLabel.className =
-            "bank-label";
-
-        bankLabel.textContent =
-            "Bank Name :";
-
-
-        const bankField =
-            document.createElement("div");
-
-
-        bankField.className =
-            "bank-field";
-
-
-        const bankSelect =
-            document.createElement("select");
-
-
-        bankSelect.id =
-            "bankName";
-
-        bankSelect.className =
-            "bank-control";
-
-
-        bankSelect.innerHTML = `
-
-            <option value="">
-                --Select Bank Name--
-            </option>
-
-            <option value="eastern">
-                EASTERN BANK LTD.
-            </option>
-
-            <option value="dbbl">
-                DUTCH-BANGLA BANK PLC.
-            </option>
-
-            <option value="brac">
-                BRAC BANK PLC.
-            </option>
-
-            <option value="city">
-                CITY BANK PLC.
-            </option>
-
-            <option value="prime">
-                PRIME BANK PLC.
-            </option>
-
-        `;
-
-
-        bankField.appendChild(
-            bankSelect
-        );
-
-
-        const bankEmpty =
-            document.createElement("div");
-
-
-        bankEmpty.className =
-            "bank-field";
-
-
-        bankRow.appendChild(
-            bankLabel
-        );
-
-        bankRow.appendChild(
-            bankField
-        );
-
-        bankRow.appendChild(
-            bankEmpty
-        );
-
-
-        bankBox.appendChild(
-            bankRow
-        );
-
-
-        /* =====================================
-           BRANCH ROW
-        ===================================== */
-
-        const branchRow =
-            document.createElement("div");
-
-
-        branchRow.className =
-            "bank-row";
-
-
-        const branchLabel =
-            document.createElement("div");
-
-
-        branchLabel.className =
-            "bank-label";
-
-        branchLabel.textContent =
-            "Branch Name :";
-
-
-        const branchField =
-            document.createElement("div");
-
-
-        branchField.className =
-            "bank-field";
-
-
-        const branchSelect =
-            document.createElement("select");
-
-
-        branchSelect.id =
-            "branchName";
-
-        branchSelect.className =
-            "bank-control";
-
-
-        branchSelect.innerHTML = `
-
-            <option value="">
-                --Select Branch Name--
-            </option>
-
-        `;
-
-
-        branchField.appendChild(
-            branchSelect
-        );
-
-
-        const routingField =
-            document.createElement("div");
-
-
-        routingField.className =
-            "bank-field";
-
-
-        const routingSelect =
-            document.createElement("select");
-
-
-        routingSelect.id =
-            "branchCode";
-
-        routingSelect.className =
-            "bank-control";
-
-
-        routingSelect.innerHTML = `
-
-            <option value="">
-                --Select Branch Code--
-            </option>
-
-        `;
-
-
-        routingField.appendChild(
-            routingSelect
-        );
-
-
-        branchRow.appendChild(
-            branchLabel
-        );
-
-        branchRow.appendChild(
-            branchField
-        );
-
-        branchRow.appendChild(
-            routingField
-        );
-
-
-        bankBox.appendChild(
-            branchRow
-        );
-
-
-        /* =====================================
-           ACCOUNT NUMBER ROW
-        ===================================== */
-
-        const accountRow =
-            document.createElement("div");
-
-
-        accountRow.className =
-            "bank-row";
-
-
-        const accountLabel =
-            document.createElement("div");
-
-
-        accountLabel.className =
-            "bank-label";
-
-        accountLabel.textContent =
-            "Account Number :";
-
-
-        const accountField =
-            document.createElement("div");
-
-
-        accountField.className =
-            "bank-field";
-
-
-        const accountInput =
-            document.createElement("input");
-
-
-        accountInput.type =
-            "text";
-
-        accountInput.id =
-            "accountNumber";
-
-        accountInput.className =
-            "bank-control";
-
-        accountInput.placeholder =
-            "Enter 13 Digits Bank Account No.";
-
-        accountInput.maxLength =
-            13;
-
-
-        accountField.appendChild(
-            accountInput
-        );
-
-
-        const routingNumberField =
-            document.createElement("div");
-
-
-        routingNumberField.className =
-            "bank-field";
-
-
-        const routingNumber =
-            document.createElement("input");
-
-
-        routingNumber.type =
-            "text";
-
-        routingNumber.id =
-            "routingNumber";
-
-        routingNumber.className =
-            "bank-control";
-
-        routingNumber.placeholder =
-            "Routing Number";
-
-
-        routingNumberField.appendChild(
-            routingNumber
-        );
-
-
-        accountRow.appendChild(
-            accountLabel
-        );
-
-        accountRow.appendChild(
-            accountField
-        );
-
-        accountRow.appendChild(
-            routingNumberField
-        );
-
-
-        bankBox.appendChild(
-            accountRow
-        );
-
-
-        newInfoContainer.appendChild(
-            bankBox
-        );
-
-
-        /* =====================================
-           BANK → BRANCH DATA
-        ===================================== */
-
-        const branchData = {
-
-            eastern: [
-
-                {
-                    name: "Principal Branch",
-                    code: "095155807"
-                },
-
-                {
-                    name: "Gulshan Branch",
-                    code: "095155808"
-                },
-
-                {
-                    name: "Agrabad Branch",
-                    code: "095155809"
-                }
-
-            ],
-
-            dbbl: [
-
-                {
-                    name: "Motijheel Branch",
-                    code: "090270001"
-                },
-
-                {
-                    name: "Gulshan Branch",
-                    code: "090270002"
-                }
-
-            ],
-
-            brac: [
-
-                {
-                    name: "Gulshan Branch",
-                    code: "060260001"
-                },
-
-                {
-                    name: "Dhanmondi Branch",
-                    code: "060260002"
-                }
-
-            ],
-
-            city: [
-
-                {
-                    name: "Gulshan Branch",
-                    code: "225260001"
-                },
-
-                {
-                    name: "Motijheel Branch",
-                    code: "225260002"
-                }
-
-            ],
-
-            prime: [
-
-                {
-                    name: "Banani Branch",
-                    code: "170260001"
-                },
-
-                {
-                    name: "Motijheel Branch",
-                    code: "170260002"
-                }
-
-            ]
+            signature:
+                "Investor Signature"
 
         };
 
 
-        /* =====================================
-           BANK CHANGE
-        ===================================== */
-
-        bankSelect.addEventListener(
-            "change",
-            function () {
-
-                const selectedBank =
-                    this.value;
-
-
-                branchSelect.innerHTML = `
-
-                    <option value="">
-                        --Select Branch Name--
-                    </option>
-
-                `;
-
-
-                routingSelect.innerHTML = `
-
-                    <option value="">
-                        --Select Branch Code--
-                    </option>
-
-                `;
-
-
-                if (
-                    !branchData[selectedBank]
-                ) {
-
-                    return;
-
-                }
-
-
-                branchData[selectedBank]
-                    .forEach(
-                        function (branch) {
-
-                            const option =
-                                document.createElement(
-                                    "option"
-                                );
-
-
-                            option.value =
-                                branch.code;
-
-                            option.textContent =
-                                branch.name;
-
-
-                            branchSelect.appendChild(
-                                option
-                            );
-
-
-                            const codeOption =
-                                document.createElement(
-                                    "option"
-                                );
-
-
-                            codeOption.value =
-                                branch.code;
-
-                            codeOption.textContent =
-                                branch.code;
-
-
-                            routingSelect.appendChild(
-                                codeOption
-                            );
-
-                        }
-                    );
-
-            }
+        return (
+            names[type] ||
+            "Information"
         );
-
-
-        /* =====================================
-           BRANCH CHANGE
-        ===================================== */
-
-        branchSelect.addEventListener(
-            "change",
-            function () {
-
-                const selectedCode =
-                    this.value;
-
-
-                routingSelect.value =
-                    selectedCode;
-
-            }
-        );
-
-
-        /* =====================================
-           BRANCH CODE CHANGE
-        ===================================== */
-
-        routingSelect.addEventListener(
-            "change",
-            function () {
-
-                const selectedCode =
-                    this.value;
-
-
-                branchSelect.value =
-                    selectedCode;
-
-            }
-        );
-
     }
-
-
-    /* =========================================
-       ATTACHMENT
-    ========================================= */
-
-    attachment.addEventListener(
-        "change",
-        function () {
-
-            if (
-                this.files.length === 0
-            ) {
-
-                fileInfo.textContent =
-                    "No file chosen";
-
-                return;
-
-            }
-
-
-            fileInfo.textContent =
-                this.files.length +
-                " file(s) selected";
-
-        }
-    );
-
-
-    /* =========================================
-       SUBMIT
-    ========================================= */
-
-    submitButton.addEventListener(
-        "click",
-        function () {
-
-            const selectedType =
-                changeType.value;
-
-
-            /* =================================
-               CHANGE TYPE
-            ================================= */
-
-            if (
-                selectedType === ""
-            ) {
-
-                alert(
-                    "Please select a Change Type."
-                );
-
-                changeType.focus();
-
-                return;
-
-            }
-
-
-            /* =================================
-               BANK INFO
-            ================================= */
-
-            if (
-                selectedType === "bank_info"
-            ) {
-
-                const bankName =
-                    document.getElementById(
-                        "bankName"
-                    );
-
-                const branchName =
-                    document.getElementById(
-                        "branchName"
-                    );
-
-                const accountNumber =
-                    document.getElementById(
-                        "accountNumber"
-                    );
-
-                const routingNumber =
-                    document.getElementById(
-                        "routingNumber"
-                    );
-
-
-                if (
-                    !bankName ||
-                    bankName.value === ""
-                ) {
-
-                    alert(
-                        "Please select Bank Name."
-                    );
-
-                    return;
-
-                }
-
-
-                if (
-                    !branchName ||
-                    branchName.value === ""
-                ) {
-
-                    alert(
-                        "Please select Branch Name."
-                    );
-
-                    return;
-
-                }
-
-
-                if (
-                    !accountNumber ||
-                    accountNumber.value.trim() === ""
-                ) {
-
-                    alert(
-                        "Please enter Account Number."
-                    );
-
-                    accountNumber.focus();
-
-                    return;
-
-                }
-
-
-                if (
-                    !/^\d{13}$/.test(
-                        accountNumber.value.trim()
-                    )
-                ) {
-
-                    alert(
-                        "Account Number must contain exactly 13 digits."
-                    );
-
-                    accountNumber.focus();
-
-                    return;
-
-                }
-
-
-                if (
-                    !routingNumber ||
-                    routingNumber.value.trim() === ""
-                ) {
-
-                    alert(
-                        "Please select Routing Number."
-                    );
-
-                    return;
-
-                }
-
-
-                alert(
-                    "Bank information changed successfully!"
-                );
-
-                return;
-
-            }
-
-
-            /* =================================
-               NORMAL INPUT
-            ================================= */
-
-            const newInfo =
-                document.getElementById(
-                    "newInfo"
-                );
-
-
-            if (!newInfo) {
-
-                alert(
-                    "Please enter new information."
-                );
-
-                return;
-
-            }
-
-
-            /* FILE */
-
-            if (
-                newInfo.type === "file"
-            ) {
-
-                if (
-                    newInfo.files.length === 0
-                ) {
-
-                    alert(
-                        "Please select a file."
-                    );
-
-                    return;
-
-                }
-
-
-                alert(
-                    "BO information changed successfully!"
-                );
-
-                return;
-
-            }
-
-
-            /* TEXT */
-
-            const value =
-                newInfo.value.trim();
-
-
-            if (
-                value === ""
-            ) {
-
-                const error =
-                    document.getElementById(
-                        "newInfoError"
-                    );
-
-
-                if (error) {
-
-                    error.style.display =
-                        "block";
-
-                }
-
-
-                newInfo.focus();
-
-                return;
-
-            }
-
-
-            /* =================================
-               MOBILE
-            ================================= */
-
-            if (
-                selectedType === "mobile" ||
-                selectedType === "bkash"
-            ) {
-
-                const mobilePattern =
-                    /^01[3-9]\d{8}$/;
-
-
-                if (
-                    !mobilePattern.test(value)
-                ) {
-
-                    alert(
-                        "Please enter a valid Bangladesh mobile number."
-                    );
-
-                    newInfo.focus();
-
-                    return;
-
-                }
-
-            }
-
-
-            /* =================================
-               EMAIL
-            ================================= */
-
-            if (
-                selectedType === "email"
-            ) {
-
-                const emailPattern =
-                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-                if (
-                    !emailPattern.test(value)
-                ) {
-
-                    alert(
-                        "Please enter a valid email address."
-                    );
-
-                    newInfo.focus();
-
-                    return;
-
-                }
-
-            }
-
-
-            /* =================================
-               NID
-            ================================= */
-
-            if (
-                selectedType === "nid"
-            ) {
-
-                const nidPattern =
-                    /^(\d{10}|\d{13}|\d{17})$/;
-
-
-                if (
-                    !nidPattern.test(value)
-                ) {
-
-                    alert(
-                        "NID must contain 10, 13 or 17 digits."
-                    );
-
-                    newInfo.focus();
-
-                    return;
-
-                }
-
-            }
-
-
-            /* =================================
-               SUCCESS
-            ================================= */
-
-            alert(
-                "BO information changed successfully!"
-            );
-
-        }
-    );
 
 });
