@@ -2,30 +2,54 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>BO Information Change</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
 </head>
+
 
 <body>
 
+
     <div class="page-container">
+
+
+        <!-- =====================================
+             PAGE TITLE
+        ====================================== -->
 
         <h1 class="page-title">
             BO INFORMATION CHANGE
         </h1>
 
+
         <div class="form-box">
 
-            <!-- NAME -->
+
+            <!-- =================================
+                 NAME
+            ================================== -->
+
             <div class="form-row">
 
-                <label for="name" class="form-label">
+                <label
+                    for="name"
+                    class="form-label">
+
                     Name
+
                 </label>
+
 
                 <input
                     type="text"
@@ -37,46 +61,65 @@
             </div>
 
 
-            <!-- CHANGE TYPE -->
+
+            <!-- =================================
+                 CHANGE TYPE
+            ================================== -->
+
             <div class="form-row">
 
-                <label for="changeType" class="form-label">
+                <label
+                    for="changeType"
+                    class="form-label">
+
                     Change Type
+
                 </label>
 
-                <select id="changeType" class="form-control">
+
+                <select
+                    id="changeType"
+                    class="form-control">
 
                     <option value="">
                         -- Select the type of Info you need to Change --
                     </option>
 
+
                     <option value="mobile">
                         Mobile Number
                     </option>
+
 
                     <option value="email">
                         Email Address
                     </option>
 
+
                     <option value="bank_info">
                         Bank Info
                     </option>
+
 
                     <option value="bkash">
                         Bkash Number
                     </option>
 
+
                     <option value="contact_address">
                         Contact Address
                     </option>
+
 
                     <option value="nid">
                         Investor NID
                     </option>
 
+
                     <option value="photo">
                         Investor Photo
                     </option>
+
 
                     <option value="signature">
                         Investor Signature
@@ -87,12 +130,21 @@
             </div>
 
 
-            <!-- EXISTING INFORMATION -->
+
+            <!-- =================================
+                 EXISTING INFORMATION
+            ================================== -->
+
             <div class="form-row">
 
-                <label for="existingInfo" class="form-label">
+                <label
+                    for="existingInfo"
+                    class="form-label">
+
                     Existing Info
+
                 </label>
+
 
                 <input
                     type="text"
@@ -104,12 +156,23 @@
             </div>
 
 
-            <!-- NEW INFORMATION -->
-            <div class="form-row new-info-row">
 
-                <label for="newInfo" class="form-label">
+            <!-- =================================
+                 NEW INFORMATION
+            ================================== -->
+
+            <div
+                class="form-row new-info-row"
+                id="normalNewInfoRow">
+
+                <label
+                    for="newInfo"
+                    class="form-label">
+
                     New Info
+
                 </label>
+
 
                 <div class="new-info-container">
 
@@ -119,10 +182,13 @@
                         class="form-control"
                         placeholder="Select Change Type">
 
+
                     <span
                         id="newInfoError"
                         class="error">
+
                         Please enter new information.
+
                     </span>
 
                 </div>
@@ -130,12 +196,197 @@
             </div>
 
 
-            <!-- REMARKS -->
+
+            <!-- =========================================
+                 BANK INFORMATION
+            ========================================== -->
+
+            <div
+                id="bankInfo"
+                class="bank-info"
+                style="display: none;">
+
+
+                <!-- =================================
+                     BANK NAME
+                ================================== -->
+
+                <div class="bank-row">
+
+                    <div class="bank-label">
+
+                        Bank Name :
+
+                    </div>
+
+
+                    <div class="bank-field">
+
+                        <select
+                            id="bankName"
+                            class="bank-control">
+
+                            <option value="">
+                                --Select Bank Name--
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     BRANCH NAME
+                ================================== -->
+
+                <div class="bank-row">
+
+                    <div class="bank-label">
+
+                        Branch Name :
+
+                    </div>
+
+
+                    <div class="bank-field">
+
+                        <select
+                            id="branchName"
+                            class="bank-control"
+                            disabled>
+
+                            <option value="">
+                                --Select Branch Name--
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     UPAZILA
+                ================================== -->
+
+                <div class="bank-row">
+
+                    <div class="bank-label">
+
+                        Upazila :
+
+                    </div>
+
+
+                    <div class="bank-field">
+
+                        <input
+                            type="text"
+                            id="upazila"
+                            class="bank-control readonly"
+                            placeholder="Upazila"
+                            readonly>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     ROUTING NUMBER
+                ================================== -->
+
+                <div class="bank-row">
+
+                    <div class="bank-label">
+
+                        Routing Number :
+
+                    </div>
+
+
+                    <div class="bank-field">
+
+                        <input
+                            type="text"
+                            id="routingNumber"
+                            class="bank-control readonly"
+                            placeholder="Routing Number"
+                            readonly>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     ACCOUNT NUMBER
+                ================================== -->
+
+                <div class="bank-row">
+
+                    <div class="bank-label">
+
+                        Account Number :
+
+                    </div>
+
+
+                    <div class="bank-field">
+
+                        <select
+                            id="accountNumber"
+                            class="bank-control"
+                            disabled>
+
+                            <option value="">
+                                --Select Account Number--
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     BANK ERROR
+                ================================== -->
+
+                <span
+                    id="bankError"
+                    class="error">
+
+                </span>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 REMARKS
+            ================================== -->
+
             <div class="form-row">
 
-                <label for="remarks" class="form-label">
+                <label
+                    for="remarks"
+                    class="form-label">
+
                     Remarks
+
                 </label>
+
 
                 <textarea
                     id="remarks"
@@ -145,12 +396,21 @@
             </div>
 
 
-            <!-- ATTACHMENT -->
+
+            <!-- =================================
+                 ATTACHMENT
+            ================================== -->
+
             <div class="form-row">
 
-                <label for="attachment" class="form-label">
+                <label
+                    for="attachment"
+                    class="form-label">
+
                     Attachment
+
                 </label>
+
 
                 <input
                     type="file"
@@ -160,10 +420,15 @@
             </div>
 
 
-            <!-- SUBMIT -->
+
+            <!-- =================================
+                 SUBMIT
+            ================================== -->
+
             <div class="form-row button-row">
 
                 <div class="button-spacer"></div>
+
 
                 <button
                     type="button"
@@ -176,13 +441,28 @@
 
             </div>
 
+
         </div>
+
+
+
+        <!-- =====================================
+             BOTTOM LINE
+        ====================================== -->
 
         <div class="bottom-line"></div>
 
+
     </div>
 
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
     <script src="js/script.js"></script>
+
 
 </body>
 

@@ -576,3 +576,802 @@ textarea.form-control {
     }
 
 }
+
+
+/*bank informartion start*/
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #5d0b68;
+    color: #222;
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.page-container {
+    width: 95%;
+    max-width: 1300px;
+
+    margin: 45px auto 20px;
+
+    background: #ffffff;
+
+    padding: 35px 15px 30px;
+
+    border-radius: 3px;
+
+    min-height: 570px;
+}
+
+
+/* =========================================
+   PAGE TITLE
+========================================= */
+
+.page-title {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #172b3d;
+
+    margin: 15px 0 28px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   FORM BOX
+========================================= */
+
+.form-box {
+    border: 1px solid #d7d7d7;
+
+    padding: 0 7px 5px;
+}
+
+
+/* =========================================
+   NORMAL FORM ROW
+========================================= */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 135px 1fr;
+
+    align-items: center;
+
+    min-height: 50px;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.form-label {
+    padding: 10px 0;
+
+    color: #222;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   NORMAL INPUT
+========================================= */
+
+.form-control {
+    width: 70%;
+
+    max-width: 675px;
+
+    height: 32px;
+
+    border: 1px solid #d3d3d3;
+
+    border-radius: 5px;
+
+    padding: 5px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    background: #ffffff;
+}
+
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.form-control:focus {
+    border-color: #777;
+
+    box-shadow:
+        0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   READONLY
+========================================= */
+
+.readonly {
+    background: #d3d3d3 !important;
+
+    color: #333;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   SELECT
+========================================= */
+
+select.form-control {
+    background: #ffffff;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+textarea.form-control {
+    height: 90px;
+
+    resize: vertical;
+
+    padding: 8px;
+}
+
+
+/* =========================================
+   NEW INFO
+========================================= */
+
+.new-info-container {
+    width: 100%;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error {
+    display: none;
+
+    color: #d00000;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   FILE INPUT
+========================================= */
+
+.file-input {
+    width: auto;
+
+    height: auto;
+
+    border: none;
+
+    padding: 0;
+
+    background: transparent;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   =========================================
+   BANK INFORMATION
+   =========================================
+========================================= */
+
+.bank-info {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 5px 0 15px 0;
+
+    border: 1px solid #d7d7d7;
+
+    background: #ffffff;
+}
+
+
+/* =========================================
+   BANK ROW
+========================================= */
+
+.bank-row {
+    display: grid;
+
+    grid-template-columns: 175px 1fr;
+
+    align-items: center;
+
+    min-height: 55px;
+
+    border-bottom: 1px solid #d7d7d7;
+}
+
+
+/* Last row */
+
+.bank-row:last-of-type {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   BANK LABEL
+========================================= */
+
+.bank-label {
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 8px 10px;
+
+    font-size: 13px;
+
+    color: #172b42;
+
+    background: #fafafa;
+
+    border-right: 1px solid #d7d7d7;
+}
+
+
+/* =========================================
+   BANK FIELD
+========================================= */
+
+.bank-field {
+    display: flex;
+
+    align-items: center;
+
+    padding: 8px 10px;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   BANK CONTROL
+========================================= */
+
+.bank-control {
+    width: 100%;
+
+    max-width: 650px;
+
+    height: 34px;
+
+    border: 1px solid #cfcfcf;
+
+    border-radius: 4px;
+
+    padding: 5px 8px;
+
+    font-size: 13px;
+
+    background: #ffffff;
+
+    outline: none;
+}
+
+
+/* =========================================
+   BANK CONTROL FOCUS
+========================================= */
+
+.bank-control:focus {
+    border-color: #777;
+
+    box-shadow:
+        0 0 3px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   BANK SELECT
+========================================= */
+
+select.bank-control {
+    cursor: pointer;
+}
+
+
+/* =========================================
+   BANK READONLY
+========================================= */
+
+.bank-control.readonly {
+    background: #d3d3d3 !important;
+
+    color: #333;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   BANK ERROR
+========================================= */
+
+#bankError {
+    display: none;
+
+    padding: 8px 10px;
+
+    color: #d00000;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   BUTTON ROW
+========================================= */
+
+.button-row {
+    padding: 12px 0 32px;
+}
+
+
+/* =========================================
+   BUTTON SPACER
+========================================= */
+
+.button-spacer {
+    min-height: 1px;
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.submit-btn {
+    background: #51b957;
+
+    color: #ffffff;
+
+    border: none;
+
+    border-radius: 4px;
+
+    padding: 8px 14px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+
+/* =========================================
+   SUBMIT HOVER
+========================================= */
+
+.submit-btn:hover {
+    background: #3fa645;
+}
+
+
+/* =========================================
+   SUBMIT ACTIVE
+========================================= */
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================================
+   BOTTOM LINE
+========================================= */
+
+.bottom-line {
+    height: 15px;
+
+    border: 1px solid #ddd;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .page-container {
+        width: 94%;
+    }
+
+
+    .form-control {
+        width: 90%;
+
+        max-width: 100%;
+    }
+
+
+    .bank-info {
+        max-width: 100%;
+    }
+
+
+    .bank-row {
+        grid-template-columns: 160px 1fr;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* ===============================
+       PAGE
+    =============================== */
+
+    body {
+        background: #5d0b68;
+    }
+
+
+    .page-container {
+        width: calc(100% - 20px);
+
+        margin: 15px auto;
+
+        padding: 20px 10px 25px;
+
+        min-height: auto;
+    }
+
+
+    /* ===============================
+       TITLE
+    =============================== */
+
+    .page-title {
+        font-size: 22px;
+
+        line-height: 1.3;
+
+        margin: 8px 0 20px;
+    }
+
+
+    /* ===============================
+       FORM BOX
+    =============================== */
+
+    .form-box {
+        padding: 10px;
+    }
+
+
+    /* ===============================
+       NORMAL FORM
+    =============================== */
+
+    .form-row {
+        display: block;
+
+        min-height: auto;
+
+        margin-bottom: 16px;
+    }
+
+
+    /* ===============================
+       LABEL
+    =============================== */
+
+    .form-label {
+        display: block;
+
+        padding: 5px 0 7px;
+
+        font-size: 14px;
+
+        font-weight: 500;
+    }
+
+
+    /* ===============================
+       INPUT
+    =============================== */
+
+    .form-control {
+        display: block;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        height: 42px;
+
+        font-size: 14px;
+    }
+
+
+    /* ===============================
+       SELECT
+    =============================== */
+
+    select.form-control {
+        height: 42px;
+    }
+
+
+    /* ===============================
+       TEXTAREA
+    =============================== */
+
+    textarea.form-control {
+        height: 110px;
+    }
+
+
+    /* ===============================
+       FILE
+    =============================== */
+
+    .file-input {
+        width: 100%;
+
+        height: auto;
+
+        font-size: 13px;
+    }
+
+
+    /* =================================
+       BANK INFORMATION MOBILE
+    ================================= */
+
+    .bank-info {
+        width: 100%;
+
+        max-width: 100%;
+
+        margin:
+            5px
+            0
+            16px
+            0;
+
+        border: 1px solid #d7d7d7;
+
+        border-radius: 3px;
+    }
+
+
+    /* ===============================
+       BANK ROW
+    =============================== */
+
+    .bank-row {
+        display: block;
+
+        min-height: auto;
+
+        padding: 10px;
+
+        border-bottom:
+            1px solid #d7d7d7;
+    }
+
+
+    .bank-row:last-of-type {
+        border-bottom: none;
+    }
+
+
+    /* ===============================
+       BANK LABEL
+    =============================== */
+
+    .bank-label {
+        display: block;
+
+        height: auto;
+
+        padding:
+            0
+            0
+            6px;
+
+        border: none;
+
+        background: transparent;
+
+        font-size: 13px;
+
+        font-weight: 600;
+    }
+
+
+    /* ===============================
+       BANK FIELD
+    =============================== */
+
+    .bank-field {
+        display: block;
+
+        padding: 0;
+
+        width: 100%;
+    }
+
+
+    /* ===============================
+       BANK INPUT
+    =============================== */
+
+    .bank-control {
+        display: block;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        height: 42px;
+
+        font-size: 14px;
+    }
+
+
+    /* ===============================
+       BANK ERROR
+    =============================== */
+
+    #bankError {
+        padding: 8px 10px;
+
+        font-size: 12px;
+    }
+
+
+    /* ===============================
+       SUBMIT
+    =============================== */
+
+    .button-row {
+        display: block;
+
+        padding-top: 5px;
+
+        padding-bottom: 15px;
+    }
+
+
+    .button-spacer {
+        display: none;
+    }
+
+
+    .submit-btn {
+        width: 100%;
+
+        height: 42px;
+
+        font-size: 15px;
+    }
+
+
+    /* ===============================
+       BOTTOM
+    =============================== */
+
+    .bottom-line {
+        margin-top: 10px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    .page-container {
+        width: calc(100% - 10px);
+
+        padding:
+            16px
+            8px;
+    }
+
+
+    .page-title {
+        font-size: 19px;
+    }
+
+
+    .form-box {
+        padding: 8px;
+    }
+
+
+    .form-label {
+        font-size: 13px;
+    }
+
+
+    .form-control {
+        height: 40px;
+
+        font-size: 13px;
+    }
+
+
+    .bank-control {
+        height: 40px;
+
+        font-size: 13px;
+    }
+
+
+    .submit-btn {
+        height: 40px;
+
+        font-size: 14px;
+    }
+
+}
