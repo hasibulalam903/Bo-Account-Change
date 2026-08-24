@@ -3,54 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <!-- Important for mobile responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>BO Information Change</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-
 <body>
 
-    <!-- =========================================
-         MAIN PAGE
-    ========================================== -->
-
     <div class="page-container">
-
-
-        <!-- =====================================
-             PAGE TITLE
-        ====================================== -->
 
         <h1 class="page-title">
             BO INFORMATION CHANGE
         </h1>
 
-
-        <!-- =====================================
-             FORM BOX
-        ====================================== -->
-
         <div class="form-box">
 
-
-            <!-- =================================
-                 NAME
-            ================================== -->
-
+            <!-- NAME -->
             <div class="form-row">
 
-                <label
-                    for="name"
-                    class="form-label">
-
+                <label for="name" class="form-label">
                     Name
-
                 </label>
 
                 <input
@@ -63,24 +37,14 @@
             </div>
 
 
-            <!-- =================================
-                 CHANGE TYPE
-            ================================== -->
-
+            <!-- CHANGE TYPE -->
             <div class="form-row">
 
-                <label
-                    for="changeType"
-                    class="form-label">
-
+                <label for="changeType" class="form-label">
                     Change Type
-
                 </label>
 
-
-                <select
-                    id="changeType"
-                    class="form-control">
+                <select id="changeType" class="form-control">
 
                     <option value="">
                         -- Select the type of Info you need to Change --
@@ -94,24 +58,28 @@
                         Email Address
                     </option>
 
-                    <option value="address">
-                        Address
+                    <option value="bank_info">
+                        Bank Info
                     </option>
 
-                    <option value="nominee">
-                        Nominee Information
+                    <option value="bkash">
+                        Bkash Number
                     </option>
 
-                    <option value="bank">
-                        Bank Information
+                    <option value="contact_address">
+                        Contact Address
+                    </option>
+
+                    <option value="nid">
+                        Investor NID
+                    </option>
+
+                    <option value="photo">
+                        Investor Photo
                     </option>
 
                     <option value="signature">
-                        Signature
-                    </option>
-
-                    <option value="other">
-                        Other
+                        Investor Signature
                     </option>
 
                 </select>
@@ -119,44 +87,29 @@
             </div>
 
 
-            <!-- =================================
-                 EXISTING INFORMATION
-            ================================== -->
-
+            <!-- EXISTING INFORMATION -->
             <div class="form-row">
 
-                <label
-                    for="existingInfo"
-                    class="form-label">
-
+                <label for="existingInfo" class="form-label">
                     Existing Info
-
                 </label>
-
 
                 <input
                     type="text"
                     id="existingInfo"
                     class="form-control readonly"
+                    placeholder="Select Change Type"
                     readonly>
 
             </div>
 
 
-            <!-- =================================
-                 NEW INFORMATION
-            ================================== -->
-
+            <!-- NEW INFORMATION -->
             <div class="form-row new-info-row">
 
-                <label
-                    for="newInfo"
-                    class="form-label">
-
+                <label for="newInfo" class="form-label">
                     New Info
-
                 </label>
-
 
                 <div class="new-info-container">
 
@@ -164,15 +117,12 @@
                         type="text"
                         id="newInfo"
                         class="form-control"
-                        placeholder="">
-
+                        placeholder="Select Change Type">
 
                     <span
                         id="newInfoError"
                         class="error">
-
                         Please enter new information.
-
                     </span>
 
                 </div>
@@ -180,20 +130,12 @@
             </div>
 
 
-            <!-- =================================
-                 REMARKS
-            ================================== -->
-
+            <!-- REMARKS -->
             <div class="form-row">
 
-                <label
-                    for="remarks"
-                    class="form-label">
-
+                <label for="remarks" class="form-label">
                     Remarks
-
                 </label>
-
 
                 <textarea
                     id="remarks"
@@ -203,20 +145,12 @@
             </div>
 
 
-            <!-- =================================
-                 ATTACHMENT
-            ================================== -->
-
+            <!-- ATTACHMENT -->
             <div class="form-row">
 
-                <label
-                    for="attachment"
-                    class="form-label">
-
+                <label for="attachment" class="form-label">
                     Attachment
-
                 </label>
-
 
                 <input
                     type="file"
@@ -226,14 +160,10 @@
             </div>
 
 
-            <!-- =================================
-                 SUBMIT
-            ================================== -->
-
+            <!-- SUBMIT -->
             <div class="form-row button-row">
 
                 <div class="button-spacer"></div>
-
 
                 <button
                     type="button"
@@ -246,23 +176,11 @@
 
             </div>
 
-
         </div>
-
-
-        <!-- =====================================
-             BOTTOM LINE
-        ====================================== -->
 
         <div class="bottom-line"></div>
 
-
     </div>
-
-
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
 
     <script src="js/script.js"></script>
 

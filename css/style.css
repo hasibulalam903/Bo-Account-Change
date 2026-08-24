@@ -1,302 +1,443 @@
-/* =========================================
-   GLOBAL RESET
-========================================= */
-
 * {
     box-sizing: border-box;
-}
-
-
-html,
-body {
     margin: 0;
     padding: 0;
-    width: 100%;
 }
-
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #5d0b68;
+    background-color: #ffffff;
     color: #222;
 }
-
-
-/* =========================================
-   MAIN PAGE CONTAINER
-========================================= */
 
 .page-container {
-
-    width: 95%;
-
-    max-width: 1300px;
-
-    margin: 45px auto 20px;
-
-    background: #ffffff;
-
-    padding: 35px 15px 30px;
-
-    border-radius: 3px;
-
-    min-height: 570px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 25px 40px;
 }
-
-
-/* =========================================
-   PAGE TITLE
-========================================= */
 
 .page-title {
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 28px;
-
-    font-weight: bold;
-
-    color: #172b3d;
-
-    margin: 15px 0 28px;
-
-    text-transform: uppercase;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #222;
 }
-
-
-/* =========================================
-   FORM BOX
-========================================= */
 
 .form-box {
-
+    width: 100%;
     border: 1px solid #d7d7d7;
-
-    padding: 0 7px 5px;
+    border-radius: 4px;
+    padding: 30px 35px;
+    background-color: #fff;
 }
-
-
-/* =========================================
-   FORM ROW
-========================================= */
 
 .form-row {
-
     display: grid;
-
-    grid-template-columns: 255px 1fr;
-
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
     align-items: center;
-
-    min-height: 50px;
+    margin-bottom: 22px;
 }
 
-
-/* =========================================
-   LABEL
-========================================= */
-
 .form-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
 
-    padding: 10px 0;
+.form-control {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 13px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
 
-    color: #222;
+.form-control:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.08);
+}
 
+.readonly {
+    background-color: #f5f5f5;
+    color: #555;
+    cursor: not-allowed;
+}
+
+select.form-control {
+    cursor: pointer;
+}
+
+textarea.form-control {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.new-info-container {
+    width: 100%;
+}
+
+.new-info-container .form-control {
+    display: block;
+}
+
+.error {
+    display: none;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #dc3545;
+}
+
+.error.show {
+    display: block;
+}
+
+.file-input {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    background-color: #fff;
     font-size: 14px;
 }
 
+.button-row {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
 
-/* =========================================
-   INPUT / SELECT / TEXTAREA
-========================================= */
+.button-spacer {
+    width: 100%;
+}
+
+.submit-btn {
+    width: 130px;
+    min-height: 42px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0d6efd;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #0b5ed7;
+}
+
+.bottom-line {
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    margin-top: 30px;
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 768px) {
+
+    .page-container {
+        padding: 25px 18px 35px;
+    }
+
+    .page-title {
+        font-size: 23px;
+        margin-bottom: 25px;
+    }
+
+    .form-box {
+        padding: 25px 22px;
+    }
+
+    .form-row {
+        grid-template-columns: 160px 1fr;
+        gap: 15px;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .page-container {
+        padding: 18px 12px 30px;
+    }
+
+    .page-title {
+        font-size: 20px;
+        line-height: 1.4;
+        margin-bottom: 20px;
+    }
+
+    .form-box {
+        padding: 20px 15px;
+    }
+
+    .form-row {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .form-control {
+        min-height: 44px;
+        font-size: 14px;
+    }
+
+    textarea.form-control {
+        min-height: 100px;
+    }
+
+    .file-input {
+        min-height: 44px;
+        font-size: 13px;
+    }
+
+    .button-row {
+        display: block;
+        margin-top: 25px;
+    }
+
+    .button-spacer {
+        display: none;
+    }
+
+    .submit-btn {
+        width: 100%;
+        min-height: 45px;
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 380px) {
+
+    .page-container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .form-box {
+        padding: 18px 12px;
+    }
+
+    .page-title {
+        font-size: 18px;
+    }
+
+}
+
+/* mobile number */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #222;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 25px 40px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+.form-box {
+    width: 100%;
+    border: 1px solid #d7d7d7;
+    border-radius: 4px;
+    padding: 30px 35px;
+    background-color: #fff;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.form-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
 
 .form-control {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 13px;
 
-    width: 70%;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
 
-    max-width: 600px;
-
-    height: 32px;
-
-    border: 1px solid #d3d3d3;
-
-    border-radius: 5px;
-
-    padding: 5px;
+    background-color: #fff;
+    color: #333;
 
     font-size: 14px;
 
     outline: none;
 
-    background: #fff;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
 }
-
-
-/* =========================================
-   FOCUS
-========================================= */
 
 .form-control:focus {
+    border-color: #1a73e8;
 
-    border-color: #777;
-
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        0 0 0 2px rgba(26, 115, 232, 0.08);
 }
 
-
-/* =========================================
-   READ ONLY
-========================================= */
-
 .readonly {
-
-    background: #d3d3d3;
-
-    color: #333;
-
+    background-color: #f5f5f5;
+    color: #555;
     cursor: not-allowed;
 }
 
-
-/* =========================================
-   SELECT
-========================================= */
-
 select.form-control {
-
-    background: #fff;
-
     cursor: pointer;
 }
-
-
-/* =========================================
-   TEXTAREA
-========================================= */
 
 textarea.form-control {
-
-    height: 90px;
-
+    min-height: 90px;
     resize: vertical;
-
-    padding: 8px;
-
-    line-height: 1.4;
 }
-
-
-/* =========================================
-   FILE INPUT
-========================================= */
-
-.file-input {
-
-    width: auto;
-
-    height: auto;
-
-    border: none;
-
-    border-radius: 0;
-
-    padding: 0;
-
-    background: transparent;
-
-    font-size: 14px;
-
-    cursor: pointer;
-}
-
-
-/* =========================================
-   NEW INFO CONTAINER
-========================================= */
 
 .new-info-container {
-
     width: 100%;
 }
 
-
-/* =========================================
-   ERROR MESSAGE
-========================================= */
+.new-info-container .form-control {
+    display: block;
+}
 
 .error {
-
     display: none;
 
-    color: #d00000;
+    margin-top: 6px;
 
-    font-size: 12px;
+    font-size: 13px;
 
-    margin-top: 5px;
+    color: #dc3545;
+}
+
+.error.show {
+    display: block;
 }
 
 
 /* =========================================
-   BUTTON ROW
+   ATTACHMENT
+========================================= */
+
+.attachment-container {
+    width: 100%;
+}
+
+.file-input {
+    width: 100%;
+
+    min-height: 42px;
+
+    padding: 8px 10px;
+
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+
+    background-color: #fff;
+
+    font-size: 14px;
+}
+
+.file-info {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   BUTTON
 ========================================= */
 
 .button-row {
-
-    padding: 12px 0 32px;
+    margin-top: 30px;
+    margin-bottom: 0;
 }
-
-
-/* =========================================
-   BUTTON SPACER
-========================================= */
 
 .button-spacer {
-
-    min-height: 1px;
+    width: 100%;
 }
 
-
-/* =========================================
-   SUBMIT BUTTON
-========================================= */
-
 .submit-btn {
+    width: 130px;
 
-    background: #51b957;
-
-    color: #ffffff;
+    min-height: 42px;
 
     border: none;
-
     border-radius: 4px;
 
-    padding: 8px 14px;
+    background-color: #0d6efd;
 
-    font-size: 14px;
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 600;
 
     cursor: pointer;
 
-    transition: background 0.2s ease;
+    transition:
+        background-color 0.2s;
 }
-
-
-/* =========================================
-   BUTTON HOVER
-========================================= */
 
 .submit-btn:hover {
-
-    background: #3fa645;
-}
-
-
-/* =========================================
-   BUTTON ACTIVE
-========================================= */
-
-.submit-btn:active {
-
-    transform: translateY(1px);
+    background-color: #0b5ed7;
 }
 
 
@@ -305,12 +446,13 @@ textarea.form-control {
 ========================================= */
 
 .bottom-line {
+    width: 100%;
 
-    height: 15px;
+    height: 1px;
 
-    border: 1px solid #ddd;
+    background-color: #ddd;
 
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
 
@@ -318,26 +460,26 @@ textarea.form-control {
    TABLET
 ========================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 
     .page-container {
-
-        width: 94%;
-
+        padding: 25px 18px 35px;
     }
 
+    .page-title {
+        font-size: 23px;
+
+        margin-bottom: 25px;
+    }
+
+    .form-box {
+        padding: 25px 22px;
+    }
 
     .form-row {
+        grid-template-columns: 160px 1fr;
 
-        grid-template-columns: 190px 1fr;
-
-    }
-
-
-    .form-control {
-
-        width: 85%;
-
+        gap: 15px;
     }
 
 }
@@ -347,188 +489,68 @@ textarea.form-control {
    MOBILE
 ========================================= */
 
-@media (max-width: 768px) {
-
-
-    /* BODY */
-
-    body {
-
-        background: #5d0b68;
-
-    }
-
-
-    /* PAGE */
+@media (max-width: 600px) {
 
     .page-container {
-
-        width: calc(100% - 20px);
-
-        margin: 15px auto;
-
-        padding: 20px 10px 25px;
-
-        min-height: auto;
-
+        padding: 18px 12px 30px;
     }
-
-
-    /* TITLE */
 
     .page-title {
+        font-size: 20px;
 
-        font-size: 22px;
+        line-height: 1.4;
 
-        line-height: 1.3;
-
-        margin: 8px 0 20px;
-
+        margin-bottom: 20px;
     }
-
-
-    /* FORM */
 
     .form-box {
-
-        padding: 10px;
-
+        padding: 20px 15px;
     }
-
-
-    /* ROW */
 
     .form-row {
-
         display: block;
 
-        min-height: auto;
-
-        margin-bottom: 16px;
-
+        margin-bottom: 20px;
     }
-
-
-    /* LABEL */
 
     .form-label {
-
         display: block;
 
-        padding: 5px 0 7px;
+        margin-bottom: 8px;
 
         font-size: 14px;
-
-        font-weight: 500;
-
     }
-
-
-    /* INPUT */
 
     .form-control {
-
-        display: block;
-
-        width: 100%;
-
-        max-width: 100%;
-
-        height: 42px;
+        min-height: 44px;
 
         font-size: 14px;
-
     }
-
-
-    /* SELECT */
-
-    select.form-control {
-
-        height: 42px;
-
-    }
-
-
-    /* TEXTAREA */
 
     textarea.form-control {
-
-        height: 110px;
-
+        min-height: 100px;
     }
-
-
-    /* FILE */
 
     .file-input {
-
-        width: 100%;
-
-        height: auto;
+        min-height: 44px;
 
         font-size: 13px;
-
     }
-
-
-    /* NEW INFO */
-
-    .new-info-container {
-
-        width: 100%;
-
-    }
-
-
-    /* ERROR */
-
-    .error {
-
-        font-size: 12px;
-
-        margin-top: 5px;
-
-    }
-
-
-    /* BUTTON */
 
     .button-row {
-
         display: block;
 
-        padding-top: 5px;
-
-        padding-bottom: 15px;
-
+        margin-top: 25px;
     }
-
 
     .button-spacer {
-
         display: none;
-
     }
-
 
     .submit-btn {
-
         width: 100%;
 
-        height: 42px;
-
-        font-size: 15px;
-
-    }
-
-
-    /* BOTTOM LINE */
-
-    .bottom-line {
-
-        margin-top: 10px;
-
+        min-height: 45px;
     }
 
 }
@@ -538,68 +560,19 @@ textarea.form-control {
    SMALL MOBILE
 ========================================= */
 
-@media (max-width: 400px) {
-
+@media (max-width: 380px) {
 
     .page-container {
-
-        width: calc(100% - 10px);
-
-        padding: 16px 8px;
-
+        padding-left: 8px;
+        padding-right: 8px;
     }
-
-
-    .page-title {
-
-        font-size: 19px;
-
-    }
-
 
     .form-box {
-
-        padding: 8px;
-
+        padding: 18px 12px;
     }
 
-
-    .form-label {
-
-        font-size: 13px;
-
-    }
-
-
-    .form-control {
-
-        height: 40px;
-
-        font-size: 13px;
-
-    }
-
-
-    select.form-control {
-
-        height: 40px;
-
-    }
-
-
-    textarea.form-control {
-
-        height: 100px;
-
-    }
-
-
-    .submit-btn {
-
-        height: 40px;
-
-        font-size: 14px;
-
+    .page-title {
+        font-size: 18px;
     }
 
 }
