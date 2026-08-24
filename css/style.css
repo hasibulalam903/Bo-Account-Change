@@ -29,22 +29,22 @@ body {
 
 
 /* =========================================================
-   MAIN PAGE
+   MAIN PAGE CONTAINER
 ========================================================= */
 
 .page-container {
-    width: calc(100% - 55px);
-    max-width: 1300px;
+    width: calc(100% - 54px);
+    max-width: none;
 
-    margin: 40px auto 25px;
+    margin: 25px auto 25px;
 
     background: #ffffff;
 
-    padding: 30px 14px 35px;
+    min-height: 650px;
+
+    padding: 35px 14px 40px;
 
     border-radius: 3px;
-
-    min-height: 570px;
 }
 
 
@@ -64,7 +64,7 @@ body {
 
     color: #172b3d;
 
-    margin: 10px 0 10px;
+    margin: 10px 0 22px;
 
     text-transform: uppercase;
 }
@@ -81,7 +81,7 @@ body {
 
     background: #ffffff;
 
-    padding: 8px 10px 20px;
+    padding: 9px 7px 20px;
 }
 
 
@@ -94,11 +94,11 @@ body {
 
     display: grid;
 
-    grid-template-columns: 250px 593px;
+    grid-template-columns: 235px minmax(0, 1fr);
+
+    column-gap: 8px;
 
     align-items: center;
-
-    column-gap: 23px;
 
     min-height: 40px;
 
@@ -107,11 +107,13 @@ body {
 
 
 /* =========================================================
-   LABEL
+   FORM LABEL
 ========================================================= */
 
 .form-label {
     display: block;
+
+    width: 100%;
 
     padding: 5px 0;
 
@@ -131,22 +133,22 @@ body {
 .form-control {
     display: block;
 
-    width: 593px;
+    width: 606px;
     max-width: 100%;
 
     height: 32px;
     min-height: 32px;
 
-    padding: 5px 7px;
+    padding: 5px 8px;
 
     border: 1px solid #cfcfcf;
-
     border-radius: 4px;
 
     background: #ffffff;
 
     color: #333;
 
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
 
     outline: none;
@@ -158,7 +160,7 @@ body {
 
 
 /* =========================================================
-   INPUT FOCUS
+   FORM CONTROL FOCUS
 ========================================================= */
 
 .form-control:focus {
@@ -196,8 +198,9 @@ select.form-control {
 ========================================================= */
 
 textarea.form-control {
-    min-height: 90px;
+    width: 606px;
 
+    min-height: 90px;
     height: 90px;
 
     resize: vertical;
@@ -215,7 +218,7 @@ textarea.form-control {
 }
 
 .new-info-container .form-control {
-    width: 593px;
+    width: 606px;
     max-width: 100%;
 }
 
@@ -246,7 +249,7 @@ textarea.form-control {
 ========================================================= */
 
 .file-input {
-    width: 593px;
+    width: 606px;
     max-width: 100%;
 
     min-height: 32px;
@@ -255,7 +258,6 @@ textarea.form-control {
     padding: 4px 7px;
 
     border: 1px solid #cfcfcf;
-
     border-radius: 4px;
 
     background: #ffffff;
@@ -272,14 +274,12 @@ textarea.form-control {
 
 .bank-info {
     width: 100%;
-
-    max-width: 866px;
+    max-width: 100%;
 
     margin: 5px 0 20px;
 
     border: 1px solid #d7d7d7;
-
-    border-radius: 3px;
+    border-radius: 0;
 
     background: #ffffff;
 
@@ -296,7 +296,7 @@ textarea.form-control {
 
     display: grid;
 
-    grid-template-columns: 180px minmax(0, 1fr);
+    grid-template-columns: 175px minmax(0, 1fr);
 
     align-items: stretch;
 
@@ -325,15 +325,14 @@ textarea.form-control {
 
     padding: 8px 12px;
 
-    background: #fafafa;
+    background: #ffffff;
 
     border-right: 1px solid #d7d7d7;
 
     color: #172b42;
 
     font-size: 13px;
-
-    font-weight: 600;
+    font-weight: 400;
 
     line-height: 1.4;
 }
@@ -363,15 +362,15 @@ textarea.form-control {
 .bank-control {
     display: block;
 
-    width: 593px;
+    width: 606px;
     max-width: 100%;
 
     height: 32px;
+    min-height: 32px;
 
     padding: 5px 8px;
 
     border: 1px solid #cfcfcf;
-
     border-radius: 4px;
 
     background: #ffffff;
@@ -454,11 +453,13 @@ textarea.form-control {
 
     border: 1px solid #d5d5d5;
 
-    padding: 8px 14px;
+    padding: 8px 7px 10px;
 
     background: #ffffff;
 
     margin-bottom: 15px;
+
+    overflow: hidden;
 }
 
 
@@ -469,24 +470,22 @@ textarea.form-control {
 .contact-address-box textarea {
     display: block;
 
-    width: 100%;
+    width: 596px;
+    max-width: 100%;
 
-    min-height: 70px;
-
-    height: 70px;
+    min-height: 54px;
+    height: 54px;
 
     box-sizing: border-box;
 
     padding: 9px 12px;
 
     border: 1px solid #cfcfcf;
-
     border-radius: 4px;
 
     background: #ffffff;
 
     font-family: Arial, sans-serif;
-
     font-size: 13px;
 
     color: #333;
@@ -497,10 +496,18 @@ textarea.form-control {
 }
 
 
+/* =========================================================
+   CONTACT ADDRESS PLACEHOLDER
+========================================================= */
+
 .contact-address-box textarea::placeholder {
     color: #999;
 }
 
+
+/* =========================================================
+   CONTACT ADDRESS FOCUS
+========================================================= */
 
 .contact-address-box textarea:focus {
     border-color: #999;
@@ -512,13 +519,13 @@ textarea.form-control {
 ========================================================= */
 
 .address-row {
+    width: 100%;
+
     display: grid;
 
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+    grid-template-columns: 578px 126px;
 
-    gap: 14px;
+    column-gap: 15px;
 
     padding: 8px 0;
 
@@ -540,20 +547,18 @@ textarea.form-control {
 .address-row input {
     width: 100%;
 
-    height: 36px;
+    height: 31px;
 
     box-sizing: border-box;
 
     padding: 6px 10px;
 
     border: 1px solid #cfcfcf;
-
     border-radius: 4px;
 
     background-color: #ffffff;
 
     font-family: Arial, sans-serif;
-
     font-size: 13px;
 
     color: #333;
@@ -585,17 +590,22 @@ textarea.form-control {
 
 
 /* =========================================================
-   ADDRESS READONLY INPUT
+   ADDRESS READONLY
 ========================================================= */
-
-.address-row input::placeholder {
-    color: #999;
-}
 
 .address-row input[readonly] {
     background-color: #f8f8f8;
 
     cursor: default;
+}
+
+
+/* =========================================================
+   ADDRESS PLACEHOLDER
+========================================================= */
+
+.address-row input::placeholder {
+    color: #999;
 }
 
 
@@ -644,13 +654,11 @@ textarea.form-control {
     width: 63px;
 
     height: 30px;
-
     min-height: 30px;
 
     padding: 4px 10px;
 
     border: none;
-
     border-radius: 3px;
 
     background: #51b957;
@@ -658,7 +666,6 @@ textarea.form-control {
     color: #ffffff;
 
     font-size: 13px;
-
     font-weight: 400;
 
     cursor: pointer;
@@ -668,11 +675,9 @@ textarea.form-control {
         transform 0.1s ease;
 }
 
-
 .submit-btn:hover {
     background: #3fa645;
 }
-
 
 .submit-btn:active {
     transform: translateY(1px);
@@ -696,73 +701,64 @@ textarea.form-control {
 
 /* =========================================================
    TABLET
-   769px - 1000px
+   769px - 1100px
 ========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
 
     .page-container {
         width: calc(100% - 30px);
 
-        margin-top: 25px;
+        margin: 25px auto;
 
-        padding: 25px 15px 30px;
+        padding: 28px 12px 35px;
     }
-
 
     .page-title {
-        font-size: 25px;
+        font-size: 26px;
 
-        margin-bottom: 12px;
+        margin-bottom: 18px;
     }
-
 
     .form-row {
         grid-template-columns:
-            180px minmax(0, 593px);
+            160px
+            minmax(0, 1fr);
 
-        column-gap: 15px;
+        column-gap: 10px;
     }
 
-
-    .form-control {
-        width: 100%;
-
-        max-width: 593px;
-    }
-
-
+    .form-control,
     .new-info-container .form-control {
         width: 100%;
-
-        max-width: 593px;
+        max-width: 606px;
     }
 
+    textarea.form-control {
+        width: 100%;
+        max-width: 606px;
+    }
 
     .file-input {
         width: 100%;
-
-        max-width: 593px;
+        max-width: 606px;
     }
-
-
-    .bank-info {
-        max-width: 100%;
-    }
-
-
-    .bank-row {
-        grid-template-columns:
-            160px minmax(0, 1fr);
-    }
-
 
     .bank-control {
         width: 100%;
-
-        max-width: 593px;
+        max-width: 606px;
     }
 
+    .address-row {
+        grid-template-columns:
+            minmax(0, 1fr)
+            126px;
+    }
+
+    .contact-address-box textarea {
+        width: 100%;
+        max-width: 606px;
+    }
 }
 
 
@@ -773,44 +769,66 @@ textarea.form-control {
 
 @media (max-width: 768px) {
 
+    html,
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
     body {
         background: #5d0b68;
     }
 
 
+    /* =============================================
+       MAIN CONTAINER
+    ============================================= */
+
     .page-container {
-        width: calc(100% - 20px);
+        width: calc(100% - 16px);
 
-        margin: 15px auto;
+        margin: 8px auto;
 
-        padding: 20px 10px 25px;
-
-        border-radius: 4px;
+        padding: 18px 8px 25px;
 
         min-height: auto;
+
+        border-radius: 4px;
     }
 
+
+    /* =============================================
+       TITLE
+    ============================================= */
 
     .page-title {
         text-align: left;
 
-        font-size: 22px;
+        font-size: 23px;
 
-        line-height: 1.3;
+        line-height: 1.25;
 
-        margin: 5px 0 20px;
+        margin: 5px 0 18px;
 
         word-break: normal;
     }
 
 
+    /* =============================================
+       FORM BOX
+    ============================================= */
+
     .form-box {
-        padding: 10px;
+        width: 100%;
+
+        padding: 9px;
+
+        overflow: hidden;
     }
 
 
     /* =============================================
-       NORMAL FORM
+       NORMAL FORM ROW
     ============================================= */
 
     .form-row {
@@ -820,7 +838,7 @@ textarea.form-control {
 
         min-height: auto;
 
-        margin-bottom: 17px;
+        margin-bottom: 16px;
     }
 
 
@@ -834,42 +852,59 @@ textarea.form-control {
         font-size: 14px;
 
         font-weight: 600;
+
+        line-height: 1.3;
     }
 
 
-    .form-control {
-        width: 100%;
+    /* =============================================
+       NORMAL INPUTS
+    ============================================= */
+
+    .form-control,
+    .new-info-container .form-control {
+        display: block;
+
+        width: 100% !important;
 
         max-width: 100%;
 
+        height: 44px;
+
         min-height: 44px;
 
-        height: 44px;
+        padding: 8px 10px;
 
         font-size: 14px;
     }
 
-
     select.form-control {
         height: 44px;
+
+        min-height: 44px;
     }
 
-
     textarea.form-control {
+        width: 100% !important;
+
         height: 110px;
 
         min-height: 110px;
     }
 
 
+    /* =============================================
+       FILE INPUT
+    ============================================= */
+
     .file-input {
-        width: 100%;
+        width: 100% !important;
 
         max-width: 100%;
 
-        min-height: 44px;
-
         height: auto;
+
+        min-height: 44px;
 
         font-size: 13px;
     }
@@ -882,11 +917,12 @@ textarea.form-control {
     .bank-info {
         width: 100%;
 
+        max-width: 100%;
+
         margin: 5px 0 18px;
 
-        border-radius: 4px;
+        overflow: hidden;
     }
-
 
     .bank-row {
         display: block;
@@ -900,7 +936,6 @@ textarea.form-control {
         border-bottom: 1px solid #d7d7d7;
     }
 
-
     .bank-label {
         display: block;
 
@@ -910,7 +945,7 @@ textarea.form-control {
 
         padding: 0 0 7px;
 
-        background: transparent;
+        background: #ffffff;
 
         border: none;
 
@@ -918,9 +953,8 @@ textarea.form-control {
 
         font-weight: 600;
 
-        color: #172b42;
+        line-height: 1.3;
     }
-
 
     .bank-field {
         display: block;
@@ -932,17 +966,20 @@ textarea.form-control {
         padding: 0;
     }
 
-
     .bank-control {
         display: block;
 
-        width: 100%;
+        width: 100% !important;
 
         max-width: 100%;
 
         min-width: 0;
 
         height: 44px;
+
+        min-height: 44px;
+
+        padding: 8px 10px;
 
         font-size: 14px;
     }
@@ -955,38 +992,84 @@ textarea.form-control {
     .contact-address-box {
         width: 100%;
 
-        padding: 8px 10px;
+        max-width: 100%;
+
+        padding: 8px;
+
+        margin-bottom: 15px;
+
+        overflow: hidden;
     }
 
+
+    /* =============================================
+       CONTACT ADDRESS TEXTAREA
+    ============================================= */
 
     .contact-address-box textarea {
-        min-height: 90px;
+        display: block;
 
-        height: 90px;
+        width: 100% !important;
+
+        max-width: 100%;
+
+        height: 95px;
+
+        min-height: 95px;
+
+        padding: 9px 10px;
 
         font-size: 14px;
+
+        resize: vertical;
     }
 
 
+    /* =============================================
+       ADDRESS ROW
+
+       Desktop:
+       [Large] [Small]
+
+       Mobile:
+       [Full width]
+       [Full width]
+    ============================================= */
+
     .address-row {
-        grid-template-columns: 1fr;
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
 
         gap: 8px;
 
         padding: 8px 0;
-    }
 
+        border-bottom: 1px solid #ddd;
+    }
 
     .address-row select,
     .address-row input {
+        display: block;
+
+        width: 100% !important;
+
+        max-width: 100%;
+
         height: 44px;
+
+        min-height: 44px;
+
+        padding: 8px 10px;
 
         font-size: 14px;
     }
 
 
     /* =============================================
-       SUBMIT
+       BUTTON
     ============================================= */
 
     .button-row {
@@ -994,27 +1077,27 @@ textarea.form-control {
 
         width: 100%;
 
-        margin-top: 20px;
+        margin-top: 18px;
 
-        padding: 0 0 10px;
+        margin-bottom: 0;
+
+        padding-bottom: 10px;
 
         min-height: auto;
     }
 
-
     .button-spacer {
         display: none;
     }
-
 
     .submit-btn {
         display: block;
 
         width: 100%;
 
-        min-height: 44px;
-
         height: 44px;
+
+        min-height: 44px;
 
         font-size: 15px;
     }
@@ -1025,9 +1108,10 @@ textarea.form-control {
     ============================================= */
 
     .bottom-line {
+        width: 100%;
+
         margin-top: 10px;
     }
-
 }
 
 
@@ -1039,39 +1123,40 @@ textarea.form-control {
 @media (max-width: 480px) {
 
     .page-container {
-        width: calc(100% - 12px);
+        width: calc(100% - 10px);
 
-        margin: 8px auto;
+        margin: 5px auto;
 
-        padding: 15px 7px 20px;
+        padding: 14px 6px 20px;
     }
 
 
     .page-title {
-        font-size: 19px;
+        font-size: 20px;
 
-        margin-bottom: 17px;
+        margin: 4px 0 16px;
     }
 
 
     .form-box {
-        padding: 8px;
+        padding: 7px;
     }
 
 
     .form-row {
-        margin-bottom: 15px;
+        margin-bottom: 14px;
     }
 
 
     .form-label {
         font-size: 13px;
 
-        padding-bottom: 6px;
+        padding: 3px 0 6px;
     }
 
 
-    .form-control {
+    .form-control,
+    .new-info-container .form-control {
         height: 42px;
 
         min-height: 42px;
@@ -1103,12 +1188,13 @@ textarea.form-control {
     }
 
 
-    /* BANK */
+    /* =============================================
+       BANK
+    ============================================= */
 
     .bank-row {
         padding: 9px;
     }
-
 
     .bank-label {
         font-size: 12px;
@@ -1116,88 +1202,83 @@ textarea.form-control {
         padding-bottom: 6px;
     }
 
-
     .bank-control {
         height: 42px;
 
-        font-size: 13px;
+        min-height: 42px;
 
         padding: 7px 8px;
+
+        font-size: 13px;
     }
 
 
-    /* CONTACT ADDRESS */
+    /* =============================================
+       CONTACT ADDRESS
+    ============================================= */
 
     .contact-address-box {
-        width: 100%;
-
         padding: 6px;
     }
 
-
     .contact-address-box textarea {
-        min-height: 100px;
-
         height: 100px;
 
-        font-size: 14px;
-    }
+        min-height: 100px;
 
+        font-size: 13px;
+    }
 
     .address-row {
-        display: flex;
+        gap: 7px;
 
-        flex-direction: column;
-
-        gap: 8px;
-
-        padding: 8px 0;
+        padding: 7px 0;
     }
-
 
     .address-row select,
     .address-row input {
-        width: 100%;
-
         height: 42px;
 
-        font-size: 14px;
+        min-height: 42px;
+
+        font-size: 13px;
     }
 
 
-    /* SUBMIT */
+    /* =============================================
+       SUBMIT
+    ============================================= */
 
     .submit-btn {
-        width: 100%;
-
         height: 42px;
 
         min-height: 42px;
 
         font-size: 14px;
     }
-
 }
 
 
 /* =========================================================
-   VERY SMALL MOBILE
+   VERY SMALL PHONE
    360px AND BELOW
 ========================================================= */
 
 @media (max-width: 360px) {
 
     .page-container {
-        width: calc(100% - 8px);
+        width: calc(100% - 6px);
 
-        margin: 5px auto;
+        margin: 3px auto;
 
-        padding: 12px 5px 18px;
+        padding: 11px 5px 18px;
     }
 
 
     .page-title {
-        font-size: 17px;
+        font-size: 18px;
+
+        margin-bottom: 14px;
     }
 
 
@@ -1206,12 +1287,20 @@ textarea.form-control {
     }
 
 
-    .form-control {
+    .form-label {
         font-size: 12px;
+    }
 
+
+    .form-control,
+    .new-info-container .form-control {
         height: 40px;
 
         min-height: 40px;
+
+        padding: 6px 8px;
+
+        font-size: 12px;
     }
 
 
@@ -1220,20 +1309,70 @@ textarea.form-control {
     }
 
 
+    textarea.form-control {
+        height: 95px;
+
+        min-height: 95px;
+    }
+
+
+    /* =============================================
+       BANK
+    ============================================= */
+
+    .bank-row {
+        padding: 8px;
+    }
+
+    .bank-label {
+        font-size: 12px;
+    }
+
     .bank-control {
         height: 40px;
+
+        min-height: 40px;
 
         font-size: 12px;
     }
 
 
+    /* =============================================
+       CONTACT ADDRESS
+    ============================================= */
+
+    .contact-address-box {
+        padding: 5px;
+    }
+
+    .contact-address-box textarea {
+        height: 95px;
+
+        min-height: 95px;
+
+        font-size: 12px;
+    }
+
+
+    .address-row {
+        gap: 6px;
+
+        padding: 6px 0;
+    }
+
     .address-row select,
     .address-row input {
         height: 40px;
 
-        font-size: 13px;
+        min-height: 40px;
+
+        font-size: 12px;
     }
 
+
+    /* =============================================
+       SUBMIT
+    ============================================= */
 
     .submit-btn {
         height: 40px;
@@ -1242,5 +1381,51 @@ textarea.form-control {
 
         font-size: 13px;
     }
+}
 
+
+/* =========================================================
+   LARGE DESKTOP
+   1400px+
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .page-container {
+        width: calc(100% - 54px);
+
+        max-width: none;
+    }
+
+    .form-row {
+        grid-template-columns:
+            235px
+            minmax(0, 1fr);
+
+        column-gap: 8px;
+    }
+
+    .form-control {
+        width: 606px;
+    }
+
+    .new-info-container .form-control {
+        width: 606px;
+    }
+
+    .bank-control {
+        width: 606px;
+    }
+
+    .contact-address-box textarea {
+        width: 596px;
+    }
+
+    .address-row {
+        grid-template-columns:
+            578px
+            126px;
+
+        column-gap: 15px;
+    }
 }
