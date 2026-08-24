@@ -1,724 +1,176 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #222;
-}
-
-.page-container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 25px 40px;
-}
-
-.page-title {
-    text-align: center;
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: #222;
-}
-
-.form-box {
-    width: 100%;
-    border: 1px solid #d7d7d7;
-    border-radius: 4px;
-    padding: 30px 35px;
-    background-color: #fff;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 20px;
-    align-items: center;
-    margin-bottom: 22px;
-}
-
-.form-label {
-    font-size: 15px;
-    font-weight: 600;
-    color: #333;
-}
-
-.form-control {
-    width: 100%;
-    min-height: 42px;
-    padding: 10px 13px;
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #333;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.form-control:focus {
-    border-color: #1a73e8;
-    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.08);
-}
-
-.readonly {
-    background-color: #f5f5f5;
-    color: #555;
-    cursor: not-allowed;
-}
-
-select.form-control {
-    cursor: pointer;
-}
-
-textarea.form-control {
-    min-height: 90px;
-    resize: vertical;
-}
-
-.new-info-container {
-    width: 100%;
-}
-
-.new-info-container .form-control {
-    display: block;
-}
-
-.error {
-    display: none;
-    margin-top: 6px;
-    font-size: 13px;
-    color: #dc3545;
-}
-
-.error.show {
-    display: block;
-}
-
-.file-input {
-    width: 100%;
-    min-height: 42px;
-    padding: 8px 10px;
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-    background-color: #fff;
-    font-size: 14px;
-}
-
-.button-row {
-    margin-top: 30px;
-    margin-bottom: 0;
-}
-
-.button-spacer {
-    width: 100%;
-}
-
-.submit-btn {
-    width: 130px;
-    min-height: 42px;
-    border: none;
-    border-radius: 4px;
-    background-color: #0d6efd;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.submit-btn:hover {
-    background-color: #0b5ed7;
-}
-
-.bottom-line {
-    width: 100%;
-    height: 1px;
-    background-color: #ddd;
-    margin-top: 30px;
-}
-
-
-/* ==========================================
-   TABLET
-========================================== */
-
-@media (max-width: 768px) {
-
-    .page-container {
-        padding: 25px 18px 35px;
-    }
-
-    .page-title {
-        font-size: 23px;
-        margin-bottom: 25px;
-    }
-
-    .form-box {
-        padding: 25px 22px;
-    }
-
-    .form-row {
-        grid-template-columns: 160px 1fr;
-        gap: 15px;
-    }
-
-}
-
-
-/* ==========================================
-   MOBILE
-========================================== */
-
-@media (max-width: 600px) {
-
-    .page-container {
-        padding: 18px 12px 30px;
-    }
-
-    .page-title {
-        font-size: 20px;
-        line-height: 1.4;
-        margin-bottom: 20px;
-    }
-
-    .form-box {
-        padding: 20px 15px;
-    }
-
-    .form-row {
-        display: block;
-        margin-bottom: 20px;
-    }
-
-    .form-label {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 14px;
-    }
-
-    .form-control {
-        min-height: 44px;
-        font-size: 14px;
-    }
-
-    textarea.form-control {
-        min-height: 100px;
-    }
-
-    .file-input {
-        min-height: 44px;
-        font-size: 13px;
-    }
-
-    .button-row {
-        display: block;
-        margin-top: 25px;
-    }
-
-    .button-spacer {
-        display: none;
-    }
-
-    .submit-btn {
-        width: 100%;
-        min-height: 45px;
-    }
-
-}
-
-
-/* ==========================================
-   SMALL MOBILE
-========================================== */
-
-@media (max-width: 380px) {
-
-    .page-container {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-
-    .form-box {
-        padding: 18px 12px;
-    }
-
-    .page-title {
-        font-size: 18px;
-    }
-
-}
-
-/* mobile number */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #222;
-}
-
-.page-container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 25px 40px;
-}
-
-.page-title {
-    text-align: center;
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: #222;
-}
-
-.form-box {
-    width: 100%;
-    border: 1px solid #d7d7d7;
-    border-radius: 4px;
-    padding: 30px 35px;
-    background-color: #fff;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 20px;
-    align-items: center;
-    margin-bottom: 22px;
-}
-
-.form-label {
-    font-size: 15px;
-    font-weight: 600;
-    color: #333;
-}
-
-.form-control {
-    width: 100%;
-    min-height: 42px;
-    padding: 10px 13px;
-
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-
-    background-color: #fff;
-    color: #333;
-
-    font-size: 14px;
-
-    outline: none;
-
-    transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
-}
-
-.form-control:focus {
-    border-color: #1a73e8;
-
-    box-shadow:
-        0 0 0 2px rgba(26, 115, 232, 0.08);
-}
-
-.readonly {
-    background-color: #f5f5f5;
-    color: #555;
-    cursor: not-allowed;
-}
-
-select.form-control {
-    cursor: pointer;
-}
-
-textarea.form-control {
-    min-height: 90px;
-    resize: vertical;
-}
-
-.new-info-container {
-    width: 100%;
-}
-
-.new-info-container .form-control {
-    display: block;
-}
-
-.error {
-    display: none;
-
-    margin-top: 6px;
-
-    font-size: 13px;
-
-    color: #dc3545;
-}
-
-.error.show {
-    display: block;
-}
-
-
-/* =========================================
-   ATTACHMENT
-========================================= */
-
-.attachment-container {
-    width: 100%;
-}
-
-.file-input {
-    width: 100%;
-
-    min-height: 42px;
-
-    padding: 8px 10px;
-
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-
-    background-color: #fff;
-
-    font-size: 14px;
-}
-
-.file-info {
-    display: block;
-
-    margin-top: 6px;
-
-    color: #777;
-
-    font-size: 12px;
-}
-
-
-/* =========================================
-   BUTTON
-========================================= */
-
-.button-row {
-    margin-top: 30px;
-    margin-bottom: 0;
-}
-
-.button-spacer {
-    width: 100%;
-}
-
-.submit-btn {
-    width: 130px;
-
-    min-height: 42px;
-
-    border: none;
-    border-radius: 4px;
-
-    background-color: #0d6efd;
-
-    color: #fff;
-
-    font-size: 15px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-        background-color 0.2s;
-}
-
-.submit-btn:hover {
-    background-color: #0b5ed7;
-}
-
-
-/* =========================================
-   BOTTOM LINE
-========================================= */
-
-.bottom-line {
-    width: 100%;
-
-    height: 1px;
-
-    background-color: #ddd;
-
-    margin-top: 30px;
-}
-
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media (max-width: 768px) {
-
-    .page-container {
-        padding: 25px 18px 35px;
-    }
-
-    .page-title {
-        font-size: 23px;
-
-        margin-bottom: 25px;
-    }
-
-    .form-box {
-        padding: 25px 22px;
-    }
-
-    .form-row {
-        grid-template-columns: 160px 1fr;
-
-        gap: 15px;
-    }
-
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-    .page-container {
-        padding: 18px 12px 30px;
-    }
-
-    .page-title {
-        font-size: 20px;
-
-        line-height: 1.4;
-
-        margin-bottom: 20px;
-    }
-
-    .form-box {
-        padding: 20px 15px;
-    }
-
-    .form-row {
-        display: block;
-
-        margin-bottom: 20px;
-    }
-
-    .form-label {
-        display: block;
-
-        margin-bottom: 8px;
-
-        font-size: 14px;
-    }
-
-    .form-control {
-        min-height: 44px;
-
-        font-size: 14px;
-    }
-
-    textarea.form-control {
-        min-height: 100px;
-    }
-
-    .file-input {
-        min-height: 44px;
-
-        font-size: 13px;
-    }
-
-    .button-row {
-        display: block;
-
-        margin-top: 25px;
-    }
-
-    .button-spacer {
-        display: none;
-    }
-
-    .submit-btn {
-        width: 100%;
-
-        min-height: 45px;
-    }
-
-}
-
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
-@media (max-width: 380px) {
-
-    .page-container {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-
-    .form-box {
-        padding: 18px 12px;
-    }
-
-    .page-title {
-        font-size: 18px;
-    }
-
-}
-
-
-/*bank informartion start*/
-/* =========================================
+/* =========================================================
    GLOBAL RESET
-========================================= */
+========================================================= */
 
 * {
     box-sizing: border-box;
-}
-
-html,
-body {
     margin: 0;
     padding: 0;
+}
+
+html {
     width: 100%;
+    min-height: 100%;
 }
 
 body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+
     font-family: Arial, Helvetica, sans-serif;
+
     background: #5d0b68;
     color: #222;
+
+    overflow-x: hidden;
 }
 
 
-/* =========================================
+/* =========================================================
    MAIN PAGE
-========================================= */
+========================================================= */
 
 .page-container {
-    width: 95%;
+    width: calc(100% - 40px);
     max-width: 1300px;
 
-    margin: 45px auto 20px;
+    margin: 40px auto 25px;
 
     background: #ffffff;
 
-    padding: 35px 15px 30px;
+    padding: 30px 18px 35px;
 
-    border-radius: 3px;
+    border-radius: 4px;
 
     min-height: 570px;
 }
 
 
-/* =========================================
+/* =========================================================
    PAGE TITLE
-========================================= */
+========================================================= */
 
 .page-title {
+    text-align: center;
+
     font-family: Georgia, "Times New Roman", serif;
 
     font-size: 28px;
+    font-weight: 700;
 
-    font-weight: bold;
+    line-height: 1.3;
 
     color: #172b3d;
 
-    margin: 15px 0 28px;
+    margin: 10px 0 28px;
 
     text-transform: uppercase;
 }
 
 
-/* =========================================
+/* =========================================================
    FORM BOX
-========================================= */
+========================================================= */
 
 .form-box {
+    width: 100%;
+
     border: 1px solid #d7d7d7;
 
-    padding: 0 7px 5px;
+    background: #ffffff;
+
+    padding: 8px 10px 20px;
 }
 
 
-/* =========================================
+/* =========================================================
    NORMAL FORM ROW
-========================================= */
+========================================================= */
 
 .form-row {
+    width: 100%;
+
     display: grid;
 
-    grid-template-columns: 135px 1fr;
+    grid-template-columns: 170px minmax(0, 1fr);
 
     align-items: center;
 
-    min-height: 50px;
+    column-gap: 20px;
+
+    min-height: 55px;
+
+    margin-bottom: 10px;
 }
 
 
-/* =========================================
+/* =========================================================
    LABEL
-========================================= */
+========================================================= */
 
 .form-label {
-    padding: 10px 0;
+    display: block;
+
+    padding: 8px 0;
+
+    font-size: 14px;
+    font-weight: 500;
 
     color: #222;
 
-    font-size: 14px;
+    line-height: 1.4;
 }
 
 
-/* =========================================
+/* =========================================================
    NORMAL INPUT
-========================================= */
+========================================================= */
 
 .form-control {
-    width: 70%;
+    display: block;
 
-    max-width: 675px;
+    width: 100%;
+    max-width: 700px;
 
-    height: 32px;
+    min-height: 40px;
 
-    border: 1px solid #d3d3d3;
+    padding: 8px 10px;
 
-    border-radius: 5px;
+    border: 1px solid #cfcfcf;
 
-    padding: 5px;
+    border-radius: 4px;
+
+    background: #ffffff;
+
+    color: #333;
 
     font-size: 14px;
 
     outline: none;
 
-    background: #ffffff;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
-/* =========================================
+/* =========================================================
    INPUT FOCUS
-========================================= */
+========================================================= */
 
 .form-control:focus {
     border-color: #777;
 
     box-shadow:
-        0 0 3px rgba(0, 0, 0, 0.15);
+        0 0 0 2px rgba(0, 0, 0, 0.08);
 }
 
 
-/* =========================================
+/* =========================================================
    READONLY
-========================================= */
+========================================================= */
 
 .readonly {
     background: #d3d3d3 !important;
@@ -729,68 +181,78 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    SELECT
-========================================= */
+========================================================= */
 
 select.form-control {
-    background: #ffffff;
-
     cursor: pointer;
 }
 
 
-/* =========================================
+/* =========================================================
    TEXTAREA
-========================================= */
+========================================================= */
 
 textarea.form-control {
-    height: 90px;
+    min-height: 90px;
 
     resize: vertical;
 
-    padding: 8px;
+    line-height: 1.5;
 }
 
 
-/* =========================================
+/* =========================================================
    NEW INFO
-========================================= */
+========================================================= */
 
 .new-info-container {
     width: 100%;
 }
 
+.new-info-container .form-control {
+    width: 100%;
+}
 
-/* =========================================
+
+/* =========================================================
    ERROR
-========================================= */
+========================================================= */
 
 .error {
     display: none;
+
+    margin-top: 6px;
 
     color: #d00000;
 
     font-size: 12px;
 
-    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.error.show {
+    display: block;
 }
 
 
-/* =========================================
+/* =========================================================
    FILE INPUT
-========================================= */
+========================================================= */
 
 .file-input {
-    width: auto;
+    width: 100%;
 
-    height: auto;
+    min-height: 40px;
 
-    border: none;
+    padding: 8px 10px;
 
-    padding: 0;
+    border: 1px solid #cfcfcf;
 
-    background: transparent;
+    border-radius: 4px;
+
+    background: #ffffff;
 
     font-size: 14px;
 
@@ -798,136 +260,140 @@ textarea.form-control {
 }
 
 
-/* =========================================
-   =========================================
+/* =========================================================
    BANK INFORMATION
-   =========================================
-========================================= */
+========================================================= */
 
 .bank-info {
     width: 100%;
 
     max-width: 1100px;
 
-    margin: 5px 0 15px 0;
+    margin: 5px 0 20px;
 
     border: 1px solid #d7d7d7;
 
+    border-radius: 3px;
+
     background: #ffffff;
+
+    overflow: hidden;
 }
 
 
-/* =========================================
+/* =========================================================
    BANK ROW
-========================================= */
+========================================================= */
 
 .bank-row {
+    width: 100%;
+
     display: grid;
 
-    grid-template-columns: 175px 1fr;
+    grid-template-columns: 180px minmax(0, 1fr);
 
-    align-items: center;
+    align-items: stretch;
 
-    min-height: 55px;
+    min-height: 58px;
 
     border-bottom: 1px solid #d7d7d7;
 }
-
-
-/* Last row */
 
 .bank-row:last-of-type {
     border-bottom: none;
 }
 
 
-/* =========================================
+/* =========================================================
    BANK LABEL
-========================================= */
+========================================================= */
 
 .bank-label {
-    height: 100%;
+    width: 100%;
+
+    min-height: 58px;
 
     display: flex;
 
     align-items: center;
 
-    padding: 8px 10px;
-
-    font-size: 13px;
-
-    color: #172b42;
+    padding: 10px 12px;
 
     background: #fafafa;
 
     border-right: 1px solid #d7d7d7;
+
+    color: #172b42;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    line-height: 1.4;
 }
 
 
-/* =========================================
+/* =========================================================
    BANK FIELD
-========================================= */
+========================================================= */
 
 .bank-field {
+    width: 100%;
+
+    min-width: 0;
+
     display: flex;
 
     align-items: center;
 
-    padding: 8px 10px;
-
-    width: 100%;
+    padding: 9px 12px;
 }
 
 
-/* =========================================
+/* =========================================================
    BANK CONTROL
-========================================= */
+========================================================= */
 
 .bank-control {
+    display: block;
+
     width: 100%;
+    max-width: 700px;
 
-    max-width: 650px;
+    height: 40px;
 
-    height: 34px;
+    padding: 7px 10px;
 
     border: 1px solid #cfcfcf;
 
     border-radius: 4px;
 
-    padding: 5px 8px;
-
-    font-size: 13px;
-
     background: #ffffff;
 
+    color: #333;
+
+    font-size: 14px;
+
     outline: none;
+
+    min-width: 0;
 }
 
 
-/* =========================================
+/* =========================================================
    BANK CONTROL FOCUS
-========================================= */
+========================================================= */
 
 .bank-control:focus {
     border-color: #777;
 
     box-shadow:
-        0 0 3px rgba(0, 0, 0, 0.12);
+        0 0 0 2px rgba(0, 0, 0, 0.08);
 }
 
 
-/* =========================================
-   BANK SELECT
-========================================= */
-
-select.bank-control {
-    cursor: pointer;
-}
-
-
-/* =========================================
+/* =========================================================
    BANK READONLY
-========================================= */
+========================================================= */
 
 .bank-control.readonly {
     background: #d3d3d3 !important;
@@ -938,85 +404,92 @@ select.bank-control {
 }
 
 
-/* =========================================
+/* =========================================================
    BANK ERROR
-========================================= */
+========================================================= */
 
 #bankError {
     display: none;
+
+    width: 100%;
 
     padding: 8px 10px;
 
     color: #d00000;
 
     font-size: 12px;
+
+    line-height: 1.4;
 }
 
 
-/* =========================================
+/* =========================================================
    BUTTON ROW
-========================================= */
+========================================================= */
 
 .button-row {
-    padding: 12px 0 32px;
+    margin-top: 25px;
+
+    margin-bottom: 0;
+
+    min-height: 50px;
 }
 
 
-/* =========================================
+/* =========================================================
    BUTTON SPACER
-========================================= */
+========================================================= */
 
 .button-spacer {
-    min-height: 1px;
+    width: 100%;
 }
 
 
-/* =========================================
+/* =========================================================
    SUBMIT BUTTON
-========================================= */
+========================================================= */
 
 .submit-btn {
-    background: #51b957;
+    width: 130px;
 
-    color: #ffffff;
+    min-height: 42px;
+
+    padding: 8px 15px;
 
     border: none;
 
     border-radius: 4px;
 
-    padding: 8px 14px;
+    background: #51b957;
+
+    color: #ffffff;
 
     font-size: 14px;
+    font-weight: 600;
 
     cursor: pointer;
 
-    transition: background 0.2s ease;
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
 }
-
-
-/* =========================================
-   SUBMIT HOVER
-========================================= */
 
 .submit-btn:hover {
     background: #3fa645;
 }
-
-
-/* =========================================
-   SUBMIT ACTIVE
-========================================= */
 
 .submit-btn:active {
     transform: translateY(1px);
 }
 
 
-/* =========================================
+/* =========================================================
    BOTTOM LINE
-========================================= */
+========================================================= */
 
 .bottom-line {
+    width: 100%;
+
     height: 15px;
 
     border: 1px solid #ddd;
@@ -1025,45 +498,59 @@ select.bank-control {
 }
 
 
-/* =========================================
+/* =========================================================
    TABLET
-========================================= */
+   769px - 1000px
+========================================================= */
 
 @media (max-width: 1000px) {
 
     .page-container {
-        width: 94%;
+        width: calc(100% - 30px);
+
+        margin-top: 25px;
+
+        padding: 25px 15px 30px;
+    }
+
+
+    .page-title {
+        font-size: 25px;
+
+        margin-bottom: 25px;
+    }
+
+
+    .form-row {
+        grid-template-columns: 150px minmax(0, 1fr);
+
+        column-gap: 15px;
     }
 
 
     .form-control {
-        width: 90%;
-
-        max-width: 100%;
-    }
-
-
-    .bank-info {
         max-width: 100%;
     }
 
 
     .bank-row {
-        grid-template-columns: 160px 1fr;
+        grid-template-columns: 160px minmax(0, 1fr);
+    }
+
+
+    .bank-control {
+        max-width: 100%;
     }
 
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+   768px AND BELOW
+========================================================= */
 
 @media (max-width: 768px) {
-
-    /* ===============================
-       PAGE
-    =============================== */
 
     body {
         background: #5d0b68;
@@ -1077,190 +564,147 @@ select.bank-control {
 
         padding: 20px 10px 25px;
 
+        border-radius: 4px;
+
         min-height: auto;
     }
 
-
-    /* ===============================
-       TITLE
-    =============================== */
 
     .page-title {
         font-size: 22px;
 
         line-height: 1.3;
 
-        margin: 8px 0 20px;
+        margin: 5px 0 20px;
+
+        word-break: normal;
     }
 
-
-    /* ===============================
-       FORM BOX
-    =============================== */
 
     .form-box {
         padding: 10px;
     }
 
 
-    /* ===============================
+    /* =============================================
        NORMAL FORM
-    =============================== */
+    ============================================= */
 
     .form-row {
         display: block;
 
+        width: 100%;
+
         min-height: auto;
 
-        margin-bottom: 16px;
+        margin-bottom: 17px;
     }
 
-
-    /* ===============================
-       LABEL
-    =============================== */
 
     .form-label {
         display: block;
 
-        padding: 5px 0 7px;
+        width: 100%;
+
+        padding: 4px 0 7px;
 
         font-size: 14px;
-
-        font-weight: 500;
-    }
-
-
-    /* ===============================
-       INPUT
-    =============================== */
-
-    .form-control {
-        display: block;
-
-        width: 100%;
-
-        max-width: 100%;
-
-        height: 42px;
-
-        font-size: 14px;
-    }
-
-
-    /* ===============================
-       SELECT
-    =============================== */
-
-    select.form-control {
-        height: 42px;
-    }
-
-
-    /* ===============================
-       TEXTAREA
-    =============================== */
-
-    textarea.form-control {
-        height: 110px;
-    }
-
-
-    /* ===============================
-       FILE
-    =============================== */
-
-    .file-input {
-        width: 100%;
-
-        height: auto;
-
-        font-size: 13px;
-    }
-
-
-    /* =================================
-       BANK INFORMATION MOBILE
-    ================================= */
-
-    .bank-info {
-        width: 100%;
-
-        max-width: 100%;
-
-        margin:
-            5px
-            0
-            16px
-            0;
-
-        border: 1px solid #d7d7d7;
-
-        border-radius: 3px;
-    }
-
-
-    /* ===============================
-       BANK ROW
-    =============================== */
-
-    .bank-row {
-        display: block;
-
-        min-height: auto;
-
-        padding: 10px;
-
-        border-bottom:
-            1px solid #d7d7d7;
-    }
-
-
-    .bank-row:last-of-type {
-        border-bottom: none;
-    }
-
-
-    /* ===============================
-       BANK LABEL
-    =============================== */
-
-    .bank-label {
-        display: block;
-
-        height: auto;
-
-        padding:
-            0
-            0
-            6px;
-
-        border: none;
-
-        background: transparent;
-
-        font-size: 13px;
-
         font-weight: 600;
     }
 
 
-    /* ===============================
-       BANK FIELD
-    =============================== */
+    .form-control {
+        width: 100%;
+
+        max-width: 100%;
+
+        min-height: 44px;
+
+        height: 44px;
+
+        font-size: 14px;
+    }
+
+
+    select.form-control {
+        height: 44px;
+    }
+
+
+    textarea.form-control {
+        height: 110px;
+
+        min-height: 110px;
+    }
+
+
+    .file-input {
+        width: 100%;
+
+        min-height: 44px;
+
+        height: auto;
+
+        font-size: 13px;
+    }
+
+
+    /* =============================================
+       BANK INFORMATION
+    ============================================= */
+
+    .bank-info {
+        width: 100%;
+
+        margin: 5px 0 18px;
+
+        border-radius: 4px;
+    }
+
+
+    .bank-row {
+        display: block;
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 11px;
+
+        border-bottom: 1px solid #d7d7d7;
+    }
+
+
+    .bank-label {
+        display: block;
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 0 0 7px;
+
+        background: transparent;
+
+        border: none;
+
+        font-size: 13px;
+        font-weight: 600;
+
+        color: #172b42;
+    }
+
 
     .bank-field {
         display: block;
 
-        padding: 0;
-
         width: 100%;
+
+        min-width: 0;
+
+        padding: 0;
     }
 
-
-    /* ===============================
-       BANK INPUT
-    =============================== */
 
     .bank-control {
         display: block;
@@ -1269,15 +713,17 @@ select.bank-control {
 
         max-width: 100%;
 
-        height: 42px;
+        min-width: 0;
+
+        height: 44px;
 
         font-size: 14px;
     }
 
 
-    /* ===============================
+    /* =============================================
        BANK ERROR
-    =============================== */
+    ============================================= */
 
     #bankError {
         padding: 8px 10px;
@@ -1286,16 +732,20 @@ select.bank-control {
     }
 
 
-    /* ===============================
+    /* =============================================
        SUBMIT
-    =============================== */
+    ============================================= */
 
     .button-row {
         display: block;
 
-        padding-top: 5px;
+        width: 100%;
 
-        padding-bottom: 15px;
+        margin-top: 20px;
+
+        padding: 0 0 10px;
+
+        min-height: auto;
     }
 
 
@@ -1305,17 +755,21 @@ select.bank-control {
 
 
     .submit-btn {
+        display: block;
+
         width: 100%;
 
-        height: 42px;
+        min-height: 44px;
+
+        height: 44px;
 
         font-size: 15px;
     }
 
 
-    /* ===============================
+    /* =============================================
        BOTTOM
-    =============================== */
+    ============================================= */
 
     .bottom-line {
         margin-top: 10px;
@@ -1324,23 +778,26 @@ select.bank-control {
 }
 
 
-/* =========================================
+/* =========================================================
    SMALL MOBILE
-========================================= */
+   480px AND BELOW
+========================================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
 
     .page-container {
-        width: calc(100% - 10px);
+        width: calc(100% - 12px);
 
-        padding:
-            16px
-            8px;
+        margin: 8px auto;
+
+        padding: 15px 7px 20px;
     }
 
 
     .page-title {
         font-size: 19px;
+
+        margin-bottom: 17px;
     }
 
 
@@ -1349,29 +806,124 @@ select.bank-control {
     }
 
 
+    .form-row {
+        margin-bottom: 15px;
+    }
+
+
     .form-label {
         font-size: 13px;
+
+        padding-bottom: 6px;
     }
 
 
     .form-control {
-        height: 40px;
+        height: 42px;
+
+        min-height: 42px;
+
+        padding: 7px 9px;
 
         font-size: 13px;
+    }
+
+
+    select.form-control {
+        height: 42px;
+    }
+
+
+    textarea.form-control {
+        height: 100px;
+
+        min-height: 100px;
+    }
+
+
+    .bank-row {
+        padding: 9px;
+    }
+
+
+    .bank-label {
+        font-size: 12px;
+
+        padding-bottom: 6px;
+    }
+
+
+    .bank-control {
+        height: 42px;
+
+        font-size: 13px;
+
+        padding: 7px 8px;
+    }
+
+
+    .submit-btn {
+        height: 42px;
+
+        min-height: 42px;
+
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   360px AND BELOW
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .page-container {
+        width: calc(100% - 8px);
+
+        margin: 5px auto;
+
+        padding: 12px 5px 18px;
+    }
+
+
+    .page-title {
+        font-size: 17px;
+    }
+
+
+    .form-box {
+        padding: 6px;
+    }
+
+
+    .form-control {
+        font-size: 12px;
+
+        height: 40px;
+
+        min-height: 40px;
+    }
+
+
+    select.form-control {
+        height: 40px;
     }
 
 
     .bank-control {
         height: 40px;
 
-        font-size: 13px;
+        font-size: 12px;
     }
 
 
     .submit-btn {
         height: 40px;
 
-        font-size: 14px;
+        min-height: 40px;
     }
 
 }
