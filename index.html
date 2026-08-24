@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Important for mobile responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BO Information Change</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         MAIN PAGE
+    ========================================== -->
+
+    <div class="page-container">
+
+
+        <!-- =====================================
+             PAGE TITLE
+        ====================================== -->
+
+        <h1 class="page-title">
+            BO INFORMATION CHANGE
+        </h1>
+
+
+        <!-- =====================================
+             FORM BOX
+        ====================================== -->
+
+        <div class="form-box">
+
+
+            <!-- =================================
+                 NAME
+            ================================== -->
+
+            <div class="form-row">
+
+                <label
+                    for="name"
+                    class="form-label">
+
+                    Name
+
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    class="form-control readonly"
+                    value="HASIBUL ALAM"
+                    readonly>
+
+            </div>
+
+
+            <!-- =================================
+                 CHANGE TYPE
+            ================================== -->
+
+            <div class="form-row">
+
+                <label
+                    for="changeType"
+                    class="form-label">
+
+                    Change Type
+
+                </label>
+
+
+                <select
+                    id="changeType"
+                    class="form-control">
+
+                    <option value="">
+                        -- Select the type of Info you need to Change --
+                    </option>
+
+                    <option value="mobile">
+                        Mobile Number
+                    </option>
+
+                    <option value="email">
+                        Email Address
+                    </option>
+
+                    <option value="address">
+                        Address
+                    </option>
+
+                    <option value="nominee">
+                        Nominee Information
+                    </option>
+
+                    <option value="bank">
+                        Bank Information
+                    </option>
+
+                    <option value="signature">
+                        Signature
+                    </option>
+
+                    <option value="other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- =================================
+                 EXISTING INFORMATION
+            ================================== -->
+
+            <div class="form-row">
+
+                <label
+                    for="existingInfo"
+                    class="form-label">
+
+                    Existing Info
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="existingInfo"
+                    class="form-control readonly"
+                    readonly>
+
+            </div>
+
+
+            <!-- =================================
+                 NEW INFORMATION
+            ================================== -->
+
+            <div class="form-row new-info-row">
+
+                <label
+                    for="newInfo"
+                    class="form-label">
+
+                    New Info
+
+                </label>
+
+
+                <div class="new-info-container">
+
+                    <input
+                        type="text"
+                        id="newInfo"
+                        class="form-control"
+                        placeholder="">
+
+
+                    <span
+                        id="newInfoError"
+                        class="error">
+
+                        Please enter new information.
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 REMARKS
+            ================================== -->
+
+            <div class="form-row">
+
+                <label
+                    for="remarks"
+                    class="form-label">
+
+                    Remarks
+
+                </label>
+
+
+                <textarea
+                    id="remarks"
+                    class="form-control"
+                    placeholder="Enter Text (If Any)"></textarea>
+
+            </div>
+
+
+            <!-- =================================
+                 ATTACHMENT
+            ================================== -->
+
+            <div class="form-row">
+
+                <label
+                    for="attachment"
+                    class="form-label">
+
+                    Attachment
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="attachment"
+                    class="file-input">
+
+            </div>
+
+
+            <!-- =================================
+                 SUBMIT
+            ================================== -->
+
+            <div class="form-row button-row">
+
+                <div class="button-spacer"></div>
+
+
+                <button
+                    type="button"
+                    id="submitButton"
+                    class="submit-btn">
+
+                    Submit
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================================
+             BOTTOM LINE
+        ====================================== -->
+
+        <div class="bottom-line"></div>
+
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

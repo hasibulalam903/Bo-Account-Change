@@ -1,0 +1,605 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #5d0b68;
+    color: #222;
+}
+
+
+/* =========================================
+   MAIN PAGE CONTAINER
+========================================= */
+
+.page-container {
+
+    width: 95%;
+
+    max-width: 1300px;
+
+    margin: 45px auto 20px;
+
+    background: #ffffff;
+
+    padding: 35px 15px 30px;
+
+    border-radius: 3px;
+
+    min-height: 570px;
+}
+
+
+/* =========================================
+   PAGE TITLE
+========================================= */
+
+.page-title {
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #172b3d;
+
+    margin: 15px 0 28px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   FORM BOX
+========================================= */
+
+.form-box {
+
+    border: 1px solid #d7d7d7;
+
+    padding: 0 7px 5px;
+}
+
+
+/* =========================================
+   FORM ROW
+========================================= */
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns: 255px 1fr;
+
+    align-items: center;
+
+    min-height: 50px;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.form-label {
+
+    padding: 10px 0;
+
+    color: #222;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   INPUT / SELECT / TEXTAREA
+========================================= */
+
+.form-control {
+
+    width: 70%;
+
+    max-width: 600px;
+
+    height: 32px;
+
+    border: 1px solid #d3d3d3;
+
+    border-radius: 5px;
+
+    padding: 5px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    background: #fff;
+}
+
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.form-control:focus {
+
+    border-color: #777;
+
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   READ ONLY
+========================================= */
+
+.readonly {
+
+    background: #d3d3d3;
+
+    color: #333;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   SELECT
+========================================= */
+
+select.form-control {
+
+    background: #fff;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+textarea.form-control {
+
+    height: 90px;
+
+    resize: vertical;
+
+    padding: 8px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   FILE INPUT
+========================================= */
+
+.file-input {
+
+    width: auto;
+
+    height: auto;
+
+    border: none;
+
+    border-radius: 0;
+
+    padding: 0;
+
+    background: transparent;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   NEW INFO CONTAINER
+========================================= */
+
+.new-info-container {
+
+    width: 100%;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.error {
+
+    display: none;
+
+    color: #d00000;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   BUTTON ROW
+========================================= */
+
+.button-row {
+
+    padding: 12px 0 32px;
+}
+
+
+/* =========================================
+   BUTTON SPACER
+========================================= */
+
+.button-spacer {
+
+    min-height: 1px;
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.submit-btn {
+
+    background: #51b957;
+
+    color: #ffffff;
+
+    border: none;
+
+    border-radius: 4px;
+
+    padding: 8px 14px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+
+/* =========================================
+   BUTTON HOVER
+========================================= */
+
+.submit-btn:hover {
+
+    background: #3fa645;
+}
+
+
+/* =========================================
+   BUTTON ACTIVE
+========================================= */
+
+.submit-btn:active {
+
+    transform: translateY(1px);
+}
+
+
+/* =========================================
+   BOTTOM LINE
+========================================= */
+
+.bottom-line {
+
+    height: 15px;
+
+    border: 1px solid #ddd;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .page-container {
+
+        width: 94%;
+
+    }
+
+
+    .form-row {
+
+        grid-template-columns: 190px 1fr;
+
+    }
+
+
+    .form-control {
+
+        width: 85%;
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+
+    /* BODY */
+
+    body {
+
+        background: #5d0b68;
+
+    }
+
+
+    /* PAGE */
+
+    .page-container {
+
+        width: calc(100% - 20px);
+
+        margin: 15px auto;
+
+        padding: 20px 10px 25px;
+
+        min-height: auto;
+
+    }
+
+
+    /* TITLE */
+
+    .page-title {
+
+        font-size: 22px;
+
+        line-height: 1.3;
+
+        margin: 8px 0 20px;
+
+    }
+
+
+    /* FORM */
+
+    .form-box {
+
+        padding: 10px;
+
+    }
+
+
+    /* ROW */
+
+    .form-row {
+
+        display: block;
+
+        min-height: auto;
+
+        margin-bottom: 16px;
+
+    }
+
+
+    /* LABEL */
+
+    .form-label {
+
+        display: block;
+
+        padding: 5px 0 7px;
+
+        font-size: 14px;
+
+        font-weight: 500;
+
+    }
+
+
+    /* INPUT */
+
+    .form-control {
+
+        display: block;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        height: 42px;
+
+        font-size: 14px;
+
+    }
+
+
+    /* SELECT */
+
+    select.form-control {
+
+        height: 42px;
+
+    }
+
+
+    /* TEXTAREA */
+
+    textarea.form-control {
+
+        height: 110px;
+
+    }
+
+
+    /* FILE */
+
+    .file-input {
+
+        width: 100%;
+
+        height: auto;
+
+        font-size: 13px;
+
+    }
+
+
+    /* NEW INFO */
+
+    .new-info-container {
+
+        width: 100%;
+
+    }
+
+
+    /* ERROR */
+
+    .error {
+
+        font-size: 12px;
+
+        margin-top: 5px;
+
+    }
+
+
+    /* BUTTON */
+
+    .button-row {
+
+        display: block;
+
+        padding-top: 5px;
+
+        padding-bottom: 15px;
+
+    }
+
+
+    .button-spacer {
+
+        display: none;
+
+    }
+
+
+    .submit-btn {
+
+        width: 100%;
+
+        height: 42px;
+
+        font-size: 15px;
+
+    }
+
+
+    /* BOTTOM LINE */
+
+    .bottom-line {
+
+        margin-top: 10px;
+
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+
+    .page-container {
+
+        width: calc(100% - 10px);
+
+        padding: 16px 8px;
+
+    }
+
+
+    .page-title {
+
+        font-size: 19px;
+
+    }
+
+
+    .form-box {
+
+        padding: 8px;
+
+    }
+
+
+    .form-label {
+
+        font-size: 13px;
+
+    }
+
+
+    .form-control {
+
+        height: 40px;
+
+        font-size: 13px;
+
+    }
+
+
+    select.form-control {
+
+        height: 40px;
+
+    }
+
+
+    textarea.form-control {
+
+        height: 100px;
+
+    }
+
+
+    .submit-btn {
+
+        height: 40px;
+
+        font-size: 14px;
+
+    }
+
+}
