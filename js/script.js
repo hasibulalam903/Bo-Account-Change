@@ -1,49 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // =====================================================
+    // =========================================================
     // ELEMENTS
-    // =====================================================
+    // =========================================================
 
     const changeType = document.getElementById("changeType");
     const existingInfo = document.getElementById("existingInfo");
+    const newInfo = document.getElementById("newInfo");
+    const newInfoError = document.getElementById("newInfoError");
 
-    const normalNewInfoRow =
-        document.getElementById("normalNewInfoRow");
+    const bankInfo = document.getElementById("bankInfo");
 
-    const newInfo =
-        document.getElementById("newInfo");
+    const bankName = document.getElementById("bankName");
+    const branchName = document.getElementById("branchName");
+    const upazila = document.getElementById("upazila");
+    const routingNumber = document.getElementById("routingNumber");
+    const accountNumber = document.getElementById("accountNumber");
+    const bankError = document.getElementById("bankError");
 
-    const newInfoError =
-        document.getElementById("newInfoError");
-
-    const bankInfo =
-        document.getElementById("bankInfo");
-
-    const bankName =
-        document.getElementById("bankName");
-
-    const branchName =
-        document.getElementById("branchName");
-
-    const upazila =
-        document.getElementById("upazila");
-
-    const routingNumber =
-        document.getElementById("routingNumber");
-
-    const accountNumber =
-        document.getElementById("accountNumber");
-
-    const bankError =
-        document.getElementById("bankError");
-
-    const submitButton =
-        document.getElementById("submitButton");
+    const remarks = document.getElementById("remarks");
+    const attachment = document.getElementById("attachment");
+    const submitButton = document.getElementById("submitButton");
 
 
-    // =====================================================
-    // EXISTING INFORMATION
-    // =====================================================
+    // =========================================================
+    // EXISTING BO INFORMATION
+    // =========================================================
 
     const existingData = {
 
@@ -52,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         email: "hasibul@example.com",
 
         bank_info:
-            "EASTERN BANK LTD. - A/C XXXXXXXX",
+            "EASTERN BANK LTD. - Principal Branch - A/C 8068220001094",
 
         bkash: "01812345678",
 
@@ -61,17 +43,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         nid: "12345678901234567",
 
-        photo:
-            "Investor Photo",
+        photo: "Investor Photo",
 
-        signature:
-            "Investor Signature"
+        signature: "Investor Signature"
     };
 
 
-    // =====================================================
+    // =========================================================
     // PLACEHOLDERS
-    // =====================================================
+    // =========================================================
 
     const placeholderData = {
 
@@ -98,788 +78,1065 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
-    // =====================================================
+    // =========================================================
     // BANK DATA
-    // =====================================================
+    //
+    // NOTE:
+    // These are sample/demo values.
+    // Replace them with your actual Bangladesh bank data/API.
+    // =========================================================
 
     const bankData = {
 
-        eastern: [
+        ab_bank: {
 
-            {
-                name: "Principal Branch",
-                upazila: "Motijheel",
-                routing: "095155807"
-            },
+            name: "AB Bank Limited",
 
-            {
-                name: "Gulshan Branch",
-                upazila: "Gulshan",
-                routing: "095155808"
-            },
+            branches: [
 
-            {
-                name: "Agrabad Branch",
-                upazila: "Kotwali",
-                routing: "095155809"
-            }
+                {
+                    name: "Gulshan Branch",
+                    upazila: "Gulshan",
+                    routing: "020261725"
+                },
 
-        ],
+                {
+                    name: "Banani Branch",
+                    upazila: "Banani",
+                    routing: "020261818"
+                },
 
+                {
+                    name: "Dhanmondi Branch",
+                    upazila: "Dhanmondi",
+                    routing: "020263530"
+                }
 
-        dbbl: [
+            ]
 
-            {
-                name: "Motijheel Branch",
-                upazila: "Motijheel",
-                routing: "090270001"
-            },
-
-            {
-                name: "Gulshan Branch",
-                upazila: "Gulshan",
-                routing: "090270002"
-            }
-
-        ],
+        },
 
 
-        brac: [
+        jamuna_bank: {
 
-            {
-                name: "Gulshan Branch",
-                upazila: "Gulshan",
-                routing: "060260001"
-            },
+            name: "Jamuna Bank Limited",
 
-            {
-                name: "Dhanmondi Branch",
-                upazila: "Dhanmondi",
-                routing: "060260002"
-            }
+            branches: [
 
-        ],
+                {
+                    name: "Gulshan Branch",
+                    upazila: "Gulshan",
+                    routing: "130261728"
+                },
 
+                {
+                    name: "Banani Branch",
+                    upazila: "Banani",
+                    routing: "130261760"
+                },
 
-        city: [
+                {
+                    name: "Dhanmondi Branch",
+                    upazila: "Dhanmondi",
+                    routing: "130263532"
+                }
 
-            {
-                name: "Gulshan Branch",
-                upazila: "Gulshan",
-                routing: "225260001"
-            },
+            ]
 
-            {
-                name: "Motijheel Branch",
-                upazila: "Motijheel",
-                routing: "225260002"
-            }
-
-        ],
+        },
 
 
-        prime: [
+        brac_bank: {
 
-            {
-                name: "Banani Branch",
-                upazila: "Banani",
-                routing: "170260001"
-            },
+            name: "BRAC Bank Limited",
 
-            {
-                name: "Motijheel Branch",
-                upazila: "Motijheel",
-                routing: "170260002"
-            }
+            branches: [
 
-        ]
+                {
+                    name: "Gulshan Branch",
+                    upazila: "Gulshan",
+                    routing: "060261725"
+                },
+
+                {
+                    name: "Banani Branch",
+                    upazila: "Banani",
+                    routing: "060261818"
+                },
+
+                {
+                    name: "Dhanmondi Branch",
+                    upazila: "Dhanmondi",
+                    routing: "060263530"
+                }
+
+            ]
+
+        },
+
+
+        bank_asia: {
+
+            name: "Bank Asia Limited",
+
+            branches: [
+
+                {
+                    name: "Gulshan Branch",
+                    upazila: "Gulshan",
+                    routing: "035261725"
+                },
+
+                {
+                    name: "Banani Branch",
+                    upazila: "Banani",
+                    routing: "035261818"
+                },
+
+                {
+                    name: "Dhanmondi Branch",
+                    upazila: "Dhanmondi",
+                    routing: "035263530"
+                }
+
+            ]
+
+        }
 
     };
 
 
-    // =====================================================
-    // INITIAL STATE
-    // =====================================================
+    // =========================================================
+    // ACCOUNT DATA
+    //
+    // Demo account numbers.
+    // Replace with database/API data later.
+    // =========================================================
 
-    bankInfo.style.display = "none";
+    const accountData = {
 
-    branchName.disabled = true;
+        ab_bank: {
 
+            "Gulshan Branch": [
+                "1234567890123",
+                "1234567890124"
+            ],
 
-    // =====================================================
-    // CHANGE TYPE
-    // =====================================================
+            "Banani Branch": [
+                "2234567890123",
+                "2234567890124"
+            ],
 
-    changeType.addEventListener("change", function () {
+            "Dhanmondi Branch": [
+                "3234567890123",
+                "3234567890124"
+            ]
 
-        const selectedType = this.value;
-
-
-        // ---------------------------------------------
-        // RESET
-        // ---------------------------------------------
-
-        existingInfo.value = "";
-
-        newInfo.value = "";
-
-        newInfoError.classList.remove("show");
-
-        bankError.textContent = "";
-
-        bankInfo.style.display = "none";
-
-        normalNewInfoRow.style.display = "flex";
-
-        newInfo.type = "text";
-
-        newInfo.removeAttribute("accept");
+        },
 
 
-        // ---------------------------------------------
-        // NOTHING SELECTED
-        // ---------------------------------------------
+        jamuna_bank: {
 
-        if (selectedType === "") {
+            "Gulshan Branch": [
+                "4234567890123",
+                "4234567890124"
+            ],
 
-            existingInfo.placeholder =
-                "Select Change Type";
+            "Banani Branch": [
+                "5234567890123",
+                "5234567890124"
+            ],
 
-            newInfo.placeholder =
-                "Select Change Type";
+            "Dhanmondi Branch": [
+                "6234567890123",
+                "6234567890124"
+            ]
 
-            return;
+        },
+
+
+        brac_bank: {
+
+            "Gulshan Branch": [
+                "7234567890123",
+                "7234567890124"
+            ],
+
+            "Banani Branch": [
+                "8234567890123",
+                "8234567890124"
+            ],
+
+            "Dhanmondi Branch": [
+                "9234567890123",
+                "9234567890124"
+            ]
+
+        },
+
+
+        bank_asia: {
+
+            "Gulshan Branch": [
+                "1234567891123",
+                "1234567891124"
+            ],
+
+            "Banani Branch": [
+                "2234567891123",
+                "2234567891124"
+            ],
+
+            "Dhanmondi Branch": [
+                "3234567891123",
+                "3234567891124"
+            ]
+
         }
 
-
-        // ---------------------------------------------
-        // EXISTING INFORMATION
-        // ---------------------------------------------
-
-        existingInfo.value =
-            existingData[selectedType] || "";
+    };
 
 
-        // =================================================
-        // MOBILE NUMBER
-        // =================================================
-
-        if (selectedType === "mobile") {
-
-            newInfo.type = "tel";
-
-            newInfo.placeholder =
-                placeholderData.mobile;
-
-            return;
-        }
-
-
-        // =================================================
-        // EMAIL
-        // =================================================
-
-        if (selectedType === "email") {
-
-            newInfo.type = "email";
-
-            newInfo.placeholder =
-                placeholderData.email;
-
-            return;
-        }
-
-
-        // =================================================
-        // BANK INFORMATION
-        // =================================================
-
-        if (selectedType === "bank_info") {
-
-            // Hide normal New Info
-            normalNewInfoRow.style.display = "none";
-
-            // Show Bank Info
-            bankInfo.style.display = "block";
-
-            // Reset bank fields
-            resetBankFields();
-
-            return;
-        }
-
-
-        // =================================================
-        // BKASH
-        // =================================================
-
-        if (selectedType === "bkash") {
-
-            newInfo.type = "tel";
-
-            newInfo.placeholder =
-                placeholderData.bkash;
-
-            return;
-        }
-
-
-        // =================================================
-        // CONTACT ADDRESS
-        // =================================================
-
-        if (selectedType === "contact_address") {
-
-            newInfo.type = "text";
-
-            newInfo.placeholder =
-                placeholderData.contact_address;
-
-            return;
-        }
-
-
-        // =================================================
-        // NID
-        // =================================================
-
-        if (selectedType === "nid") {
-
-            newInfo.type = "text";
-
-            newInfo.placeholder =
-                placeholderData.nid;
-
-            return;
-        }
-
-
-        // =================================================
-        // PHOTO
-        // =================================================
-
-        if (selectedType === "photo") {
-
-            newInfo.type = "file";
-
-            newInfo.accept = "image/*";
-
-            return;
-        }
-
-
-        // =================================================
-        // SIGNATURE
-        // =================================================
-
-        if (selectedType === "signature") {
-
-            newInfo.type = "file";
-
-            newInfo.accept = "image/*";
-
-            return;
-        }
-
-    });
-
-
-    // =====================================================
-    // RESET BANK FIELDS
-    // =====================================================
+    // =========================================================
+    // INITIAL BANK STATE
+    // =========================================================
 
     function resetBankFields() {
 
-        bankName.value = "";
+        if (bankName) {
+            bankName.value = "";
+        }
 
-        branchName.innerHTML = `
-            <option value="">
-                --Select Branch Name--
-            </option>
-        `;
+        if (branchName) {
 
-        branchName.disabled = true;
+            branchName.innerHTML =
+                '<option value="">--Select Branch Name--</option>';
 
-        upazila.value = "";
+            branchName.disabled = true;
+        }
 
-        routingNumber.value = "";
 
-        accountNumber.value = "";
+        if (upazila) {
+            upazila.value = "";
+        }
 
-        bankError.textContent = "";
+
+        if (routingNumber) {
+            routingNumber.value = "";
+        }
+
+
+        if (accountNumber) {
+
+            accountNumber.innerHTML =
+                '<option value="">--Select Account Number--</option>';
+
+            accountNumber.disabled = true;
+        }
+
+
+        if (bankError) {
+
+            bankError.textContent = "";
+
+            bankError.style.display = "none";
+        }
+
     }
 
 
-    // =====================================================
-    // BANK NAME CHANGE
-    // =====================================================
+    // =========================================================
+    // LOAD BRANCHES
+    // =========================================================
 
-    bankName.addEventListener("change", function () {
+    function loadBranches(selectedBank) {
 
-        const selectedBank = this.value;
-
-
-        // Reset branch
-        branchName.innerHTML = `
-            <option value="">
-                --Select Branch Name--
-            </option>
-        `;
-
-        branchName.disabled = true;
+        if (!branchName) {
+            return;
+        }
 
 
-        // Reset details
-        upazila.value = "";
+        // Clear branch
+        branchName.innerHTML =
+            '<option value="">--Select Branch Name--</option>';
 
-        routingNumber.value = "";
+
+        // Clear other fields
+        if (upazila) {
+            upazila.value = "";
+        }
 
 
-        if (selectedBank === "") {
+        if (routingNumber) {
+            routingNumber.value = "";
+        }
+
+
+        if (accountNumber) {
+
+            accountNumber.innerHTML =
+                '<option value="">--Select Account Number--</option>';
+
+            accountNumber.disabled = true;
+        }
+
+
+        // No bank
+        if (!selectedBank) {
+
+            branchName.disabled = true;
 
             return;
         }
 
 
-        const branches =
+        // Find bank
+        const selectedBankData =
             bankData[selectedBank];
 
 
-        if (!branches) {
+        if (!selectedBankData) {
+
+            branchName.disabled = true;
 
             return;
         }
 
 
         // Add branches
-        branches.forEach(function (branch) {
+        selectedBankData.branches.forEach(function (branch) {
 
             const option =
                 document.createElement("option");
 
+
             option.value =
-                branch.routing;
+                branch.name;
+
 
             option.textContent =
                 branch.name;
+
 
             branchName.appendChild(option);
 
         });
 
 
-        // Enable branch
+        // Enable branch dropdown
         branchName.disabled = false;
 
-    });
+    }
 
 
-    // =====================================================
-    // BRANCH NAME CHANGE
-    // =====================================================
+    // =========================================================
+    // LOAD BRANCH INFORMATION
+    // =========================================================
 
-    branchName.addEventListener("change", function () {
+    function loadBranchInformation() {
 
         const selectedBank =
-            bankName.value;
-
-        const selectedRouting =
-            this.value;
-
-
-        upazila.value = "";
-
-        routingNumber.value = "";
-
-
-        if (
-            selectedBank === "" ||
-            selectedRouting === ""
-        ) {
-
-            return;
-        }
-
-
-        const branches =
-            bankData[selectedBank];
-
-
-        if (!branches) {
-
-            return;
-        }
+            bankName ? bankName.value : "";
 
 
         const selectedBranch =
-            branches.find(function (branch) {
+            branchName ? branchName.value : "";
 
-                return (
-                    branch.routing ===
-                    selectedRouting
-                );
+
+        // Clear
+        if (upazila) {
+            upazila.value = "";
+        }
+
+
+        if (routingNumber) {
+            routingNumber.value = "";
+        }
+
+
+        // Reset account
+        if (accountNumber) {
+
+            accountNumber.innerHTML =
+                '<option value="">--Select Account Number--</option>';
+
+            accountNumber.disabled = true;
+        }
+
+
+        if (!selectedBank || !selectedBranch) {
+            return;
+        }
+
+
+        const selectedBankData =
+            bankData[selectedBank];
+
+
+        if (!selectedBankData) {
+            return;
+        }
+
+
+        const branch =
+            selectedBankData.branches.find(function (item) {
+
+                return item.name === selectedBranch;
 
             });
 
 
-        if (!selectedBranch) {
-
+        if (!branch) {
             return;
         }
 
 
-        // Upazila
-        upazila.value =
-            selectedBranch.upazila;
+        // Set Upazila
+        if (upazila) {
 
-
-        // Routing Number
-        routingNumber.value =
-            selectedBranch.routing;
-
-    });
-
-
-    // =====================================================
-    // ACCOUNT NUMBER
-    // =====================================================
-
-    accountNumber.addEventListener("input", function () {
-
-        // Only numbers
-        this.value =
-            this.value.replace(/\D/g, "");
-
-
-        // Maximum 13 digits
-        if (this.value.length > 13) {
-
-            this.value =
-                this.value.substring(0, 13);
+            upazila.value =
+                branch.upazila;
 
         }
 
-    });
 
+        // Set Routing Number
+        if (routingNumber) {
 
-    // =====================================================
-    // NORMAL INPUT ERROR
-    // =====================================================
-
-    newInfo.addEventListener("input", function () {
-
-        if (newInfo.value.trim() !== "") {
-
-            newInfoError.classList.remove("show");
+            routingNumber.value =
+                branch.routing;
 
         }
 
-    });
+
+        // Load account numbers
+        loadAccountNumbers(
+            selectedBank,
+            selectedBranch
+        );
+
+    }
 
 
-    // =====================================================
+    // =========================================================
+    // LOAD ACCOUNT NUMBERS
+    // =========================================================
+
+    function loadAccountNumbers(
+        selectedBank,
+        selectedBranch
+    ) {
+
+        if (!accountNumber) {
+            return;
+        }
+
+
+        accountNumber.innerHTML =
+            '<option value="">--Select Account Number--</option>';
+
+
+        accountNumber.disabled = true;
+
+
+        const bankAccounts =
+            accountData[selectedBank];
+
+
+        if (!bankAccounts) {
+            return;
+        }
+
+
+        const accounts =
+            bankAccounts[selectedBranch];
+
+
+        if (!accounts || accounts.length === 0) {
+            return;
+        }
+
+
+        accounts.forEach(function (account) {
+
+            const option =
+                document.createElement("option");
+
+
+            option.value =
+                account;
+
+
+            option.textContent =
+                account;
+
+
+            accountNumber.appendChild(option);
+
+        });
+
+
+        accountNumber.disabled = false;
+
+    }
+
+
+    // =========================================================
+    // BANK NAME CHANGE
+    // =========================================================
+
+    if (bankName) {
+
+        bankName.addEventListener(
+            "change",
+            function () {
+
+                const selectedBank =
+                    this.value;
+
+
+                loadBranches(
+                    selectedBank
+                );
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // BRANCH NAME CHANGE
+    // =========================================================
+
+    if (branchName) {
+
+        branchName.addEventListener(
+            "change",
+            function () {
+
+                loadBranchInformation();
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // ACCOUNT NUMBER CHANGE
+    // =========================================================
+
+    if (accountNumber) {
+
+        accountNumber.addEventListener(
+            "change",
+            function () {
+
+                if (
+                    bankError &&
+                    this.value !== ""
+                ) {
+
+                    bankError.textContent = "";
+
+                    bankError.style.display =
+                        "none";
+                }
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // CHANGE TYPE
+    // =========================================================
+
+    if (changeType) {
+
+        changeType.addEventListener(
+            "change",
+            function () {
+
+                const selectedType =
+                    this.value;
+
+
+                // Clear error
+                if (newInfoError) {
+
+                    newInfoError.textContent =
+                        "Please enter new information.";
+
+                    newInfoError.classList.remove("show");
+
+                    newInfoError.style.display =
+                        "none";
+                }
+
+
+                // Clear new info
+                if (newInfo) {
+
+                    newInfo.value = "";
+
+                    newInfo.type = "text";
+
+                    newInfo.removeAttribute("accept");
+
+                }
+
+
+                // Reset bank
+                resetBankFields();
+
+
+                // Hide bank information
+                if (bankInfo) {
+
+                    bankInfo.style.display =
+                        "none";
+
+                }
+
+
+                // =================================================
+                // NOTHING SELECTED
+                // =================================================
+
+                if (selectedType === "") {
+
+                    if (existingInfo) {
+
+                        existingInfo.value = "";
+
+                        existingInfo.placeholder =
+                            "Select Change Type";
+
+                    }
+
+
+                    if (newInfo) {
+
+                        newInfo.placeholder =
+                            "Select Change Type";
+
+                    }
+
+                    return;
+                }
+
+
+                // =================================================
+                // EXISTING INFORMATION
+                // =================================================
+
+                if (existingInfo) {
+
+                    existingInfo.value =
+                        existingData[selectedType] || "";
+
+                }
+
+
+                // =================================================
+                // BANK INFORMATION
+                // =================================================
+
+                if (selectedType === "bank_info") {
+
+                    // Hide normal new info
+                    if (newInfo) {
+
+                        newInfo.style.display =
+                            "none";
+
+                    }
+
+
+                    // Show bank info
+                    if (bankInfo) {
+
+                        bankInfo.style.display =
+                            "block";
+
+                    }
+
+
+                    return;
+                }
+
+
+                // =================================================
+                // NORMAL INFORMATION
+                // =================================================
+
+                if (newInfo) {
+
+                    newInfo.style.display =
+                        "block";
+
+
+                    newInfo.placeholder =
+                        placeholderData[selectedType] ||
+                        "Enter New Information";
+
+                }
+
+
+                // =================================================
+                // EMAIL
+                // =================================================
+
+                if (selectedType === "email") {
+
+                    newInfo.type =
+                        "email";
+
+                }
+
+
+                // =================================================
+                // MOBILE / BKASH
+                // =================================================
+
+                else if (
+                    selectedType === "mobile" ||
+                    selectedType === "bkash"
+                ) {
+
+                    newInfo.type =
+                        "tel";
+
+                    newInfo.inputMode =
+                        "numeric";
+
+                }
+
+
+                // =================================================
+                // PHOTO / SIGNATURE
+                // =================================================
+
+                else if (
+                    selectedType === "photo" ||
+                    selectedType === "signature"
+                ) {
+
+                    newInfo.type =
+                        "file";
+
+                    newInfo.accept =
+                        "image/*";
+
+                }
+
+
+                // =================================================
+                // OTHER
+                // =================================================
+
+                else {
+
+                    newInfo.type =
+                        "text";
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // NEW INFO INPUT
+    // =========================================================
+
+    if (newInfo) {
+
+        newInfo.addEventListener(
+            "input",
+            function () {
+
+                if (
+                    newInfo.value.trim() !== ""
+                ) {
+
+                    if (newInfoError) {
+
+                        newInfoError.classList.remove(
+                            "show"
+                        );
+
+                        newInfoError.style.display =
+                            "none";
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // FILE ATTACHMENT
+    // =========================================================
+
+    if (attachment) {
+
+        attachment.addEventListener(
+            "change",
+            function () {
+
+                if (
+                    this.files &&
+                    this.files.length > 0
+                ) {
+
+                    console.log(
+                        "Attachment selected:",
+                        this.files[0].name
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
     // VALIDATE MOBILE
-    // =====================================================
+    // =========================================================
 
     function validateMobile(value) {
 
-        const mobilePattern =
+        const pattern =
             /^01[3-9]\d{8}$/;
 
-        if (!mobilePattern.test(value)) {
+        return pattern.test(value);
 
-            newInfoError.textContent =
-                "Please enter a valid Bangladesh mobile number.";
-
-            newInfoError.classList.add("show");
-
-            newInfo.focus();
-
-            return false;
-        }
-
-        return true;
     }
 
 
-    // =====================================================
+    // =========================================================
     // VALIDATE EMAIL
-    // =====================================================
+    // =========================================================
 
     function validateEmail(value) {
 
-        const emailPattern =
+        const pattern =
             /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!emailPattern.test(value)) {
+        return pattern.test(value);
 
-            newInfoError.textContent =
-                "Please enter a valid email address.";
-
-            newInfoError.classList.add("show");
-
-            newInfo.focus();
-
-            return false;
-        }
-
-        return true;
     }
 
 
-    // =====================================================
+    // =========================================================
     // VALIDATE NID
-    // =====================================================
+    // =========================================================
 
     function validateNID(value) {
 
-        const nidPattern =
+        const pattern =
             /^(\d{10}|\d{13}|\d{17})$/;
 
-        if (!nidPattern.test(value)) {
+        return pattern.test(value);
 
-            newInfoError.textContent =
-                "NID must contain 10, 13 or 17 digits.";
-
-            newInfoError.classList.add("show");
-
-            newInfo.focus();
-
-            return false;
-        }
-
-        return true;
     }
 
 
-    // =====================================================
-    // VALIDATE BANK
-    // =====================================================
+    // =========================================================
+    // SHOW NEW INFO ERROR
+    // =========================================================
 
-    function validateBank() {
+    function showNewInfoError(message) {
 
-        bankError.textContent = "";
+        if (!newInfoError) {
+            return;
+        }
 
+
+        newInfoError.textContent =
+            message;
+
+
+        newInfoError.classList.add(
+            "show"
+        );
+
+
+        newInfoError.style.display =
+            "block";
+
+
+        if (newInfo) {
+            newInfo.focus();
+        }
+
+    }
+
+
+    // =========================================================
+    // VALIDATE BANK INFORMATION
+    // =========================================================
+
+    function validateBankInformation() {
 
         // Bank
-        if (bankName.value === "") {
+        if (
+            !bankName ||
+            bankName.value === ""
+        ) {
 
-            bankError.textContent =
-                "Please select Bank Name.";
+            alert(
+                "Please select Bank Name."
+            );
 
-            bankName.focus();
+            if (bankName) {
+                bankName.focus();
+            }
 
             return false;
+
         }
 
 
         // Branch
-        if (branchName.value === "") {
+        if (
+            !branchName ||
+            branchName.value === ""
+        ) {
 
-            bankError.textContent =
-                "Please select Branch Name.";
+            alert(
+                "Please select Branch Name."
+            );
 
-            branchName.focus();
+            if (branchName) {
+                branchName.focus();
+            }
 
             return false;
+
         }
 
 
         // Account
-        const accountValue =
-            accountNumber.value.trim();
+        if (
+            !accountNumber ||
+            accountNumber.value === ""
+        ) {
 
+            alert(
+                "Please select Account Number."
+            );
 
-        if (accountValue === "") {
-
-            bankError.textContent =
-                "Please enter Account Number.";
-
-            accountNumber.focus();
-
-            return false;
-        }
-
-
-        if (!/^\d{13}$/.test(accountValue)) {
-
-            bankError.textContent =
-                "Account Number must contain exactly 13 digits.";
-
-            accountNumber.focus();
+            if (accountNumber) {
+                accountNumber.focus();
+            }
 
             return false;
+
         }
 
 
         // Routing
-        if (routingNumber.value.trim() === "") {
+        if (
+            !routingNumber ||
+            routingNumber.value.trim() === ""
+        ) {
 
-            bankError.textContent =
-                "Routing Number is required.";
+            alert(
+                "Routing Number is not available."
+            );
 
             return false;
+
         }
 
 
         return true;
+
     }
 
 
-    // =====================================================
-    // SUBMIT
-    // =====================================================
+    // =========================================================
+    // VALIDATE NORMAL INFORMATION
+    // =========================================================
 
-    submitButton.addEventListener("click", function () {
+    function validateNormalInformation(
+        selectedType
+    ) {
 
-        const selectedType =
-            changeType.value;
-
-
-        // =================================================
-        // CHANGE TYPE REQUIRED
-        // =================================================
-
-        if (selectedType === "") {
+        if (!newInfo) {
 
             alert(
-                "Please select a Change Type."
+                "New information field not found."
             );
 
-            changeType.focus();
+            return false;
 
-            return;
         }
 
 
-        // =================================================
-        // BANK INFO
-        // =================================================
+        // =====================================================
+        // FILE
+        // =====================================================
 
-        if (selectedType === "bank_info") {
-
-            if (!validateBank()) {
-
-                return;
-            }
-
-
-            const bankText =
-                bankName.options[
-                    bankName.selectedIndex
-                ].text;
-
-
-            const branchText =
-                branchName.options[
-                    branchName.selectedIndex
-                ].text;
-
-
-            const summary =
-                "Bank Name: " +
-                bankText +
-                " | Branch Name: " +
-                branchText +
-                " | Upazila: " +
-                upazila.value +
-                " | Routing Number: " +
-                routingNumber.value +
-                " | Account Number: " +
-                accountNumber.value;
-
-
-            const confirmation =
-                confirm(
-                    "Are you sure you want to change your Bank Information?"
-                );
-
-
-            if (!confirmation) {
-
-                return;
-            }
-
-
-            existingData.bank_info =
-                summary;
-
-
-            existingInfo.value =
-                summary;
-
-
-            alert(
-                "Bank information changed successfully!"
-            );
-
-
-            return;
-        }
-
-
-        // =================================================
-        // NORMAL INFORMATION
-        // =================================================
-
-        let value = "";
-
-
-        // File
         if (
             selectedType === "photo" ||
             selectedType === "signature"
         ) {
 
             if (
+                !newInfo.files ||
                 newInfo.files.length === 0
             ) {
 
-                newInfoError.textContent =
-                    "Please select a file.";
-
-                newInfoError.classList.add(
-                    "show"
+                showNewInfoError(
+                    "Please select a file."
                 );
 
-                newInfo.focus();
+                return false;
 
-                return;
             }
 
 
-            value =
-                newInfo.files[0].name;
-
-        }
-
-        // Text
-        else {
-
-            value =
-                newInfo.value.trim();
-
-
-            if (value === "") {
-
-                newInfoError.textContent =
-                    "Please enter new information.";
-
-                newInfoError.classList.add(
-                    "show"
-                );
-
-                newInfo.focus();
-
-                return;
-            }
+            return true;
 
         }
 
 
-        // =================================================
-        // MOBILE VALIDATION
-        // =================================================
+        // =====================================================
+        // TEXT
+        // =====================================================
+
+        const value =
+            newInfo.value.trim();
+
+
+        if (value === "") {
+
+            showNewInfoError(
+                "Please enter new information."
+            );
+
+            return false;
+
+        }
+
+
+        // =====================================================
+        // MOBILE
+        // =====================================================
 
         if (
             selectedType === "mobile" ||
@@ -888,92 +1145,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!validateMobile(value)) {
 
-                return;
+                showNewInfoError(
+                    "Please enter a valid Bangladesh mobile number."
+                );
+
+                return false;
+
             }
 
         }
 
 
-        // =================================================
-        // EMAIL VALIDATION
-        // =================================================
+        // =====================================================
+        // EMAIL
+        // =====================================================
 
-        if (selectedType === "email") {
+        if (
+            selectedType === "email"
+        ) {
 
             if (!validateEmail(value)) {
 
-                return;
+                showNewInfoError(
+                    "Please enter a valid email address."
+                );
+
+                return false;
+
             }
 
         }
 
 
-        // =================================================
-        // NID VALIDATION
-        // =================================================
+        // =====================================================
+        // NID
+        // =====================================================
 
-        if (selectedType === "nid") {
+        if (
+            selectedType === "nid"
+        ) {
 
             if (!validateNID(value)) {
 
-                return;
+                showNewInfoError(
+                    "NID must contain 10, 13 or 17 digits."
+                );
+
+                return false;
+
             }
 
         }
 
 
-        // =================================================
-        // CONFIRM
-        // =================================================
+        return true;
 
-        const confirmation =
-            confirm(
-                "Are you sure you want to change your " +
-                getChangeTypeName(selectedType) +
-                "?"
-            );
+    }
 
 
-        if (!confirmation) {
-
-            return;
-        }
-
-
-        // =================================================
-        // UPDATE EXISTING DATA
-        // =================================================
-
-        existingData[selectedType] =
-            value;
-
-
-        existingInfo.value =
-            value;
-
-
-        // Clear
-        newInfo.value = "";
-
-        newInfoError.classList.remove(
-            "show"
-        );
-
-
-        // =================================================
-        // SUCCESS
-        // =================================================
-
-        alert(
-            "BO information changed successfully!"
-        );
-
-    });
-
-
-    // =====================================================
+    // =========================================================
     // GET CHANGE TYPE NAME
-    // =====================================================
+    // =========================================================
 
     function getChangeTypeName(type) {
 
@@ -986,7 +1218,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Email Address",
 
             bank_info:
-                "Bank Info",
+                "Bank Information",
 
             bkash:
                 "Bkash Number",
@@ -1010,6 +1242,295 @@ document.addEventListener("DOMContentLoaded", function () {
             names[type] ||
             "Information"
         );
+
     }
+
+
+    // =========================================================
+    // SUBMIT
+    // =========================================================
+
+    if (submitButton) {
+
+        submitButton.addEventListener(
+            "click",
+            function () {
+
+                const selectedType =
+                    changeType.value;
+
+
+                // =================================================
+                // CHANGE TYPE
+                // =================================================
+
+                if (selectedType === "") {
+
+                    alert(
+                        "Please select a Change Type."
+                    );
+
+                    changeType.focus();
+
+                    return;
+
+                }
+
+
+                // =================================================
+                // BANK INFORMATION
+                // =================================================
+
+                if (
+                    selectedType === "bank_info"
+                ) {
+
+                    if (
+                        !validateBankInformation()
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const selectedBank =
+                        bankName.options[
+                            bankName.selectedIndex
+                        ].text;
+
+
+                    const selectedBranch =
+                        branchName.value;
+
+
+                    const selectedUpazila =
+                        upazila.value;
+
+
+                    const selectedRouting =
+                        routingNumber.value;
+
+
+                    const selectedAccount =
+                        accountNumber.value;
+
+
+                    const confirmationMessage =
+
+                        "Please confirm your Bank Information:\n\n" +
+
+                        "Bank Name: " +
+                        selectedBank +
+
+                        "\nBranch Name: " +
+                        selectedBranch +
+
+                        "\nUpazila: " +
+                        selectedUpazila +
+
+                        "\nRouting Number: " +
+                        selectedRouting +
+
+                        "\nAccount Number: " +
+                        selectedAccount;
+
+
+                    const confirmation =
+                        confirm(
+                            confirmationMessage
+                        );
+
+
+                    if (!confirmation) {
+                        return;
+                    }
+
+
+                    // Update existing display
+                    existingData.bank_info =
+                        selectedBank +
+                        " - " +
+                        selectedBranch +
+                        " - A/C " +
+                        selectedAccount;
+
+
+                    if (existingInfo) {
+
+                        existingInfo.value =
+                            existingData.bank_info;
+
+                    }
+
+
+                    alert(
+                        "Bank information changed successfully!"
+                    );
+
+
+                    return;
+
+                }
+
+
+                // =================================================
+                // NORMAL INFORMATION
+                // =================================================
+
+                if (
+                    !validateNormalInformation(
+                        selectedType
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                let newValue = "";
+
+
+                // =================================================
+                // FILE
+                // =================================================
+
+                if (
+                    selectedType === "photo" ||
+                    selectedType === "signature"
+                ) {
+
+                    newValue =
+                        newInfo.files[0].name;
+
+                }
+
+
+                // =================================================
+                // TEXT
+                // =================================================
+
+                else {
+
+                    newValue =
+                        newInfo.value.trim();
+
+                }
+
+
+                // =================================================
+                // CONFIRM
+                // =================================================
+
+                const confirmation =
+                    confirm(
+
+                        "Are you sure you want to change your " +
+
+                        getChangeTypeName(
+                            selectedType
+                        ) +
+
+                        "?"
+
+                    );
+
+
+                if (!confirmation) {
+                    return;
+                }
+
+
+                // =================================================
+                // FRONTEND UPDATE
+                // =================================================
+
+                existingData[selectedType] =
+                    newValue;
+
+
+                if (existingInfo) {
+
+                    existingInfo.value =
+                        newValue;
+
+                }
+
+
+                // Clear input
+                if (newInfo) {
+
+                    if (
+                        newInfo.type === "file"
+                    ) {
+
+                        newInfo.value = "";
+
+                    }
+
+                    else {
+
+                        newInfo.value = "";
+
+                    }
+
+                }
+
+
+                // Clear error
+                if (newInfoError) {
+
+                    newInfoError.classList.remove(
+                        "show"
+                    );
+
+                    newInfoError.style.display =
+                        "none";
+
+                }
+
+
+                // =================================================
+                // SUCCESS
+                // =================================================
+
+                alert(
+                    "BO information changed successfully!"
+                );
+
+            }
+        );
+
+    }
+
+
+    // =========================================================
+    // INITIAL STATE
+    // =========================================================
+
+    if (bankInfo) {
+
+        bankInfo.style.display =
+            "none";
+
+    }
+
+
+    if (branchName) {
+
+        branchName.disabled =
+            true;
+
+    }
+
+
+    if (accountNumber) {
+
+        accountNumber.disabled =
+            true;
+
+    }
+
 
 });
